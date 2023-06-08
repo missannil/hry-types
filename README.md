@@ -1,2 +1,3 @@
-# xixi-types
-typescript工具类型库
+# hry-types
+
+typescript 工具类型库
