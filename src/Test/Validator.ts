@@ -1,6 +1,5 @@
-import type { IfEqual } from "./IfEqual";
-import type { IfExtends } from "./IfExtends";
-
+import type { IfEqual } from '../Base/IfEqual';
+import type { IfExtends } from '../Base/IfExtends';
 
 export type Validator<Expect, Reality> = IfEqual<
     Expect,

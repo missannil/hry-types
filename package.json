@@ -10,7 +10,13 @@
         "build": "tsc"
     },
     "types": "./src/index.ts",
-    "keywords": [],
+    "keywords": [
+        "hry",
+        "types",
+        "missannil",
+        "typescript",
+        "type-fest"
+    ],
     "author": "",
     "license": "ISC",
     "devDependencies": {
