@@ -5,9 +5,11 @@
     "main": "commitlint.config.js",
     "scripts": {
         "prepare": "husky install",
-        "lint": "eslint . --fix ",
-        "fmt": "prettier --write . "
+        "lint": "eslint . --fix && npm run fmt",
+        "fmt": "prettier --write . ",
+        "build": "tsc"
     },
+    "types": "./src/index.ts",
     "keywords": [],
     "author": "",
     "license": "ISC",
