@@ -6,8 +6,7 @@
     "scripts": {
         "prepare": "husky install",
         "lint": "eslint . --fix && npm run fmt",
-        "fmt": "prettier --write . ",
-        "build": "tsc"
+        "fmt": "prettier --write . "
     },
     "types": "./src/index.ts",
     "keywords": [
