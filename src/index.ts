@@ -6,3 +6,4 @@ export type { NonReadonly } from './Object/NonReadonly';
 export type { PureObject } from './Object/PureObject';
 export { ExpectType } from './Validation/ExpectType';
 export type { Validator } from './Validation/Validator';
+export type { IsNever } from './Base/IsNever';
