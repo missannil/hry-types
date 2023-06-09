@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/missannil/hry-types/compare/v0.2.1...v0.3.0) (2023-06-09)
+
+
+### Features
+
+* add "IsNever" ([0eb01e4](https://github.com/missannil/hry-types/commit/0eb01e4f182a7e1749e01ad872f28f05588039bb))
+
 ## [0.2.1](https://github.com/missannil/hry-types/compare/v0.2.0...v0.2.1) (2023-06-09)
 
 
