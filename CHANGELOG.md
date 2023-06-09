@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/missannil/hry-types/compare/v0.2.0...v0.2.1) (2023-06-09)
+
+
+### Miscellaneous Chores
+
+* release 0.2.0 ([0840a49](https://github.com/missannil/hry-types/commit/0840a49dccd2406d791753c4ae0718f0fe7f28ed))
+* release 0.2.1 ([13994d5](https://github.com/missannil/hry-types/commit/13994d5bfbfb5ed6c5cc4272011edfbd094f01c2))
+
 ## [0.2.0](https://github.com/missannil/hry-types/compare/v0.2.0...v0.2.0) (2023-06-09)
 
 
