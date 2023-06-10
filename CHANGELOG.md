@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/missannil/hry-types/compare/v0.3.0...v0.4.0) (2023-06-10)
+
+
+### Features
+
+* add ReturnTypeOfProperty ([460d952](https://github.com/missannil/hry-types/commit/460d952235ae7d07643d3d13998594ec151dd444))
+
 ## [0.3.0](https://github.com/missannil/hry-types/compare/v0.2.1...v0.3.0) (2023-06-09)
 
 
