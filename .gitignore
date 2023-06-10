@@ -8,5 +8,5 @@ miniprogram/styles/tailwind.wxss
 !config.full.js
 !corePlugins.js
 !commitlint.config.js
-!.prettierrc.js
 project.private.config.json
+!.eslintrc.cjs

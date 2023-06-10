@@ -1,15 +1,26 @@
-import type { AnyObject } from "..";
+import { type AnyObject, ExpectType } from "..";
 
 /**
- * 把对象字段值为函数类型的，变为函数返回类型
+ * 把对象子属性类型为函数类型的,变为函数返回类型
  * ```ts
- * checks([
- *     check<O.ReturnFuncType<{ddd:()=>number}>, {ddd:number}, Test.Pass>(),
- *     check<O.ReturnFuncType<{aaa:()=>string,bbb:number,c:'zhao'}>, {aaa:string,bbb:number,c:'zhao'}, Test.Pass>(),
- * ])
+ * type A = ReturnTypeOfProperty<{ fun: () => number; num: number }>;
+ * type Expect = {
+ *   fun: number;
+ *   num: number;
+ * };
+ * ExpectType<A, Expect, true>();
  * ```
  * @returns object
  */
 export type ReturnTypeOfProperty<O extends AnyObject> = {
   [k in keyof O]: O[k] extends Function ? ReturnType<O[k]> : O[k];
 };
+
+// test
+
+type A = ReturnTypeOfProperty<{ fun: () => number; num: number }>;
+type Expect = {
+  fun: number;
+  num: number;
+};
+ExpectType<A, Expect, true>();
