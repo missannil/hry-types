@@ -1,6 +1,5 @@
-import type { Validator } from './Validator';
+import type { Validator } from "./Validator";
 export const ExpectType =
-    <ExpectType>() =>
-    <RealityType>(val: RealityType & Validator<ExpectType, RealityType>): void => {
-        val;
-    };
+  <ExpectType>() => <RealityType>(val: RealityType & Validator<ExpectType, RealityType>): void => {
+    val;
+  };
