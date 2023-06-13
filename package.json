@@ -1,13 +1,13 @@
 {
   "name": "hry-types",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "typescript工具类型库",
   "main": "commitlint.config.js",
   "scripts": {
     "prepare": "husky install",
     "lint": "eslint . --fix && npm run fmt",
     "fmt": "dprint fmt",
-    "test":"tsc"
+    "test": "tsc"
   },
   "types": "./src/index.ts",
   "keywords": [
