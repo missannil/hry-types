@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/missannil/hry-types/compare/v0.5.0...v0.6.0) (2023-06-13)
+
+
+### Features
+
+* add types ([6bc2024](https://github.com/missannil/hry-types/commit/6bc20244dffeb71c67edb572a89e760265ec5235))
+
 ## [0.5.0](https://github.com/missannil/hry-types/compare/v0.4.0...v0.5.0) (2023-06-10)
 
 
