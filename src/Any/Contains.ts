@@ -1,17 +1,17 @@
 import type { Extends } from "./Extends";
 /**
- * @description 基于Extends,不同点是把boolean类型变为false
- * @param A1
- * @param A2
- * @returns true 或 false
+ * 解决extends对于联合类型可能得出boolean类型的问题
  * @example
  * ```ts
- * type test0 = Contains<'a' | 'b', 'b'> // false
- * type test1 = Contains<'a', 'a' | 'b'> // true
+ * import { type A, type Test, TypeChecking } from "hry-types";
  *
- * type test2 = Contains<{a: string}, {a: string, b: number}> // false
- * type test3 = Contains<{a: string, b: number}, {a: string}> // true
- *
+ * TypeChecking<A.Extends<"A" | "B", "A">, true, Test.Fail>;
+ * TypeChecking<A.Extends<"A" | "B", "A">, false, Test.Fail>;
+ * TypeChecking<A.Extends<"A" | "B", "A">, boolean, Test.Pass>;
+ * // ------分割线---------------
+ * TypeChecking<A.Contains<"A" | "B", "A">, boolean, Test.Fail>;
+ * TypeChecking<A.Contains<"A" | "B", "A">, true, Test.Fail>;
+ * TypeChecking<A.Contains<"A" | "B", "A">, false, Test.Pass>;
  * ```
  */
 export type Contains<A1, A2> = Extends<A1, A2> extends true ? true : false;
