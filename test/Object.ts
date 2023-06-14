@@ -59,6 +59,11 @@ TypeChecking<O.ReturnTypeOfProperty<{ fun: () => number; num: number }>, { fun: 
 
 TypeChecking<O.SelectKeys<{ fun: () => number; num: number }, AnyFunction>, "fun", Test.Pass>;
 
+TypeChecking<O.SelectKeys<{ fun: () => number; num: number }, string>, never, Test.Pass>;
+
 // -------------------Select-------------------
 
 TypeChecking<O.Select<{ fun: () => number; num: number }, AnyFunction>, { fun: () => number }, Test.Pass>;
+TypeChecking<O.Select<{ fun: () => number; num: number }, number>, { num: number }, Test.Pass>;
+
+TypeChecking<O.Select<{ fun: () => number; num: number }, string>, {}, Test.Pass>;
