@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/missannil/hry-types/compare/v0.6.0...v0.7.0) (2023-06-16)
+
+
+### Features
+
+* add Validation ([3c31675](https://github.com/missannil/hry-types/commit/3c316758dae38a90b8d098ac05af81e72b3a6617))
+
 ## [0.6.0](https://github.com/missannil/hry-types/compare/v0.5.0...v0.6.0) (2023-06-13)
 
 
