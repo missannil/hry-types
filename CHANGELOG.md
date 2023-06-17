@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/missannil/hry-types/compare/v0.8.1...v0.8.2) (2023-06-17)
+
+
+### Performance Improvements
+
+* **Object:** "ReturnType" ([2d51dc0](https://github.com/missannil/hry-types/commit/2d51dc0f6a07ebe2e37d9f123f9a04c412ebc5c1))
+
 ## [0.8.1](https://github.com/missannil/hry-types/compare/v0.8.0...v0.8.1) (2023-06-17)
 
 
