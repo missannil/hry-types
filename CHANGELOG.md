@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/missannil/hry-types/compare/v0.7.0...v0.8.0) (2023-06-17)
+
+
+### Features
+
+* **union:** add IntersectOf ([c4f18a3](https://github.com/missannil/hry-types/commit/c4f18a350c901c723271a4c549bd1f58e7710d5e))
+
 ## [0.7.0](https://github.com/missannil/hry-types/compare/v0.6.0...v0.7.0) (2023-06-16)
 
 
