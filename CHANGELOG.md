@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/missannil/hry-types/compare/v0.8.0...v0.8.1) (2023-06-17)
+
+
+### Bug Fixes
+
+* **Object:** ReturnTypeOfProperty rename  ReturnType ([bcf8cd4](https://github.com/missannil/hry-types/commit/bcf8cd47aed24f3e8c6f027a5bdfecb4a2358162))
+
 ## [0.8.0](https://github.com/missannil/hry-types/compare/v0.7.0...v0.8.0) (2023-06-17)
 
 
