@@ -53,7 +53,7 @@ TypeChecking<
 
 // -------------------ReturnTypeOfProperty-------------------
 
-TypeChecking<O.ReturnTypeOfProperty<{ fun: () => number; num: number }>, { fun: number; num: number }, Test.Pass>;
+TypeChecking<O.ReturnTypeInObject<{ fun: () => number; num: number }>, { fun: number; num: number }, Test.Pass>;
 
 // -------------------SelectKeys-------------------
 

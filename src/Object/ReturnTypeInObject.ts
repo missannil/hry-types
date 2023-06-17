@@ -10,6 +10,6 @@ import { type AnyFunction } from "..";
  * ```
  * @returns object
  */
-export type ReturnType<O extends object> = {
+export type ReturnTypeInObject<O extends object> = {
   [k in keyof O]: O[k] extends AnyFunction ? ReturnType<O[k]> : O[k];
 };
