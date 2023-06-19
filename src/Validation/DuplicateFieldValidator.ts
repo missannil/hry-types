@@ -1,7 +1,7 @@
 import type { IfExtends } from "../Any/IfExtends";
 import type { AnyFunction } from "../Misc/AnyFunction";
 
-export type DuplicateFieldValidation<
+export type DuplicateFieldValidator<
   Original extends object,
   ComparedKeys extends PropertyKey,
   Prompt extends string,
@@ -14,6 +14,9 @@ export type DuplicateFieldValidation<
     DuplicateKeys,
     never,
     unknown,
-    { [k in DuplicateKeys]: Original[k] extends AnyFunction ? `⚠️${Prompt}⚠️` : () => `⚠️${Prompt}⚠️` }
+    {
+      [k in DuplicateKeys]: Original[k] extends AnyFunction ? `⚠️${Prompt}⚠️`
+        : () => `⚠️${Prompt}⚠️`;
+    }
   >
 >;

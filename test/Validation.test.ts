@@ -1,7 +1,25 @@
-import type { IllegalFieldValidation } from "../../src/Function_generic_value_validation/IllegalFieldValidation";
+import type { DuplicateFieldValidator } from "../src/Validation/DuplicateFieldValidator";
 
+// ----------------DuplicateFieldValidator----------------
+const fun = <O extends Record<string, any>>(
+  obj: O & DuplicateFieldValidator<O, "type" | "value", "重复字段">,
+): void => {
+  obj;
+};
+fun({
+  // @ts-expect-error 重复字段
+  type: 123,
+  // @ts-expect-error 重复字段
+  value: 345,
+  xxx: 123,
+  options: 123,
+});
+
+// --------------------------IllegalFieldValidator-----------------------
+
+import type { IllegalFieldValidator } from "../src/Validation/IllegalFieldValidator";
 const fun0 = <O extends Record<string, any>>(
-  obj: O & IllegalFieldValidation<O, "a" | "b">,
+  obj: O & IllegalFieldValidator<O, "a" | "b">,
 ): void => {
   obj;
 };
@@ -10,7 +28,7 @@ fun0(
 );
 
 const fun1 = <O extends Record<string, any>>(
-  obj: O & IllegalFieldValidation<O, "a" | "b">,
+  obj: O & IllegalFieldValidator<O, "a" | "b">,
 ): void => {
   obj;
 };
@@ -23,7 +41,7 @@ fun1({
 });
 
 const fun2 = <O extends Record<string, any>>(
-  obj: O & IllegalFieldValidation<O, "a" | "b", 0, "value">,
+  obj: O & IllegalFieldValidator<O, "a" | "b", 0, "value">,
 ): void => {
   obj;
 };
@@ -42,7 +60,7 @@ fun2({
   },
 });
 const fun3 = <O extends Record<string, any>>(
-  obj: O & IllegalFieldValidation<O, "a" | "b", 1>,
+  obj: O & IllegalFieldValidator<O, "a" | "b", 1>,
 ): void => {
   obj;
 };
@@ -63,7 +81,7 @@ fun3({
   },
 });
 const fun4 = <O extends Record<string, any>>(
-  obj: O & IllegalFieldValidation<O, "a" | "b", 1, "value">,
+  obj: O & IllegalFieldValidator<O, "a" | "b", 1, "value">,
 ): void => {
   obj;
 };
