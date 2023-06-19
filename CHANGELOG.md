@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.3](https://github.com/missannil/hry-types/compare/v0.8.2...v0.8.3) (2023-06-19)
+
+
+### Code Refactoring
+
+* **Validation:** rename Function_generic_value_validation-&gt;Validation ([40d05da](https://github.com/missannil/hry-types/commit/40d05da24a5394f039927dc328b4ce2cbe1365f5))
+
 ## [0.8.2](https://github.com/missannil/hry-types/compare/v0.8.1...v0.8.2) (2023-06-17)
 
 
