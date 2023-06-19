@@ -8,10 +8,7 @@ type _IllegalFieldValidation<
   G extends AnyObject,
   legalKeys extends string,
   Result = {
-    [
-      k in keyof G as Exclude<k, legalKeys> extends never ? never
-        : k
-    ]: G[k] extends AnyFunction ? `⚠️字段非法⚠️`
+    [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends AnyFunction ? `⚠️字段非法⚠️`
       : () => `⚠️字段非法⚠️`;
   },
 > = IfExtends<{}, Result, unknown, Result>;
@@ -99,7 +96,7 @@ type _IsIgnore<T, Field extends string = ""> = IfExtends<
  * };
  * ```
  */
-export type IllegalFieldValidation<
+export type IllegalFieldValidator<
   G extends AnyObject,
   legalKeys extends string,
   Layer extends 0 | 1 = 0,
@@ -131,7 +128,14 @@ export type IllegalFieldValidation<
       Field,
       "",
       // leyer==1,Field === ''
-      { [k in keyof G]: IfExtends<_IsIgnore<G[k]>, true, unknown, _IllegalFieldValidation<G[k], legalKeys>> },
+      {
+        [k in keyof G]: IfExtends<
+          _IsIgnore<G[k]>,
+          true,
+          unknown,
+          _IllegalFieldValidation<G[k], legalKeys>
+        >;
+      },
       // leyer==1,Field !== ''
       {
         [k in keyof G]: IfExtends<

@@ -1,6 +1,5 @@
 export type * as A from "./Any/_api";
 export type * as B from "./Boolean/_api";
-export type * as Validation from "./Function_generic_value_validation/_api";
 export type * as L from "./List/_api";
 export type * as M from "./Misc/_api";
 export type { AnyFunction } from "./Misc/AnyFunction";
@@ -10,3 +9,4 @@ export type * as O from "./Object/_api";
 export type * as Test from "./Test/Result";
 export { TypeChecking } from "./Test/TypeChecking";
 export { ValueChecking } from "./Test/ValueChecking";
+export type * as V from "./Validation/_api";
