@@ -1,4 +1,4 @@
-import type { IsPureObject } from "./IsPureObject";
+import type { IsPureObject } from "../Any/IsPureObject";
 
 /**
  * @description 合并交叉对象类型

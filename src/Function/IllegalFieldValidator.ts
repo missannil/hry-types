@@ -1,8 +1,8 @@
 import type { Cast } from "../Any/Cast";
 import type { IfExtends } from "../Any/IfExtends";
+import type { IsPureObject } from "../Any/IsPureObject";
 import type { AnyFunction } from "../Misc/AnyFunction";
 import type { AnyObject } from "../Misc/AnyObject";
-import type { IsPureObject } from "../Object/IsPureObject";
 
 type _IllegalFieldValidation<
   G extends AnyObject,

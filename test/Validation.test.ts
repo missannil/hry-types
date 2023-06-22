@@ -1,4 +1,4 @@
-import type { DuplicateFieldValidator } from "../src/Validation/DuplicateFieldValidator";
+import type { DuplicateFieldValidator } from "../src/Function/DuplicateFieldValidator";
 
 // ----------------DuplicateFieldValidator----------------
 const fun = <O extends Record<string, any>>(
@@ -17,7 +17,7 @@ fun({
 
 // --------------------------IllegalFieldValidator-----------------------
 
-import type { IllegalFieldValidator } from "../src/Validation/IllegalFieldValidator";
+import type { IllegalFieldValidator } from "../src/Function/IllegalFieldValidator";
 const fun0 = <O extends Record<string, any>>(
   obj: O & IllegalFieldValidator<O, "a" | "b">,
 ): void => {
