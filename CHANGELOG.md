@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.1](https://github.com/missannil/hry-types/compare/v0.9.0...v0.9.1) (2023-06-22)
+
+
+### Bug Fixes
+
+* 导出Asss类型 ([cb2277e](https://github.com/missannil/hry-types/commit/cb2277e12b6bb9437a998f5002e207ca141659be))
+
 ## [0.9.0](https://github.com/missannil/hry-types/compare/v0.8.3...v0.9.0) (2023-06-22)
 
 
