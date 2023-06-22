@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/missannil/hry-types/compare/v0.8.3...v0.9.0) (2023-06-22)
+
+
+### Features
+
+* 加入NonNullable As 移动IsPureObject到Any目录下 ([54e303c](https://github.com/missannil/hry-types/commit/54e303cb0a1e0474e2eae3d678fa154e3edb422c))
+
 ## [0.8.3](https://github.com/missannil/hry-types/compare/v0.8.2...v0.8.3) (2023-06-19)
 
 
