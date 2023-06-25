@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/missannil/hry-types/compare/v0.9.1...v0.10.0) (2023-06-25)
+
+
+### Features
+
+* add Delay and PureObjectConstraint ([edd53fa](https://github.com/missannil/hry-types/commit/edd53fa201ce82d9038464fa9cf3b8fcb97e97a1))
+
 ## [0.9.1](https://github.com/missannil/hry-types/compare/v0.9.0...v0.9.1) (2023-06-22)
 
 
