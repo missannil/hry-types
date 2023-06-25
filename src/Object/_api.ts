@@ -4,6 +4,7 @@ export type { FilterKeys } from "./FilterKeys";
 export type { MergeIntersection } from "./MergeIntersection";
 export type { NonNullable } from "./NonNullable";
 export type { NonReadonly } from "./NonReadonly";
+export type { PureObjectConstraint } from "./PureObjectConstraint";
 export type { ReturnTypeInObject } from "./ReturnTypeInObject";
 export type { Select } from "./Select";
 export type { SelectKeys } from "./SelectKeys";
