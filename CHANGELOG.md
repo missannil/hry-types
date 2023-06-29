@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/missannil/hry-types/compare/v0.10.0...v0.11.0) (2023-06-29)
+
+
+### Code Refactoring
+
+* all ([dee88f1](https://github.com/missannil/hry-types/commit/dee88f1c9ccd27fe678eb29ef3ac04d64230dd7d))
+
 ## [0.10.0](https://github.com/missannil/hry-types/compare/v0.9.1...v0.10.0) (2023-06-25)
 
 
