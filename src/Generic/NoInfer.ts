@@ -21,10 +21,7 @@
  *
  * const test1 = fn1('a', 'b'); // 错误: 类型“"b"”的参数不能赋给类型“"a"”的参数
  * ```
- * @see https://stackoverflow.com/questions/56687668
+ * @see https://github.com/microsoft/TypeScript/issues/14829
  */
-export type NoInfer<A = unknown> = A extends unknown ? A : never;
 
-// export declare type NoInfer<A = unknown> = [
-// 	A,
-// ][A extends unknown ? 0 : never];
+export type NoInfer<A = unknown> = [A][A extends unknown ? 0 : never];

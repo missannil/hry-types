@@ -1,15 +1,7 @@
 /**
  * 联合变交叉
- * @param U to transform
- * @returns `&`
- * @example
- * ```ts
- *
- *  type union = "a" | "b";
- *  type test = IntersectOf<union>; // => 'a' & 'b' => never
- *  type union1 = { a: string } | { b: number };
- *  type test1 = IntersectOf<union1>; // => {a:string} & {b:number}
- *
- * ```
+ * @param U is union type (A1 | A2 | A3 ...)
+ * @returns (A1 & A2 & A3 ...)
+ * @link [test file](./IntersectOf.test.ts)
  */
 export type IntersectOf<U> = (U extends unknown ? (k: U) => void : never) extends ((k: infer I) => void) ? I : never;

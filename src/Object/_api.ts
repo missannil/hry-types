@@ -1,8 +1,8 @@
-export type { IsPureObject } from "../Any/IsPureObject";
+export type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
+export type { ComputeIntersection } from "./ComputeIntersection";
 export type { Filter } from "./Filter";
 export type { FilterKeys } from "./FilterKeys";
-export type { MergeIntersection } from "./MergeIntersection";
-export type { NonNullable } from "./NonNullable";
+export type { NonNullableInObject } from "./NonNullableInObject";
 export type { NonReadonly } from "./NonReadonly";
 export type { ReturnTypeInObject } from "./ReturnTypeInObject";
 export type { Select } from "./Select";

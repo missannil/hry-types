@@ -2,9 +2,11 @@ import type { AnyFunction } from "../Misc/AnyFunction";
 import type { IsNever } from "./IsNever";
 
 /**
- * @description 纯对象判断,即非数组和函数的对象
+ * @description is object but not array and function
+ * @link [test](./IsNonArrNonFuncObject.test.ts)
+ * @returns true or false
  */
-export type IsPureObject<T> = IsNever<T> extends true ? false
+export type IsNonArrNonFuncObject<T> = IsNever<T> extends true ? false
   : T extends AnyFunction ? false
   : T extends unknown[] ? false
   : T extends object ? true

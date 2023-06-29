@@ -1,3 +1,4 @@
+import type { IsNever } from "../Any/IsNever";
 import type { OrSign } from "./Or";
 
 /**
@@ -10,4 +11,4 @@ import type { OrSign } from "./Or";
  *
  * ```
  */
-export type InferOr<T> = T extends [...infer R extends unknown[], OrSign] ? R : false;
+export type InferOr<T> = IsNever<T> extends true ? false : T extends [...infer R extends unknown[], OrSign] ? R : false;

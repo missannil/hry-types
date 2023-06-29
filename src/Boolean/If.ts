@@ -1,7 +1,6 @@
-import type { IfEquals } from "../Any/IfEquals";
-
 /**
- * 如果B为true返回Then,否则返回Else
+ * @description B is true, return Then, else return Else
+ * @link [test](./If.test.ts)
+ * @returns Then or Else
  */
-export type If<B extends IfEquals<B, boolean, "输入类型应为true或false,当前为boolean", boolean>, Then, Else = never> =
-  B extends true ? Then : Else;
+export type If<B extends boolean, Then, Else> = [B] extends [true] ? Then : Else;

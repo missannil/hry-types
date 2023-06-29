@@ -1,9 +1,8 @@
 import type { Match } from "../Misc/Match";
-
 import type { SelectKeys } from "./SelectKeys";
 
 /**
- * 保留对象匹配的key
+ * @description if object key match M, then select it
  * @example
  * ```ts
  * import { TypeChecking, type O,type Test} from 'hry-types'

@@ -7,7 +7,7 @@
     "prepare": "husky install",
     "lint": "eslint . --fix && npm run fmt",
     "fmt": "dprint fmt",
-    "test": "tsc"
+    "test": "tsc --watch"
   },
   "types": "./src/index.ts",
   "keywords": [

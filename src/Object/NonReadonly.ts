@@ -1,3 +1,5 @@
+import type { AnyFunction } from "../Misc/AnyFunction";
+
 /**
  * 深度去除readonly
  * @example
@@ -12,7 +14,6 @@
  * ```
  * @returns object
  */
-export type NonReadonly<T extends object> = T extends unknown ? {
-    -readonly [k in keyof T]: T[k] extends object ? NonReadonly<T[k]> : T[k];
-  }
-  : never;
+export type NonReadonly<T extends object> = T extends AnyFunction ? T : {
+  -readonly [k in keyof T]: T[k] extends object ? NonReadonly<T[k]> : T[k];
+};

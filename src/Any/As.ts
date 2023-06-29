@@ -1,9 +1,9 @@
 /**
- * 指定A1类型为A2类型
- * 此类型不安全,谨慎使用,原罪为ts无Or(或)类型,导致2个联合类型的子类型为3个类型,无法通过一次缩窄得到另一个类型。
+ * @description assert A1 is extends A2 此类型不安全,谨慎使用。
+ *
  * @template
  * ```ts
- * 	type StrOrNum = string | number;
+ * 	type StrOrNum<T = unknown> = T extends string ? string : T extends number ? number : never;
  *
  * 	type InputNumber<T extends number> = T;
  *
@@ -13,6 +13,6 @@
  * ```
  * @param A1 要指定的类型
  * @param A2 指定的类型
- * @returns A1
+ * @returns A1 但类型缩窄为 A2 类型
  */
 export type As<A1, A2> = A1 extends A2 ? A1 : never;

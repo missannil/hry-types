@@ -1,12 +1,12 @@
 export type * as A from "./Any/_api";
 export type * as B from "./Boolean/_api";
-export type * as V from "./Function/_api";
+export type * as Test from "./Check/CheckResult";
+export { TypeChecking } from "./Check/TypeChecking";
+export { ValueChecking } from "./Check/ValueChecking";
+export type * as V from "./Generic/_api";
 export type * as L from "./List/_api";
 export type * as M from "./Misc/_api";
 export type { AnyFunction } from "./Misc/AnyFunction";
 export type { AnyObject } from "./Misc/AnyObject";
-export type { PureObject } from "./Misc/PureObject";
 export type * as O from "./Object/_api";
-export type * as Test from "./Test/Result";
-export { TypeChecking } from "./Test/TypeChecking";
-export { ValueChecking } from "./Test/ValueChecking";
+export type * as U from "./Union/_api";

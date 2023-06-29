@@ -1,8 +1,11 @@
 declare const MISSANNIL: unique symbol;
 export type OrSign = typeof MISSANNIL;
+
 /**
- * Or数组
- * 方便IfEquals时可对或类型进行比较
+ * @description  create a Or array type
+ * @param L unknown[]
+ * @link [test](./Or.test.ts)
+ * @returns [...L, OrSign]
  * ```ts
  * import type { IfEquals ,Test} from "hry-types";
  *

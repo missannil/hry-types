@@ -1,4 +1,4 @@
-import { type AnyFunction } from "..";
+import type { AnyFunction } from "../Misc/AnyFunction";
 
 /**
  * 把对象子属性类型为函数类型的,变为函数返回类型

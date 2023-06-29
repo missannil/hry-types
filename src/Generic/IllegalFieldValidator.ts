@@ -1,39 +1,16 @@
-import type { Cast } from "../Any/Cast";
 import type { IfExtends } from "../Any/IfExtends";
-import type { IsPureObject } from "../Any/IsPureObject";
-import type { AnyFunction } from "../Misc/AnyFunction";
+import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
 import type { AnyObject } from "../Misc/AnyObject";
 
 type _IllegalFieldValidation<
   G extends AnyObject,
   legalKeys extends string,
   Result = {
-    [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends AnyFunction ? `⚠️字段非法⚠️`
+    [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends Function ? `⚠️字段非法⚠️`
       : () => `⚠️字段非法⚠️`;
   },
 > = IfExtends<{}, Result, unknown, Result>;
 
-type _IsIgnore<T, Field extends string = ""> = IfExtends<
-  IsPureObject<T>,
-  false,
-  true, // 不是对象忽略
-  IfExtends<
-    Field,
-    "",
-    false, // 不忽略
-    IfExtends<
-      Extract<Field, keyof T>,
-      never,
-      true, // 没有Field字段忽略
-      IfExtends<
-        IsPureObject<Cast<T, Record<Field, any>>[Field]>,
-        false,
-        true, // 有Field字段但不是对象的忽略
-        false // 不忽略
-      >
-    >
-  >
->;
 /**
  * @description 函数泛型输入对象(值)非法字段验证
  * @param1 泛型G   AnyObject
@@ -114,14 +91,12 @@ export type IllegalFieldValidator<
       // leyer===0,Field===''
       _IllegalFieldValidation<G, legalKeys>,
       // leyer===0,Field !==''
-      {
-        [k in keyof G]: IfExtends<
-          _IsIgnore<G[k], Field>,
-          true,
-          unknown,
-          { [s in Field]: _IllegalFieldValidation<G[k][Field], legalKeys> }
-        >;
-      }
+      IfExtends<
+        IsNonArrNonFuncObject<G[Field]>,
+        true,
+        { [s in Field]: _IllegalFieldValidation<G[Field], legalKeys> },
+        unknown
+      >
     >,
     // leyer==1,
     IfExtends<
@@ -130,19 +105,20 @@ export type IllegalFieldValidator<
       // leyer==1,Field === ''
       {
         [k in keyof G]: IfExtends<
-          _IsIgnore<G[k]>,
+          IsNonArrNonFuncObject<G[k]>,
           true,
-          unknown,
-          _IllegalFieldValidation<G[k], legalKeys>
+          _IllegalFieldValidation<G[k], legalKeys>,
+          unknown
         >;
       },
       // leyer==1,Field !== ''
       {
         [k in keyof G]: IfExtends<
-          _IsIgnore<G[k], Field>,
+          IsNonArrNonFuncObject<G[k]>,
           true,
-          unknown,
-          { [s in Field]: _IllegalFieldValidation<G[k][Field], legalKeys> }
+          Field extends keyof G[k] ? { [s in Field]: _IllegalFieldValidation<G[k][Field], legalKeys> }
+            : unknown,
+          unknown
         >;
       }
     >
