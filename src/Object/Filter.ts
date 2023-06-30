@@ -1,4 +1,4 @@
-import type { Match } from "../Misc/Match";
+import type { _Match } from "../_internal/_Match";
 import type { FilterKeys } from "./FilterKeys";
 
 /**
@@ -28,5 +28,5 @@ import type { FilterKeys } from "./FilterKeys";
 export type Filter<
   O extends object,
   M,
-  match extends Match = "extends->",
+  match extends _Match = "extends->",
 > = Pick<O, FilterKeys<O, M, match>>;

@@ -1,6 +1,6 @@
 import type { Test } from "../../src";
 import { TypeChecking } from "../../src";
-import type { _IfEquals } from "../../src/Any/_IfEquals";
+import type { _IfEquals } from "../../src/_internal/_IfEquals";
 import type { ComputeIntersection } from "../../src/Object/ComputeIntersection";
 import type { ComputeUnion } from "../../src/Object/ComputeUnion";
 

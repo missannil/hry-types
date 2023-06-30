@@ -2,6 +2,7 @@ export type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
 export type { ComputeIntersection } from "./ComputeIntersection";
 export type { Filter } from "./Filter";
 export type { FilterKeys } from "./FilterKeys";
+export type { Flat } from "./Flat";
 export type { NonNullableInObject } from "./NonNullableInObject";
 export type { NonReadonly } from "./NonReadonly";
 export type { ReturnTypeInObject } from "./ReturnTypeInObject";

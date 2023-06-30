@@ -1,6 +1,6 @@
+import type { _IfEquals } from "../_internal/_IfEquals";
+import type { _OrEquals } from "../_internal/_OrEquals";
 import type { InferOr } from "../List/InferOr";
-import type { _IfEquals } from "./_IfEquals";
-import type { _OrEquals } from "./_OrEquals";
 
 /**
  * @description  IF相等判断 Then(相等,默认unknown),Else(不等,默认返回A)。B可为Or数组，即A与B数组其中一项相等即返回Then,都不相等返回Else

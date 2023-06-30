@@ -1,4 +1,4 @@
-import type { Match } from "../Misc/Match";
+import type { _Match } from "../_internal/_Match";
 import type { SelectKeys } from "./SelectKeys";
 
 /**
@@ -11,4 +11,4 @@ import type { SelectKeys } from "./SelectKeys";
  * ```
  * @return object
  */
-export type Select<O extends object, M, match extends Match = "extends->"> = Pick<O, SelectKeys<O, M, match>>;
+export type Select<O extends object, M, match extends _Match = "extends->"> = Pick<O, SelectKeys<O, M, match>>;

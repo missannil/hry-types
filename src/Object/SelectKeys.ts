@@ -1,10 +1,10 @@
+import type { _Match } from "../_internal/_Match";
 import type { Is } from "../Any/Is";
-import type { Match } from "../Misc/Match";
 
 /**
  * @hidden
  */
-export type _SelectKeys<O extends object, M, match extends Match> = {
+export type _SelectKeys<O extends object, M, match extends _Match> = {
   [K in keyof O]-?: Is<O[K], M, match> extends true ? K : never;
 }[keyof O];
 
@@ -18,6 +18,6 @@ export type _SelectKeys<O extends object, M, match extends Match> = {
  * ```
  * @return object
  */
-export type SelectKeys<O extends object, M, match extends Match = "extends->"> = O extends unknown
+export type SelectKeys<O extends object, M, match extends _Match = "extends->"> = O extends unknown
   ? _SelectKeys<O, M, match>
   : never;

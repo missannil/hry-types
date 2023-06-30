@@ -1,4 +1,4 @@
-import type { Equals } from "./Equals";
+import type { Equals } from "../Any/Equals";
 
 /**
  * @description  if A equals one of L, then return Then, else return Else

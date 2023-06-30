@@ -1,5 +1,5 @@
+import type { _Match } from "../_internal/_Match";
 import type { Is } from "../Any/Is";
-import type { Match } from "../Misc/Match";
 
 /**
  * @hidden
@@ -7,7 +7,7 @@ import type { Match } from "../Misc/Match";
 export type _FilterKeys<
   O extends object,
   M,
-  match extends Match = "extends->",
+  match extends _Match = "extends->",
 > = {
   [K in keyof O]-?: Is<O[K], M, match> extends true ? never : K;
 }[keyof O];
@@ -28,6 +28,6 @@ export type _FilterKeys<
 export type FilterKeys<
   O extends object,
   M,
-  match extends Match = "extends->",
+  match extends _Match = "extends->",
 > = O extends unknown ? _FilterKeys<O, M, match>
   : never;

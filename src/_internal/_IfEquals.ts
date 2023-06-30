@@ -1,4 +1,4 @@
-import type { Equals } from "./Equals";
+import type { Equals } from "../Any/Equals";
 
 /**
  * @description  if A equals B return Then(default=unknown), else return Else(default=A)

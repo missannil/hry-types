@@ -6,6 +6,7 @@ export type { Extends } from "./Extends";
 export type { IfEquals } from "./IfEquals";
 export type { IfExtends } from "./IfExtends";
 export type { Is } from "./Is";
+export type { IsEmptyObject } from "./IsEmptyObject";
 export type { IsNever } from "./IsNever";
 export type { IsNonArrNonFuncObject } from "./IsNonArrNonFuncObject";
 export type { IsUnion } from "./IsUnion";

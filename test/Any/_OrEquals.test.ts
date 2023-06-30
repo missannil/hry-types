@@ -1,6 +1,6 @@
 import type { Test } from "../../src";
 import { TypeChecking } from "../../src";
-import type { _OrEquals } from "../../src/Any/_OrEquals";
+import type { _OrEquals } from "../../src/_internal/_OrEquals";
 
 type Test1 = _OrEquals<1, [1, 2, 3], "Then", "Else">; // => "Then"
 

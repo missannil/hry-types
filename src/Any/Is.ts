@@ -1,4 +1,4 @@
-import type { Match } from "../Misc/Match";
+import type { _Match } from "../_internal/_Match";
 import type { Equals } from "./Equals";
 import type { Extends } from "./Extends";
 
@@ -10,7 +10,7 @@ import type { Extends } from "./Extends";
  * @link [test](./IsNever.test.ts)
  * @returns true or false
  */
-export type Is<A, A1, match extends Match = "extends->"> = {
+export type Is<A, A1, match extends _Match = "extends->"> = {
   // "contains->": Contains<A, A1>;
   "extends->": Extends<A, A1>;
   // "<-contains": Contains<A1, A>;
