@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/missannil/hry-types/compare/v0.11.0...v0.12.0) (2023-06-30)
+
+
+### Features
+
+* add Flat ([3d56d29](https://github.com/missannil/hry-types/commit/3d56d29421c60a45334e2a1c2453fe97fdd9a54b))
+
 ## [0.11.0](https://github.com/missannil/hry-types/compare/v0.10.0...v0.11.0) (2023-06-29)
 
 
