@@ -6,7 +6,7 @@ import type { IfExtends } from "../Any/IfExtends";
 export type DuplicateFieldValidator<
   G extends object,
   ComparedKeys extends PropertyKey,
-  Prompt extends string,
+  Prompt extends string = "重复字段",
   DuplicateKeys extends keyof G = Extract<keyof G, ComparedKeys>,
 > = IfExtends<
   {},
