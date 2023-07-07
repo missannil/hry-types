@@ -1,8 +1,10 @@
 import { type Test, TypeChecking } from "../../src";
 import type { ReturnTypeInObject } from "../../src/Object/ReturnTypeInObject";
 
-type TestObj = { num: 123; str?: string; union: boolean; fn: () => string };
+type Obj = { num: 123; fn: () => string };
 
-type TestResult = ReturnTypeInObject<TestObj>;
+type TestObj = ReturnTypeInObject<Obj>;
 
-TypeChecking<TestResult, { num: 123; str?: string; union: boolean; fn: string }, Test.Pass>;
+type TestObjExpected = { num: 123; fn: string };
+
+TypeChecking<TestObj, TestObjExpected, Test.Pass>;

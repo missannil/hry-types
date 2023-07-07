@@ -1,14 +1,15 @@
-import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
-
 /**
- * @description 合并交叉对象类型
+ * @description 计算交叉对象类型 要求对象的key不可重复
+ * @param O object
+ * @template
  * ```ts
- * import { TypeChecking, type O,type Test} from 'hry-types'
- * type Res = O.MergeIntersection<{ name: string } & { age: number }>;
- * // type Res = { name: string; age: number; }
+ *  import { type O } from 'hry-types'
+ *
+ *  type Test = O.ComputeIntersection<{ name: string } & { age: number }>;
+ *  // =>{ name: string; age: number; }
+ *
  * ```
- * @return object
+ * @see 当对象中存在相同key时，可能出现never结果 {@link https://github.com/microsoft/TypeScript/issues/54903 issue}
+ *   @return object
  */
-export type ComputeIntersection<T> = IsNonArrNonFuncObject<T> extends true
-  ? { [K in keyof T]: ComputeIntersection<T[K]> }
-  : T;
+export type ComputeIntersection<O> = { [K in keyof O]: O[K] };

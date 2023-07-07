@@ -23,31 +23,26 @@ type Test5 = Equals<{ a: number } & { b: string }, { a: number; b: string }>;
 
 TypeChecking<Test5, false, Test.Pass>;
 
-// 不支持联合类型计算
-type Test6 = Equals<{ a: number } | { b: string }, { a?: number; b?: number }>;
+type Test6 = Equals<never, never>;
 
-TypeChecking<Test6, false, Test.Pass>;
+TypeChecking<Test6, true, Test.Pass>;
 
-type Test7 = Equals<never, never>;
+type Test7 = Equals<never, unknown>;
 
-TypeChecking<Test7, true, Test.Pass>;
+TypeChecking<Test7, false, Test.Pass>;
 
-type Test8 = Equals<never, unknown>;
+type Test8 = Equals<unknown, unknown>;
 
-TypeChecking<Test8, false, Test.Pass>;
+TypeChecking<Test8, true, Test.Pass>;
 
-type Test9 = Equals<unknown, unknown>;
+type Test9 = Equals<unknown, any>;
 
-TypeChecking<Test9, true, Test.Pass>;
+TypeChecking<Test9, false, Test.Pass>;
 
-type Test10 = Equals<unknown, any>;
+type Test10 = Equals<any, any>;
 
-TypeChecking<Test10, false, Test.Pass>;
+TypeChecking<Test10, true, Test.Pass>;
 
-type Test11 = Equals<any, any>;
+type Test11 = Equals<any, {}>;
 
-TypeChecking<Test11, true, Test.Pass>;
-
-type Test12 = Equals<any, {}>;
-
-TypeChecking<Test12, false, Test.Pass>;
+TypeChecking<Test11, false, Test.Pass>;

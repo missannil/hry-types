@@ -2,31 +2,30 @@ import type { _Match } from "../_internal/_Match";
 import type { FilterKeys } from "./FilterKeys";
 
 /**
- * 过滤掉对象O中,类型与M匹配的key
+ * 过滤掉对象中类型与M匹配的key
  * @example
  * ```ts
  * import type { O,Test } from 'hry-types'
- * type obj = { t: true; f: false; b: boolean };
  *
- * // 过滤obj中类型为true子类型的key,t会被去掉
- * TypeChecking<O.Filter<obj, true, "extends->">, { f: false; b: boolean }, Test.Pass>;
+ * type Test1 = O.Filter<{ a: number }, number>;
+ * // Test1 => {};
  *
- * // 过滤obj中类型为boolean子类型的key,都会被去掉
- * TypeChecking<O.Filter<obj, boolean, "extends->">, {}, Test.Pass>;
+ * type Test2 = O.Filter<{ a: number; b: string }, number>;
+ * // Test2 => { b: string };
  *
- * // 过滤obj中类型为true父类型的key ,t和b 会被去掉
- * TypeChecking<O.Filter<obj, true, "<-extends">, { f: false }, Test.Pass>;
+ * type Test3 = O.Filter<{ a: number; b: string; c: boolean }, number | string>;
+ * // Test3 => { c: boolean }
  *
- * // 过滤obj中类型为boolean父类型的key,b会被去掉
- * TypeChecking<O.Filter<obj, boolean, "<-extends">, { t: true; f: false }, Test.Pass>;
+ * type Test4 = O.Filter<{ a: number; b: string; c: boolean }, number | string, "<-extends">;
+ * // Test4 => { a: number; b: string; c: boolean }
  *
- * // 过滤obj中类型与boolean相等的key , b会被去掉
- * TypeChecking<O.Filter<obj, boolean, "equals">, { t: true; f: false }, Test.Pass>;
+ * type Test5 = O.Filter<{ a: number | string; b: string; c: boolean }, number | string, "equals">;
+ * // Test5 => { b: string; c: boolean }
  * ```
  * @return object
  */
 export type Filter<
-  O extends object,
+  O,
   M,
   match extends _Match = "extends->",
 > = Pick<O, FilterKeys<O, M, match>>;

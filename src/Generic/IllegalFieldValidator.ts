@@ -3,7 +3,7 @@ import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
 import type { AnyObject } from "../Misc/AnyObject";
 
 type _IllegalFieldValidation<
-  G extends AnyObject,
+  G extends object,
   legalKeys extends string,
   Result = {
     [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends Function ? `⚠️字段非法⚠️`

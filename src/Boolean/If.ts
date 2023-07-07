@@ -3,4 +3,4 @@
  * @link [test](./If.test.ts)
  * @returns Then or Else
  */
-export type If<B extends boolean, Then, Else> = [B] extends [true] ? Then : Else;
+export type If<B, Then, Else> = [B] extends [true] ? Then : Else;

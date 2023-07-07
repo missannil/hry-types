@@ -3,11 +3,9 @@ import type { _OrEquals } from "../_internal/_OrEquals";
 import type { InferOr } from "../List/InferOr";
 
 /**
- * @description  IF相等判断 Then(相等,默认unknown),Else(不等,默认返回A)。B可为Or数组，即A与B数组其中一项相等即返回Then,都不相等返回Else
- * @link [test](./IfEquals.test.ts)
+ * @description  IF相等判断,相等返回Then(默认unknown),不等返回Else(默认A1)。A2可为Or类型，即A1与A2数组其中一项相等即返回Then,都不相等返回Else
  * @returns Then or Else
- * 不支持对象的交叉或联合.应在传入前使用[ComputeIntersection](../Object/ComputeIntersection.ts)或[ComputeUnion](../Object/ComputeUnion.ts)
  */
-export type IfEquals<A, B, Then = unknown, Else = A, _Or extends unknown[] | false = InferOr<B>> = _Or extends false
-  ? _IfEquals<A, B, Then, Else>
-  : _OrEquals<A, _Or, Then, Else>;
+export type IfEquals<A1, A12, Then = unknown, Else = A1, _Or extends unknown[] | false = InferOr<A12>> = _Or extends
+  false ? _IfEquals<A1, A12, Then, Else>
+  : _OrEquals<A1, _Or, Then, Else>;

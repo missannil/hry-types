@@ -6,7 +6,7 @@ export { ValueChecking } from "./Check/ValueChecking";
 export type * as V from "./Generic/_api";
 export type * as L from "./List/_api";
 export type * as M from "./Misc/_api";
-export type { AnyFunction } from "./Misc/AnyFunction";
 export type { AnyObject } from "./Misc/AnyObject";
+export type { Function } from "./Misc/Function";
 export type * as O from "./Object/_api";
 export type * as U from "./Union/_api";

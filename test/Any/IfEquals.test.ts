@@ -3,7 +3,6 @@ import { TypeChecking } from "../../src";
 import type { IfEquals } from "../../src/Any/IfEquals";
 import type { Or } from "../../src/List/Or";
 import type { ComputeIntersection } from "../../src/Object/ComputeIntersection";
-import type { ComputeUnion } from "../../src/Object/ComputeUnion";
 
 type Test1 = IfEquals<1, 1>; // => unknown
 
@@ -83,8 +82,3 @@ TypeChecking<Test18, "Then", Test.Pass>;
 type Test19 = IfEquals<{ a: number } | { b: number }, { a?: number; b?: number }, "Then", "Else">; // => "Else"
 
 TypeChecking<Test19, "Else", Test.Pass>;
-
-// 预先计算联合对象
-type Test20 = IfEquals<ComputeUnion<{ a: number } | { b: number }>, { a?: number; b?: number }, "Then", "Else">; // => "Then"
-
-TypeChecking<Test20, "Then", Test.Pass>;

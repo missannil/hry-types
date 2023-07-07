@@ -1,32 +1,19 @@
-import type { IfEquals } from "../Any/IfEquals";
-import type { IfExtends } from "../Any/IfExtends";
-import type { AnyFunction } from "../Misc/AnyFunction";
+import type { Equals } from "../Any/Equals";
+import type { Function } from "../Misc/Function";
 
-/**
- * @hidden
- */
-type _EqualValidator<Expect, Reality, Prompt extends string = "类型错误"> = IfEquals<
-  Expect,
-  Reality,
-  unknown,
-  IfExtends<Expect, AnyFunction, `⚠️${Prompt}⚠️`, () => `⚠️${Prompt}⚠️`>
->;
+type _EqualValidator<ExpectType, ValueType, Prompt extends string = "类型错误"> = Equals<ExpectType, ValueType> extends
+  true ? unknown : ExpectType extends Function ? `⚠️${Prompt}⚠️` : () => `⚠️${Prompt}⚠️`;
 
 /**
  * @description 值类型验证函数
  * @example
  * ```ts
- *  const num = 123;
- *  const obj = { num };
- *
- *  ValueChecking<123>()(num);
- *
- *  ValueChecking<{ num: number }>()(obj);
- *
- *  //@ts-expect-error obj ⚠️类型错误⚠️
- *  ValueChecking<{ num: string }>()(obj);
+ * import type { ValueChecking, Test } from "hry-types";
+ * const a = 123
+ * const b = 456
+ * ValueChecking<number>()(a) => a will be error
+ * ValueChecking<456>()(b) => ok
  * ```
- * ⚠️高阶函数在第二个函数入参⚠️
  */
 export const ValueChecking =
   <ExpectType>() => <ValueType>(val: ValueType & _EqualValidator<ExpectType, ValueType>): ValueType => val;

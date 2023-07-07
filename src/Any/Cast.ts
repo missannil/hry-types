@@ -10,5 +10,6 @@
  * TypeChecking<A.Cast<"42", string>, "42", Test.Pass>;
  * TypeChecking<A.Cast<0, 42>, 42, Test.Pass>;
  * ```
+ * @returns A1 | A2
  */
 export type Cast<A1, A2> = A1 extends A2 ? A1 : A2;

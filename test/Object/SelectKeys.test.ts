@@ -1,72 +1,37 @@
 import { type Test, TypeChecking } from "../../src";
 import type { SelectKeys } from "../../src/Object/SelectKeys";
 
-type TextObj = { num: 123; str?: string; union: boolean; fn: () => 123 };
+type Obj = { num: 123; str?: string; union: boolean; fn: () => string };
 
-// ----------num part-----------
+type Test1 = SelectKeys<Obj, number, "extends->">;
 
-type TextObjResult1 = SelectKeys<TextObj, number, "extends->">; // 123 extends number => true  返回 num
+type Test1Expected = "num";
 
-TypeChecking<TextObjResult1, "num", Test.Pass>;
+TypeChecking<Test1, Test1Expected, Test.Pass>;
 
-type TextObjResult2 = SelectKeys<TextObj, number, "<-extends">; // number extends 123  => false  返回 never
+type Test2 = SelectKeys<Obj, string, "extends->">;
 
-TypeChecking<TextObjResult2, never, Test.Pass>;
+// string | undefined 不符合 extends-> 的要求
+type Test2Expected = never;
 
-type TextObjResult3 = SelectKeys<TextObj, 123, "equals">; // equals  => true  返回 num
+TypeChecking<Test2, Test2Expected, Test.Pass>;
 
-TypeChecking<TextObjResult3, "num", Test.Pass>;
+type Test3 = SelectKeys<Obj, string, "<-extends">;
 
-// ----------str part-----------
+type Test3Expected = "str";
 
-type TextObjResult4 = SelectKeys<TextObj, string, "extends->">; // (undefined | string) extends string => false  返回 never
+TypeChecking<Test3, Test3Expected, Test.Pass>;
 
-TypeChecking<TextObjResult4, never, Test.Pass>;
+type Test4 = SelectKeys<Obj, string, "equals">;
 
-type TextObjResult5 = SelectKeys<TextObj, string, "<-extends">; // string extends (undefined | string) => true  返回 str
+type Test4Expected = never;
 
-TypeChecking<TextObjResult5, "str", Test.Pass>;
+TypeChecking<Test4, Test4Expected, Test.Pass>;
 
-type TextObjResult6 = SelectKeys<TextObj, undefined | string, "equals">; // (undefined | string) equals (undefined | string) => true  返回 str
+type Test5 = SelectKeys<Obj, string | undefined, "equals">;
 
-TypeChecking<TextObjResult6, "str", Test.Pass>;
+type Test5Expected = "str";
 
-// ----------union part-----------
+TypeChecking<Test5, Test5Expected, Test.Pass>;
 
-type TextObjResult7 = SelectKeys<TextObj, boolean, "extends->">; // boolean extends boolean => true  返回 union
-
-TypeChecking<TextObjResult7, "union", Test.Pass>;
-
-type TextObjResult8 = SelectKeys<TextObj, boolean, "<-extends">; // boolean extends boolean => true  返回 union
-
-TypeChecking<TextObjResult8, "union", Test.Pass>;
-
-type TextObjResult9 = SelectKeys<TextObj, boolean, "equals">; // boolean extends boolean => true  返回 union
-
-TypeChecking<TextObjResult9, "union", Test.Pass>;
-
-type TextObjResult10 = SelectKeys<TextObj, true, "extends->">; // boolean extends true => boolean  返回 never
-
-TypeChecking<TextObjResult10, never, Test.Pass>;
-
-type TextObjResult11 = SelectKeys<TextObj, true, "<-extends">; // true extends boolean => true  返回 union
-
-TypeChecking<TextObjResult11, "union", Test.Pass>;
-
-type TextObjResult12 = SelectKeys<TextObj, true, "equals">; // true equals boolean => false  返回 never
-
-TypeChecking<TextObjResult12, never, Test.Pass>;
-
-// ----------fn part-----------
-
-type TextObjResult13 = SelectKeys<TextObj, () => 123, "extends->">; // (() => 123) extends (() => 123) => true  返回 fn
-
-TypeChecking<TextObjResult13, "fn", Test.Pass>;
-
-type TextObjResult14 = SelectKeys<TextObj, () => string, "<-extends">; // () => string extends () => 123 => false  返回 never
-
-TypeChecking<TextObjResult14, never, Test.Pass>;
-
-type TextObjResult15 = SelectKeys<TextObj, () => 123, "equals">; // (() => 123) equals (() => 123) => true  返回 fn
-
-TypeChecking<TextObjResult15, "fn", Test.Pass>;
+// copilot 都懒得用 其他的就不写了

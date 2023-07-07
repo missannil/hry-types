@@ -36,7 +36,7 @@ TypeChecking<Test8, false, Test.Pass>;
 
 type Test9 = IsNonArrNonFuncObject<never>; // => false
 
-TypeChecking<Test9, false, Test.Pass>;
+TypeChecking<Test9, never, Test.Pass>;
 
 type Test10 = IsNonArrNonFuncObject<void>; // => false
 

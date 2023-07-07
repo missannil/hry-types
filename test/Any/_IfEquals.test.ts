@@ -2,7 +2,6 @@ import type { Test } from "../../src";
 import { TypeChecking } from "../../src";
 import type { _IfEquals } from "../../src/_internal/_IfEquals";
 import type { ComputeIntersection } from "../../src/Object/ComputeIntersection";
-import type { ComputeUnion } from "../../src/Object/ComputeUnion";
 
 type Test1 = _IfEquals<1, 1>; // => unknown
 
@@ -61,7 +60,3 @@ TypeChecking<Test16, "Then", Test.Pass>;
 type Test17 = _IfEquals<{ a: 1 } | { b: 2 }, { a?: 1; b?: 2 }, "Then", "Else">; // =>  "Else" 不符合预期 "Then"
 
 TypeChecking<Test17, "Then", Test.Fail>;
-
-type Test18 = _IfEquals<ComputeUnion<{ a: 1 } | { b: 2 }>, { a?: 1; b?: 2 }, "Then", "Else">; // =>  "Then"
-
-TypeChecking<Test18, "Then", Test.Pass>;

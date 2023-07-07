@@ -1,32 +1,40 @@
 import type { _Match } from "../_internal/_Match";
 import type { Is } from "../Any/Is";
 
-/**
- * @hidden
- */
-export type _FilterKeys<
-  O extends object,
+type _FilterKeys<
+  O,
   M,
   match extends _Match = "extends->",
 > = {
   [K in keyof O]-?: Is<O[K], M, match> extends true ? never : K;
 }[keyof O];
+
 /**
- * 对象类型匹配的key去掉,返回剩余的key
+ * @description 类型匹配的key去掉,返回剩余的key
+ * @param O object
  * @example
  * ```ts
- * import type{ O,Test} from 'hry-types'
+ * import type{ O} from 'hry-types'
+ * type Test = FilterKeys<{ a: number }, number>;
+ * // Test => never
  *
- * type obj = { t: true; f: false; b: boolean };
- * TypeChecking<O.FilterKeys<obj, true, "extends->">, "b" | "f", Test.Pass>;
- * TypeChecking<O.FilterKeys<obj, false, "equals">, "t" | "b", Test.Pass>;
- * TypeChecking<O.FilterKeys<obj, boolean, "equals">, "t" | "f", Test.Pass>;
+ * type Test1 = FilterKeys<{ a: number; b: string }, number>;
+ * // test1 => "b"
+ *
+ * type Test3 = FilterKeys<{ a: number; b: string; c: boolean }, number | string>;
+ * // Test3 => "c"
+ *
+ * type Test4 = FilterKeys<{ a: number; b: string; c: boolean }, number | string, "<-extends">;
+ * // Test4 => "a" | "b" | "c"
+ *
+ * type Test5 = FilterKeys<{ a: number | string; b: string; c: boolean }, number | string, "equals">;
+ * // Test5 => "b" | "c"
  *
  * ```
- * @return string
+ * @return string or never
  */
 export type FilterKeys<
-  O extends object,
+  O,
   M,
   match extends _Match = "extends->",
 > = O extends unknown ? _FilterKeys<O, M, match>

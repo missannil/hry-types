@@ -1,15 +1,16 @@
-import type { AnyFunction } from "../Misc/AnyFunction";
+import type { Function } from "../Misc/Function";
 
 /**
- * 把对象子属性类型为函数类型的,变为函数返回类型
+ * 把对象子属性类型为函数类型的,变为函数返回类型(非深度)
  * @example
  * ```ts
  * import { TypeChecking, type O,type Test} from 'hry-types'
- *
- * TypeChecking<O.ReturnType<{ fun: () => number; num: number }>, { fun: number; num: number }, Test.Pass>;
+ * type Obj = { num: 123; fn: () => string };
+ * type TestObj = ReturnTypeInObject<Obj>;
+ * // TestObj => { num: 123; fn: string };
  * ```
  * @returns object
  */
-export type ReturnTypeInObject<O extends object> = {
-  [k in keyof O]: O[k] extends AnyFunction ? ReturnType<O[k]> : O[k];
+export type ReturnTypeInObject<O> = {
+  [k in keyof O]: O[k] extends Function ? ReturnType<O[k]> : O[k];
 };

@@ -1,11 +1,11 @@
 export type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
+export type { AddSubObjectKey as Flat } from "./AddSubObjectKey";
 export type { ComputeIntersection } from "./ComputeIntersection";
+export type { ComputeIntersectionDeep } from "./ComputeIntersectionDeep";
 export type { Filter } from "./Filter";
 export type { FilterKeys } from "./FilterKeys";
-export type { Flat } from "./Flat";
 export type { NonNullableInObject } from "./NonNullableInObject";
 export type { NonReadonly } from "./NonReadonly";
 export type { ReturnTypeInObject } from "./ReturnTypeInObject";
 export type { Select } from "./Select";
 export type { SelectKeys } from "./SelectKeys";
-export type { Union } from "./Union";
