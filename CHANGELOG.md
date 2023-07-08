@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.3](https://github.com/missannil/hry-types/compare/v0.13.2...v0.13.3) (2023-07-08)
+
+
+### Bug Fixes
+
+* **Object:** export UnionOf ([7ab73f2](https://github.com/missannil/hry-types/commit/7ab73f220106f842957d2bbefa4050e1ccd2d911))
+
 ## [0.13.2](https://github.com/missannil/hry-types/compare/v0.13.1...v0.13.2) (2023-07-08)
 
 
