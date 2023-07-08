@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.2](https://github.com/missannil/hry-types/compare/v0.13.1...v0.13.2) (2023-07-08)
+
+
+### Features
+
+* **Object:** add  "UnionOf" ([f3e68a2](https://github.com/missannil/hry-types/commit/f3e68a20c8ab5799aa9c6fb1f011e61a39c3eb09))
+
 ## [0.13.1](https://github.com/missannil/hry-types/compare/v0.13.0...v0.13.1) (2023-07-08)
 
 
