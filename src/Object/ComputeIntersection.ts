@@ -12,4 +12,4 @@
  * @see 当对象中存在相同key时，可能出现never结果 {@link https://github.com/microsoft/TypeScript/issues/54903 issue}
  *   @return object
  */
-export type ComputeIntersection<O> = { [K in keyof O]: O[K] };
+export type ComputeIntersection<O> = O extends unknown ? { [K in keyof O]: O[K] } : never;

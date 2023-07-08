@@ -15,6 +15,7 @@ import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
  * @see 当对象中存在相同key时，可能出现结果为never {@link https://github.com/microsoft/TypeScript/issues/54903 issue}
  *   @return object
  */
-export type ComputeIntersectionDeep<O> = {
-  [K in keyof O]: IsNonArrNonFuncObject<O> extends true ? ComputeIntersectionDeep<O[K]> : O;
-};
+export type ComputeIntersectionDeep<O> = IsNonArrNonFuncObject<O> extends true ? {
+    [K in keyof O]: ComputeIntersectionDeep<O[K]>;
+  }
+  : O;
