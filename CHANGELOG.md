@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1](https://github.com/missannil/hry-types/compare/v0.13.0...v0.13.1) (2023-07-08)
+
+
+### Bug Fixes
+
+* "ComputeIntersection" and "ComputeIntersectionDeep" ([20d44a9](https://github.com/missannil/hry-types/commit/20d44a997dfbc0c2542b5bf83f2fb52080ddca9b))
+
 ## [0.13.0](https://github.com/missannil/hry-types/compare/v0.12.1...v0.13.0) (2023-07-07)
 
 
