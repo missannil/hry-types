@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.14.0](https://github.com/missannil/hry-types/compare/v0.13.3...v0.14.0) (2023-07-09)
+
+
+### Features
+
+* **Tuple:** add IsContains ([520511c](https://github.com/missannil/hry-types/commit/520511cc57538ffc81f1027c335ad0f9030054f9))
+
+
+### Bug Fixes
+
+* **Any:** "Extends" changed ([520511c](https://github.com/missannil/hry-types/commit/520511cc57538ffc81f1027c335ad0f9030054f9))
+
 ## [0.13.3](https://github.com/missannil/hry-types/compare/v0.13.2...v0.13.3) (2023-07-08)
 
 
