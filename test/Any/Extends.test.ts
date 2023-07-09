@@ -12,7 +12,7 @@ TypeChecking<Test2, false, Test.Pass>;
 
 type Test3 = Extends<never, number>;
 
-TypeChecking<Test3, false, Test.Pass>;
+TypeChecking<Test3, true, Test.Pass>;
 
 type Test4 = Extends<number, never>;
 
@@ -28,4 +28,4 @@ TypeChecking<Test6, false, Test.Pass>;
 
 type Test7 = Extends<boolean, true>;
 
-TypeChecking<Test7, boolean, Test.Pass>;
+TypeChecking<Test7, false, Test.Pass>;

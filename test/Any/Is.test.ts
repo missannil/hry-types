@@ -2,50 +2,74 @@ import type { Test } from "../../src";
 import { TypeChecking } from "../../src";
 import type { Is } from "../../src/Any/Is";
 
-type Test1 = Is<1, number>; // => true
+type Test1 = Is<1, number, "extends->">;
 
-TypeChecking<Test1, true, Test.Pass>;
+type Test1Expected = true;
 
-type Test2 = Is<"hello", string>; // => true
+TypeChecking<Test1, Test1Expected, Test.Pass>;
 
-TypeChecking<Test2, true, Test.Pass>;
+type Test2 = Is<1, number, "<-extends">;
 
-type Test3 = Is<true, boolean>; // => true
+type Test2Expected = false;
 
-TypeChecking<Test3, true, Test.Pass>;
+TypeChecking<Test2, Test2Expected, Test.Pass>;
 
-type Test4 = Is<1, string>; // => false
+type Test3 = Is<number, 1, "extends->">; // 等价于 Test2
 
-TypeChecking<Test4, false, Test.Pass>;
+type Test3Expected = false;
 
-type Test5 = Is<"hello", number>; // => false
+TypeChecking<Test3, Test3Expected, Test.Pass>;
 
-TypeChecking<Test5, false, Test.Pass>;
+type Test4 = Is<number, 1, "equals">;
 
-type Test6 = Is<true, string>; // => false
+type Test4Expected = false;
 
-TypeChecking<Test6, false, Test.Pass>;
+TypeChecking<Test4, Test4Expected, Test.Pass>;
 
-type Test7 = Is<{ a: number }, { a: number; b: string }>; // => false
+type Test5 = Is<never, never, "extends->">;
 
-TypeChecking<Test7, false, Test.Pass>;
+type Test5Expected = true;
 
-type Test8 = Is<{ a: number; b: string }, { a: number }>; // => true
+TypeChecking<Test5, Test5Expected, Test.Pass>;
 
-TypeChecking<Test8, true, Test.Pass>;
+type Test6 = Is<never, never, "<-extends">;
 
-type Test9 = Is<{ a: number; b: string }, { a: number; b: string; c?: boolean }, "extends->">; // => true
+type Test6Expected = true;
 
-TypeChecking<Test9, true, Test.Pass>;
+TypeChecking<Test6, Test6Expected, Test.Pass>;
 
-type Test10 = Is<{ a: number; b: string; c?: boolean }, { a: number; b: string }, "<-extends">; // => true
+type Test7 = Is<never, never, "equals">;
 
-TypeChecking<Test10, true, Test.Pass>;
+type Test7Expected = true;
 
-type Test11 = Is<{ a: number; b: string }, { a: number; b: string; c?: boolean }, "equals">; // => false
+TypeChecking<Test7, Test7Expected, Test.Pass>;
 
-TypeChecking<Test11, false, Test.Pass>;
+type Test8 = Is<1 | 2, 1, "extends->">;
 
-type Test12 = Is<{ a: number; b: string; c?: boolean }, { a: number; b: string; c?: boolean }, "equals">; // => true
+type Test8Expected = false;
 
-TypeChecking<Test12, true, Test.Pass>;
+TypeChecking<Test8, Test8Expected, Test.Pass>;
+
+type Test9 = Is<1 | 2, 1, "<-extends">;
+
+type Test9Expected = true;
+
+TypeChecking<Test9, Test9Expected, Test.Pass>;
+
+type Test10 = Is<1, 1 | 2, "extends->">; // 等价于 Test9
+
+type Test10Expected = true;
+
+TypeChecking<Test10, Test10Expected, Test.Pass>;
+
+type Test11 = Is<1, 1 | 2, "<-extends">;
+
+type Test11Expected = false;
+
+TypeChecking<Test11, Test11Expected, Test.Pass>;
+
+type Test12 = Is<1 | 2, 1 | 2, "extends->">;
+
+type Test12Expected = true;
+
+TypeChecking<Test12, Test12Expected, Test.Pass>;
