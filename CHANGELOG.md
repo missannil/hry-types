@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.1](https://github.com/missannil/hry-types/compare/v0.14.0...v0.14.1) (2023-07-09)
+
+
+### Bug Fixes
+
+* export Tuple api ([15c8210](https://github.com/missannil/hry-types/commit/15c82103b58646bd08e66c6fbc431254689f0f9f))
+
 ## [0.14.0](https://github.com/missannil/hry-types/compare/v0.13.3...v0.14.0) (2023-07-09)
 
 
