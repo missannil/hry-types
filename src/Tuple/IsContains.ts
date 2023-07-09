@@ -8,16 +8,16 @@ import type { Is } from "../Any/Is";
  * @param match 匹配方式(_Match)
  * @example
  * ```ts
- * import { TypeChecking, type O,type Test} from 'hry-types'
- * type Tuple = [123, "123", boolean, "123"];
- * type Test1 = Tuple.IsContains<string, "extends->">;
+ * import { type T } from 'hry-types'
+ * type Tuple = [1,'1'];
+ * type Test1 = T.IsContains<Tuple,1, "extends->">;
  * // Test1 => true;
- * type Test2 = Tuple.IsContains<string, "<-extends">;
+ * type Test2 = T.IsContains<Tuple,number, "<-extends">;
  * // Test2 => true;
- * type Test3 = Tuple.IsContains<string, "equals">;
- * // Test3 => false;
- * type Test4 = Tuple.IsContains<string | undefined, "equals">;
- * // Test4 => true;
+ * type Test3 = T.IsContains<Tuple,'1', "equals">;
+ * // Test3 => true;
+ * type Test4 = T.IsContains<Tuple,1 | '1', "equals">;
+ * // Test4 => false;
  * ```
  * @return true or false
  */

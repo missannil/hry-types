@@ -9,4 +9,5 @@ export type * as M from "./Misc/_api";
 export type { AnyObject } from "./Misc/AnyObject";
 export type { Function } from "./Misc/Function";
 export type * as O from "./Object/_api";
+export type * as T from "./Tuple/_api";
 export type * as U from "./Union/_api";
