@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.1](https://github.com/missannil/hry-types/compare/v0.15.0...v0.15.1) (2023-07-10)
+
+
+### Bug Fixes
+
+* **Any:** "fEquals "去除 or数组的支持 ([ce14749](https://github.com/missannil/hry-types/commit/ce14749df2f8a74215caa3e240ac8a95082e5eb3))
+
 ## [0.15.0](https://github.com/missannil/hry-types/compare/v0.14.1...v0.15.0) (2023-07-10)
 
 
