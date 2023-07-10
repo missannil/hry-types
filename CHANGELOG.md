@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.0](https://github.com/missannil/hry-types/compare/v0.14.1...v0.15.0) (2023-07-10)
+
+
+### Features
+
+* **Any:** add OrEquals and IfOrEquals ([48c7b4c](https://github.com/missannil/hry-types/commit/48c7b4c5d8ebe2a8b89df7e19025cbfa269f303a))
+
 ## [0.14.1](https://github.com/missannil/hry-types/compare/v0.14.0...v0.14.1) (2023-07-09)
 
 
