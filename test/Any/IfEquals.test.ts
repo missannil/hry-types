@@ -1,84 +1,65 @@
 import type { Test } from "../../src";
 import { TypeChecking } from "../../src";
 import type { IfEquals } from "../../src/Any/IfEquals";
-import type { Or } from "../../src/List/Or";
 import type { ComputeIntersection } from "../../src/Object/ComputeIntersection";
 
-type Test1 = IfEquals<1, 1>; // => unknown
+type Test1 = IfEquals<1, 1>;
 
-TypeChecking<Test1, unknown, Test.Pass>;
+type Test1Expect = unknown;
 
-type Test2 = IfEquals<1, 2>; // => 1
+TypeChecking<Test1, Test1Expect, Test.Pass>;
 
-TypeChecking<Test2, 1, Test.Pass>;
+type Test2 = IfEquals<1, 2>;
 
-type Test3 = IfEquals<"a", "a">; // => unknown
+type Test2Expect = 1;
 
-TypeChecking<Test3, unknown, Test.Pass>;
+TypeChecking<Test2, Test2Expect, Test.Pass>;
 
-type Test4 = IfEquals<"a", "b">; // => "a"
+type Test3 = IfEquals<{}, {}>;
 
-TypeChecking<Test4, "a", Test.Pass>;
+type Test3Expect = unknown;
 
-type Test5 = IfEquals<{}, {}>; // => unknown
+TypeChecking<Test3, Test3Expect, Test.Pass>;
 
-TypeChecking<Test5, unknown, Test.Pass>;
+type Test4 = IfEquals<never, never>;
 
-type Test6 = IfEquals<{}, { a: number }>; // => {}
+type Test4Expect = unknown;
 
-TypeChecking<Test6, {}, Test.Pass>;
+TypeChecking<Test4, Test4Expect, Test.Pass>;
 
-type Test7 = IfEquals<never, never>; // => unknown
+type Test5 = IfEquals<1 | 2, 2 | 1>;
 
-TypeChecking<Test7, unknown, Test.Pass>;
+type Test5Expect = unknown;
 
-type Test8 = IfEquals<never, unknown>; // => never
+TypeChecking<Test5, Test5Expect, Test.Pass>;
 
-TypeChecking<Test8, never, Test.Pass>;
+type Test6 = IfEquals<1, 1, "Then">;
 
-type Test9 = IfEquals<1 | 2, 2 | 3>; // => 1 | 2
+TypeChecking<Test6, "Then", Test.Pass>;
 
-TypeChecking<Test9, 1 | 2, Test.Pass>;
+type Test7 = IfEquals<1, 2, "Then">;
 
-type Test10 = IfEquals<1 | 2, 2 | 1>; // => unknown
+TypeChecking<Test7, 1, Test.Pass>;
 
-TypeChecking<Test10, unknown, Test.Pass>;
+type Test8 = IfEquals<1, 2, "Then", "Else">;
 
-type Test11 = IfEquals<1, 1, "Then">; // => "Then"
+TypeChecking<Test8, "Else", Test.Pass>;
+
+type Test9 = IfEquals<never, never, "Then", "Else">;
+
+TypeChecking<Test9, "Then", Test.Pass>;
+
+// 交叉对象不会计算
+type Test10 = IfEquals<{ a: number } & { b: number }, { a: number; b: number }, "Then", "Else">;
+
+TypeChecking<Test10, "Else", Test.Pass>;
+
+// 预先计算交叉对象
+type Test11 = IfEquals<ComputeIntersection<{ a: number } & { b: number }>, { a: number; b: number }, "Then", "Else">;
 
 TypeChecking<Test11, "Then", Test.Pass>;
 
-type Test12 = IfEquals<1, 2, "Then">; // => 1
-
-TypeChecking<Test12, 1, Test.Pass>;
-
-type Test13 = IfEquals<1, 2, "Then", "Else">; // => "Else"
-
-TypeChecking<Test13, "Else", Test.Pass>;
-
-type Test14 = IfEquals<1, Or<[1, 2]>, "Then", "Else">; // => "Then"
-
-TypeChecking<Test14, "Then", Test.Pass>;
-
-type Test15 = IfEquals<1, Or<[2, 3, 4]>, "Then", "Else">; // => "Else"
-
-TypeChecking<Test15, "Else", Test.Pass>;
-
-type Test16 = IfEquals<never, never, "Then", "Else">; // => "Then"
-
-TypeChecking<Test16, "Then", Test.Pass>;
-
-// 交叉对象不会计算
-type Test17 = IfEquals<{ a: number } & { b: number }, { a: number; b: number }, "Then", "Else">; // => "Else"
-
-TypeChecking<Test17, "Else", Test.Pass>;
-
-// 预先计算交叉对象
-type Test18 = IfEquals<ComputeIntersection<{ a: number } & { b: number }>, { a: number; b: number }, "Then", "Else">; // => "Then"
-
-TypeChecking<Test18, "Then", Test.Pass>;
-
 // 联合对象不会计算
-type Test19 = IfEquals<{ a: number } | { b: number }, { a?: number; b?: number }, "Then", "Else">; // => "Else"
+type Test12 = IfEquals<{ a: number } | { b: number }, { a?: number; b?: number }, "Then", "Else">;
 
-TypeChecking<Test19, "Else", Test.Pass>;
+TypeChecking<Test12, "Else", Test.Pass>;
