@@ -1,15 +1,14 @@
 import type { EmptyObject } from "../Misc/EmptyObject";
 
 /**
- * Returns a `boolean` for whether the type is strictly equal to an empty plain object,the `{}` value.
- * @description 返回一个“布尔值”,表示该类型是否严格等于一个空的普通对象，即“{}”值。
+ * 判断是否为空对象
+ * @param A - 任意类型
  * @example
  * ```ts
- * import type { IsEmptyObject } from 'hry-types';
- * type Pass = IsEmptyObject<{}>; //=> true
- * type Fail = IsEmptyObject<[]>; //=> false
- * type Fail = IsEmptyObject<null>; //=> false
+ * type Test1 = IsEmptyObject<{}> // true
+ * type Test2 = IsEmptyObject<{ a?: never }> // false
+ * type Test3 = IsEmptyObject<EmptyObject> // true
  * ```
  * @see EmptyObject
  */
-export type IsEmptyObject<T> = T extends EmptyObject ? true : false;
+export type IsEmptyObject<A> = A extends EmptyObject ? true : false;

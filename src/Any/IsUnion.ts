@@ -1,10 +1,17 @@
 import type { Equals } from "./Equals";
 
-/**
- * @description Check if `T` is a union type.
- * @link [test](./IsUnion.test.ts)
- * @returns true or false
- */
-export type IsUnion<T, O = T> = [T] extends [never] ? false
-  : O extends T ? Equals<[T], [O]> extends true ? false : true
+type _IsUnion<A, O = A> = O extends A ? Equals<[A], [O]> extends true ? false : true
   : never;
+
+/**
+ * 判断A是否为联合类型
+ * @param A - 任意类型
+ * @returns true or false
+ * @example
+ * ```ts
+ * type Test1 = IsUnion<1 | 2> // true
+ * type Test2 = IsUnion<boolean> // true
+ * type Test3 = IsUnion<1> // false
+ * ```
+ */
+export type IsUnion<A> = _IsUnion<A>;
