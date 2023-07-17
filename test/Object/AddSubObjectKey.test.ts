@@ -1,5 +1,5 @@
 // AddSubObjectKey 测试文件
-import { type Test, TypeChecking } from "../../src";
+import { Checking, type Test } from "../../src";
 import type { AddSubObjectKey } from "../../src/Object/AddSubObjectKey";
 
 // 测试用例1
@@ -28,7 +28,7 @@ type Test1Expected = {
 };
 
 // 验证测试结果是否符合预期
-TypeChecking<Test1, Test1Expected, Test.Pass>;
+Checking<Test1, Test1Expected, Test.Pass>;
 
 // 测试用例2
 type Obj2 = {
@@ -42,4 +42,4 @@ type Test2 = AddSubObjectKey<Obj2>;
 type Test2Expected = Obj2;
 
 // 验证测试结果是否符合预期
-TypeChecking<Test2, Test2Expected, Test.Pass>;
+Checking<Test2, Test2Expected, Test.Pass>;

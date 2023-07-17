@@ -1,21 +1,21 @@
 import type { Test } from "../../src";
-import { TypeChecking } from "../../src";
+import { Checking } from "../../src";
 import type { IsUnion } from "../../src/Any/IsUnion";
 
 type Test1 = IsUnion<1 | 2>;
 
 type Test1Expect = true;
 
-TypeChecking<Test1, Test1Expect, Test.Pass>;
+Checking<Test1, Test1Expect, Test.Pass>;
 
 type Test2 = IsUnion<boolean>;
 
 type Test2Expect = true;
 
-TypeChecking<Test2, Test2Expect, Test.Pass>;
+Checking<Test2, Test2Expect, Test.Pass>;
 
 type Test3 = IsUnion<1>;
 
 type Test3Expect = false;
 
-TypeChecking<Test3, Test3Expect, Test.Pass>;
+Checking<Test3, Test3Expect, Test.Pass>;

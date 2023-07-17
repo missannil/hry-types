@@ -1,4 +1,4 @@
-import { type Test, TypeChecking } from "../../src";
+import { Checking, type Test } from "../../src";
 import type { ComputeIntersectionDeep } from "../../src/Object/ComputeIntersectionDeep";
 
 type Obj0 = {
@@ -14,7 +14,7 @@ type TestExpect1 = {
   e: { f: string; g: number };
 };
 
-TypeChecking<Test1, TestExpect1, Test.Pass>;
+Checking<Test1, TestExpect1, Test.Pass>;
 
 type Obj2 = {
   a: string;
@@ -28,4 +28,4 @@ type TestExpect2 = {
   a: never;
 };
 
-TypeChecking<Test2, TestExpect2, Test.Pass>;
+Checking<Test2, TestExpect2, Test.Pass>;

@@ -1,6 +1,6 @@
 // UnionOf测试文件
 
-import { type Test, TypeChecking } from "../../src";
+import { Checking, type Test } from "../../src";
 import type { UnionOf } from "../../src/Object/UnionOf";
 
 // 测试1类型用例
@@ -15,4 +15,4 @@ type Test1Result = UnionOf<O1, O2>;
 type Test1Expected = { a: string | number; b: number | string; c: boolean; d: string };
 
 // 验证测试1结果是否符合预期
-TypeChecking<Test1Result, Test1Expected, Test.Pass>;
+Checking<Test1Result, Test1Expected, Test.Pass>;

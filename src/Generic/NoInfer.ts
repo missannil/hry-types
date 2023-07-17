@@ -1,27 +1,19 @@
 /**
- * 当函数多个函数参数使用同一泛型时,告诉ts要降低哪些函数参数类型推导的优先级
- * @param A 要降低的函数泛型
- * @returns `A`
+ * 降低泛型推导的优先级
+ * @param G - 泛型 any
+ * @returns G
  * @example
  * ```ts
- * import {F} from 'hry-types'
+ * const fn = <A>(a0: A, a1: A) => ({} as any);
  *
- * // ts 默认情况下,泛型A是 a0 | a1
- * const fn = <A>(a0: A, a1: A): A => ({} as any);
+ * fn("a", "b"); // ok test => a | b
  *
- * const test = fn('a', 'b'); // test type is `a` | `b`
+ * const fn0 = <A extends string>(a0: A, a1: NoInfer<A>) => ({} as any)
  *
- * // 降低a1的类型推导优先级,使得 a1 的类型推导优先级低于a0,从而使得a1的类型是从a0推导而来的
- * const fn0 = <A extends string>(a0: A, a1: NoInfer<A>): void => ({} as any);
- *
- * const test0 = fn0('a', 'b'); //错误: 类型“"b"”的参数不能赋给类型“"a"”的参数
- *
- * // 也可使用多泛型来处理这种情况，但多了泛型。复杂情况下使用泛型好一些
- * const fn1 = <A extends string, B extends A>(a0: A, a1: B): void => ({} as any);
- *
- * const test1 = fn1('a', 'b'); // 错误: 类型“"b"”的参数不能赋给类型“"a"”的参数
+ * // @ts-expect-error  类型“"b"”的参数不能赋给类型“"a"”的参数
+ * fn0("a", "b");
  * ```
  * @see https://github.com/microsoft/TypeScript/issues/14829
  */
 
-export type NoInfer<A = unknown> = [A][A extends unknown ? 0 : never];
+export type NoInfer<G = unknown> = [G][G extends unknown ? 0 : never];

@@ -1,23 +1,18 @@
 import type { IllegalFieldValidator } from "../../src/Generic/IllegalFieldValidator";
 
-const fun0 = <O extends object>(
+const fn0 = <O extends object>(
   obj: O & IllegalFieldValidator<O, "a" | "b">,
 ): void => {
   obj;
 };
 
-fun0(
-  {}, // 空对象不检测
+// 空对象不检测
+fn0(
+  {},
 );
 
-const fun1 = <O extends object>(
-  obj: O & IllegalFieldValidator<O, "a" | "b">,
-): void => {
-  obj;
-};
-
-// 默认层级0 字段为空串('') 全检测
-fun1({
+// 默认验证层级0下的所有字段
+fn0({
   a: 123,
   b: "123",
   // @ts-expect-error 非法字段 非法字段为非函数类型
@@ -26,14 +21,14 @@ fun1({
   d: () => 123,
 });
 
-const fun2 = <O extends object>(
+// 验证层级0下的value字段下的所有字段
+const fn1 = <O extends object>(
   obj: O & IllegalFieldValidator<O, "a" | "b", 0, "value">,
 ): void => {
   obj;
 };
 
-// 层级0 字段为'value' 检测value字段
-fun2({
+fn1({
   a: 123,
   b: "123",
   c: 123,
@@ -47,13 +42,13 @@ fun2({
   },
 });
 
+// 检测1层下的所有字段
 const fun3 = <O extends object>(
   obj: O & IllegalFieldValidator<O, "a" | "b", 1>,
 ): void => {
   obj;
 };
 
-// 层级1 字段为空串('') 检测1层
 fun3({
   a: 123,
   b: "123",
@@ -76,13 +71,13 @@ fun3({
   },
 });
 
+// 检测1层下value字段下的所有字段
 const fun4 = <O extends object>(
   obj: O & IllegalFieldValidator<O, "a" | "b", 1, "value">,
 ): void => {
   obj;
 };
 
-// 层级1 字段为'value' 检测1层 value字段
 fun4({
   a: 123,
   b: "123",

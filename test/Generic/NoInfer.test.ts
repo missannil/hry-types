@@ -1,7 +1,6 @@
-import { ValueChecking } from "../../src";
+import { Checking, type Test } from "../../src";
 import type { NoInfer } from "../../src/Generic/NoInfer";
 
-// 默认情况下返回的A 类型为 a0 | a1
 const fn = <A>(a0: A, a1: A): A => {
   a0;
 
@@ -10,9 +9,11 @@ const fn = <A>(a0: A, a1: A): A => {
   return {} as any;
 };
 
-const test = fn("a", "b"); // =>  `a` | `b`
+const test = fn("a", "b");
 
-ValueChecking<"a" | "b">()(test);
+type TestExpect = "a" | "b";
+
+Checking<typeof test, TestExpect, Test.Pass>;
 
 const fn0 = <A extends string>(a0: A, a1: NoInfer<A>): void => {
   a0;
