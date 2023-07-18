@@ -1,5 +1,5 @@
 /**
- * 降低泛型推导的优先级
+ * 降低泛型推导的优先级别
  * @param G - 泛型 any
  * @returns G
  * @example

@@ -1,6 +1,6 @@
+import type { As } from "../Any/As";
 import type { IfExtends } from "../Any/IfExtends";
 import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
-import type { AnyObject } from "../Misc/AnyObject";
 
 type _IllegalFieldValidation<
   G extends object,
@@ -41,7 +41,7 @@ type _IllegalFieldValidation<
  * ```
  */
 export type IllegalFieldValidator<
-  G extends AnyObject,
+  G extends object,
   LegalFields extends string,
   Layer extends 0 | 1 = 0,
   Field extends string = "",
@@ -60,8 +60,10 @@ export type IllegalFieldValidator<
       _IllegalFieldValidation<G, LegalFields>,
       // Field不等于''时
       IfExtends<
+        // @ts-ignore
         IsNonArrNonFuncObject<G[Field]>,
         true,
+        // @ts-ignore
         { [s in Field]: _IllegalFieldValidation<G[Field], LegalFields> },
         unknown
       >
@@ -75,7 +77,7 @@ export type IllegalFieldValidator<
         [k in keyof G]: IfExtends<
           IsNonArrNonFuncObject<G[k]>,
           true,
-          _IllegalFieldValidation<G[k], LegalFields>,
+          _IllegalFieldValidation<As<G[k], object>, LegalFields>,
           unknown
         >;
       },
@@ -84,7 +86,11 @@ export type IllegalFieldValidator<
         [k in keyof G]: IfExtends<
           IsNonArrNonFuncObject<G[k]>,
           true,
-          Field extends keyof G[k] ? { [s in Field]: _IllegalFieldValidation<G[k][Field], LegalFields> }
+          Field extends keyof G[k] ? {
+              [s in Field]:
+                // @ts-ignore
+                _IllegalFieldValidation<G[k][Field], LegalFields>;
+            }
             : unknown,
           unknown
         >;
