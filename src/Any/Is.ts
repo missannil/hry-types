@@ -1,7 +1,7 @@
 import type { _Match } from "../_internal/_Match";
-import type { _Contains } from "./_Contains";
-import type { _Extends } from "./_Extends";
+import type { Contains } from "./Contains";
 import type { Equals } from "./Equals";
+import type { Extends } from "./Extends";
 /**
  * 判断两个类型关系(继承,包含,相等)
  * @remarks ts中,泛型使用条件类型(extends关键字)时,结果可能4种情况,分别为:问号后类型,冒号后类型,问号和冒号后的联合类型,never类型(泛型为never时)。这在使用时会造成一定的麻烦,Is类型通过第三个泛型参数(匹配规则),使得结果只有两种情况,true或false
@@ -24,9 +24,9 @@ import type { Equals } from "./Equals";
  * ```
  */
 export type Is<A1, A2, M extends _Match = "extends->"> = {
-  "contains->": _Contains<A1, A2>;
-  "extends->": _Extends<A1, A2>;
-  "<-contains": _Contains<A2, A1>;
-  "<-extends": _Extends<A2, A1>;
+  "contains->": Contains<A1, A2>;
+  "extends->": Extends<A1, A2>;
+  "<-contains": Contains<A2, A1>;
+  "<-extends": Extends<A2, A1>;
   "equals": Equals<A1, A2>;
 }[M];

@@ -1,7 +1,9 @@
-export type { _Extends } from "./_Extends";
 export type { As } from "./As";
+export type { Extends as _Extends } from "./Extends";
 // export type { Cast } from "./Cast";
+export type { Contains } from "./Contains";
 export type { Equals } from "./Equals";
+export type { Extends } from "./Extends";
 export type { IfEquals } from "./IfEquals";
 export type { IfExtends } from "./IfExtends";
 export type { Is } from "./Is";

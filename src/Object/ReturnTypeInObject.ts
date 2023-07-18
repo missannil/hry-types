@@ -1,4 +1,4 @@
-import type { Function } from "../Misc/Function";
+import type { Func } from "../Misc/Func";
 
 /**
  * 把对象子属性类型为函数类型的,变为函数返回类型(非深度)
@@ -12,5 +12,5 @@ import type { Function } from "../Misc/Function";
  * @returns object
  */
 export type ReturnTypeInObject<O> = {
-  [k in keyof O]: O[k] extends Function ? ReturnType<O[k]> : O[k];
+  [k in keyof O]: O[k] extends Func ? ReturnType<O[k]> : O[k];
 };

@@ -1,5 +1,3 @@
-import type { Function } from "../Misc/Function";
-
 /**
  * 深度去除readonly
  * @param T 要去除readonly的对象或数组

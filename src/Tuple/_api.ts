@@ -1,1 +1,1 @@
-export type { IsContains } from "./IsContains";
+export type { Has } from "./Has";
