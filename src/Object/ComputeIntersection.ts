@@ -1,15 +1,15 @@
 /**
- * @description 计算交叉对象类型 要求对象的key不可重复
- * @param O object
- * @template
+ * 计算交叉对象类型
+ * @remarks 相同key会被合并为一个字段，类型交叉。多个对象中存在相同key时,可能出现结果为never
+ * @see  {@link https://github.com/microsoft/TypeScript/issues/54903 |issue 54903}
+ * @param O - 对象类型
+ * @example
  * ```ts
- *  import { type O } from 'hry-types'
- *
- *  type Test = O.ComputeIntersection<{ name: string } & { age: number }>;
+ * type Test1 = ComputeIntersection<{ name: string } & { age: number }>;
  *  // =>{ name: string; age: number; }
- *
+ * type Test2 = ComputeIntersection<{ name: string } & { name: number }>;
+ * // =>{ name: never; }
  * ```
- * @see 当对象中存在相同key时，可能出现never结果 {@link https://github.com/microsoft/TypeScript/issues/54903 issue}
- *   @return object
+ * @returns object
  */
-export type ComputeIntersection<O> = O extends unknown ? { [K in keyof O]: O[K] } : never;
+export type ComputeIntersection<O> = { [K in keyof O]: O[K] };

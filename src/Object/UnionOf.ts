@@ -1,17 +1,16 @@
 import type { ComputeIntersection } from "./ComputeIntersection";
 
 /**
- * @description 从两个对象中取出共有的属性,并将其值合并为联合类型,其余属性保留原来的类型
+ * 合并两个对象,相同key类型联合,其余key不变
  * @example
  * ```ts
- * import type { O } from "hry-types";
  * type O1 = { a: string; b: number; c: boolean };
  * type O2 = { a: number; b: string; d: string };
- * type test = O.UnionOf<O1, O2>;
- * // { a: string | number; b: number | string; c: boolean; d: string }
+ * type Test = UnionOfTwoObject<O1, O2>;
+ * // =>{ a: string | number; b: number | string; c: boolean; d: string }
  * ```
  */
-export type UnionOf<
+export type UnionOfTwoObject<
   O1,
   O2,
   SameKey extends Extract<keyof O1, keyof O2> = Extract<keyof O1, keyof O2>,

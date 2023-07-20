@@ -1,37 +1,50 @@
 import { Checking, type Test } from "../../src";
 import type { Select } from "../../src/Object/Select";
 
-type Obj = { num: 123; str?: string; union: boolean; fn: () => string };
+type Test1 = Select<{ a: 123 }, number>;
 
-type Test1 = Select<Obj, number, "extends->">;
+type TestExpect1 = { a: 123 };
 
-type Test1Expected = { num: 123 };
+Checking<Test1, TestExpect1, Test.Pass>;
 
-Checking<Test1, Test1Expected, Test.Pass>;
+type Test2 = Select<{ a: number; b: string }, number>;
 
-type Test2 = Select<Obj, string, "extends->">;
+type TestExpect2 = { a: number };
 
-// string | undefined 不符合 extends-> 的要求
-type Test2Expected = {};
+Checking<Test2, TestExpect2, Test.Pass>;
 
-Checking<Test2, Test2Expected, Test.Pass>;
+type Test3 = Select<{ a: number; b: string; c: boolean }, number | string>;
 
-type Test3 = Select<Obj, string, "<-extends">;
+type TestExpect3 = { a: number; b: string };
 
-type Test3Expected = { str?: string };
+Checking<Test3, TestExpect3, Test.Pass>;
 
-Checking<Test3, Test3Expected, Test.Pass>;
+type Test4 = Select<{ a: number; b: string; c: boolean }, number | string, "<-extends">;
 
-type Test4 = Select<Obj, string, "equals">;
+type TestExpect4 = {};
 
-type Test4Expected = {};
+Checking<Test4, TestExpect4, Test.Pass>;
 
-Checking<Test4, Test4Expected, Test.Pass>;
+type Test5 = Select<{ a: number; b: string; c: boolean }, number | string, "<-contains">;
 
-type Test5 = Select<Obj, string | undefined, "equals">;
+type TestExpect5 = { a: number; b: string };
 
-type Test5Expected = { str?: string };
+Checking<Test5, TestExpect5, Test.Pass>;
 
-Checking<Test5, Test5Expected, Test.Pass>;
+type Test6 = Select<{ a: string | number; b: string | boolean; c: boolean }, string, "contains->">;
 
-// copilot 都懒得用 其他的就不写了
+type TestExpect6 = { a: string | number; b: string | boolean };
+
+Checking<Test6, TestExpect6, Test.Pass>;
+
+type Test7 = Select<{ a: number | string; b: string; c: boolean }, number | string, "equals">;
+
+type TestExpect7 = { a: number | string };
+
+Checking<Test7, TestExpect7, Test.Pass>;
+
+type Test8 = Select<{ a?: string }, string>;
+
+type TestExpect8 = { a?: string };
+
+Checking<Test8, TestExpect8, Test.Pass>;

@@ -23,6 +23,7 @@ import type { IsNever } from "../Any/_api";
  * type Obj5 = { a: { b: number } | undefined };
  * type Test5 = NonNullableInObject<Obj5>;
  * // => { a: { b: number } }
+ * ```
  * @returns object
  */
 export type NonNullableInObject<T> = {

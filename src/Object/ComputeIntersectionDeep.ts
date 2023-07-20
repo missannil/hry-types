@@ -1,19 +1,17 @@
 import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
 
 /**
- * @description 深度计算交叉对象类型 要求对象的key不可重复
- * @param O object
- * @template
+ * @remarks 相同key会被合并为一个字段，类型交叉。多个对象中存在相同key时,可能出现结果为never
+ * @see  {@link https://github.com/microsoft/TypeScript/issues/54903 |issue 54903}
+ * @param O -  object
+ * @example
  * ```ts
- *  import { type O } from 'hry-types'
- *
- * type Test = ComputeIntersectionDeep<{ a: { b: string } & { c: number } } & { d: { e: string } & { f: number } }>;
- *
- * // { a: { b: string;  c: number; };  d: { e: string;  f: number; } }
- *
+ * type obj0 = { a: { b: string } & { c: number } };
+ * type obj1 = { e: { f: string } & { g: number } };
+ * type test1 = ComputeIntersectionDeep<obj0 & obj1>;
+ * // =>{ a: { b: string; c: number; }; e: { f: string; g: number; }; }
  * ```
- * @see 当对象中存在相同key时，可能出现结果为never {@link https://github.com/microsoft/TypeScript/issues/54903 issue}
- *   @return object
+ *   @returns object
  */
 export type ComputeIntersectionDeep<O> = IsNonArrNonFuncObject<O> extends true ? {
     [K in keyof O]: ComputeIntersectionDeep<O[K]>;

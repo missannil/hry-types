@@ -5,24 +5,17 @@ import type { FilterKeys } from "./FilterKeys";
  * 过滤掉对象中类型与M匹配的key
  * @example
  * ```ts
- * import type { O,Test } from 'hry-types'
+ * type Test1 = Filter<{ a: number }, number>;// => {}
+ * type Test2 = Filter<{ a: number; b: string }, number>;// => { b: string }
+ * type Test3 = Filter<{ a: number; b: string; c: boolean }, number | string>;// => { c: boolean }
+ * type Test4 = Filter<{ a: number | string; b: string; c: boolean }, number | string, "<-extends">;// => { b: string; c: boolean }
+ * type Test5 = Filter<{ a: number | string; b: string; c: boolean }, string, "equals">;// => { a: number | string; c: boolean }
+ * type Test6 = Filter<{ a: number | string; b: string | number; c: boolean }, string, "contains->">;// => { c: boolean }
+ * type Test7 = Filter<{ a: string; b: number; c: boolean }, string | number, "<-contains">;// => { c: boolean }
+ * type Test8 = Filter<{ a?: string }, string>;// => {}
  *
- * type Test1 = O.Filter<{ a: number }, number>;
- * // Test1 => {};
- *
- * type Test2 = O.Filter<{ a: number; b: string }, number>;
- * // Test2 => { b: string };
- *
- * type Test3 = O.Filter<{ a: number; b: string; c: boolean }, number | string>;
- * // Test3 => { c: boolean }
- *
- * type Test4 = O.Filter<{ a: number; b: string; c: boolean }, number | string, "<-extends">;
- * // Test4 => { a: number; b: string; c: boolean }
- *
- * type Test5 = O.Filter<{ a: number | string; b: string; c: boolean }, number | string, "equals">;
- * // Test5 => { b: string; c: boolean }
  * ```
- * @return object
+ * @returns object
  */
 export type Filter<
   O,

@@ -1,37 +1,50 @@
 import { Checking, type Test } from "../../src";
 import type { SelectKeys } from "../../src/Object/SelectKeys";
 
-type Obj = { num: 123; str?: string; union: boolean; fn: () => string };
+type Test1 = SelectKeys<{ a: 123 }, number>;
 
-type Test1 = SelectKeys<Obj, number, "extends->">;
+type TestExpect1 = "a";
 
-type Test1Expected = "num";
+Checking<Test1, TestExpect1, Test.Pass>;
 
-Checking<Test1, Test1Expected, Test.Pass>;
+type Test2 = SelectKeys<{ a: number; b: string }, number>;
 
-type Test2 = SelectKeys<Obj, string, "extends->">;
+type TestExpect2 = "a";
 
-// string | undefined 不符合 extends-> 的要求
-type Test2Expected = never;
+Checking<Test2, TestExpect2, Test.Pass>;
 
-Checking<Test2, Test2Expected, Test.Pass>;
+type Test3 = SelectKeys<{ a: number; b: string; c: boolean }, number | string>;
 
-type Test3 = SelectKeys<Obj, string, "<-extends">;
+type TestExpect3 = "a" | "b";
 
-type Test3Expected = "str";
+Checking<Test3, TestExpect3, Test.Pass>;
 
-Checking<Test3, Test3Expected, Test.Pass>;
+type Test4 = SelectKeys<{ a: number; b: string; c: boolean }, number | string, "<-extends">;
 
-type Test4 = SelectKeys<Obj, string, "equals">;
+type TestExpect4 = never;
 
-type Test4Expected = never;
+Checking<Test4, TestExpect4, Test.Pass>;
 
-Checking<Test4, Test4Expected, Test.Pass>;
+type Test5 = SelectKeys<{ a: number; b: string; c: boolean }, number | string, "<-contains">;
 
-type Test5 = SelectKeys<Obj, string | undefined, "equals">;
+type TestExpect5 = "a" | "b";
 
-type Test5Expected = "str";
+Checking<Test5, TestExpect5, Test.Pass>;
 
-Checking<Test5, Test5Expected, Test.Pass>;
+type Test6 = SelectKeys<{ a: string | number; b: string | boolean; c: boolean }, string, "contains->">;
 
-// copilot 都懒得用 其他的就不写了
+type TestExpect6 = "a" | "b";
+
+Checking<Test6, TestExpect6, Test.Pass>;
+
+type Test7 = SelectKeys<{ a: number | string; b: string; c: boolean }, number | string, "equals">;
+
+type TestExpect7 = "a";
+
+Checking<Test7, TestExpect7, Test.Pass>;
+
+type Test8 = SelectKeys<{ a?: string }, string>;
+
+type TestExpect8 = "a";
+
+Checking<Test8, TestExpect8, Test.Pass>;

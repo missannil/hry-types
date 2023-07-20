@@ -1,13 +1,11 @@
 import type { Func } from "../Misc/Func";
 
 /**
- * 把对象子属性类型为函数类型的,变为函数返回类型(非深度)
+ * 对象中的函数类型变为返回值类型
  * @example
  * ```ts
- * import { TypeChecking, type O,type Test} from 'hry-types'
- * type Obj = { num: 123; fn: () => string };
- * type TestObj = ReturnTypeInObject<Obj>;
- * // TestObj => { num: 123; fn: string };
+ * type TestObj = ReturnTypeInObject<{ num: 123; fn: () => string }>;
+ * // => { num: 123; fn: string }
  * ```
  * @returns object
  */

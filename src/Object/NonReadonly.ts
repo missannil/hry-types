@@ -1,10 +1,8 @@
 /**
- * 去除readonly(非深度去除)
- * @param T 要去除readonly的对象或数组
+ * 去除readonly字段(非深度)
+ * @param T - 对象或数组
  * @example
  * ```ts
- * import { type O, type NonReadonly , TypeChecking} from 'hry-types'
- *
  * type Obj = { readonly num: 123; readonly str?: string;};
  * type TestObj = NonReadonly<Obj>;
  * // TestObj => { num: 123; str?: string};

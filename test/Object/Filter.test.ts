@@ -30,3 +30,21 @@ type Test5 = Filter<{ a: number | string; b: string; c: boolean }, string, "equa
 type TestExpect5 = { a: number | string; c: boolean };
 
 Checking<Test5, TestExpect5, Test.Pass>;
+
+type Test6 = Filter<{ a: number | string; b: string | number; c: boolean }, string, "contains->">;
+
+type TestExpect6 = { c: boolean };
+
+Checking<Test6, TestExpect6, Test.Pass>;
+
+type Test7 = Filter<{ a: string; b: number; c: boolean }, string | number, "<-contains">;
+
+type TestExpect7 = { c: boolean };
+
+Checking<Test7, TestExpect7, Test.Pass>;
+
+type Test8 = Filter<{ a?: string }, string>;
+
+type TestExpect8 = {};
+
+Checking<Test8, TestExpect8, Test.Pass>;

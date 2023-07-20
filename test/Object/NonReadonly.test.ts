@@ -21,7 +21,6 @@ type Arr1 = readonly [1, readonly [1, 2, 3], 3];
 
 type TestArr1 = NonReadonly<Arr1>;
 
-type TestArr1Expected = [1, [1, 2, 3], 3];
+type TestArr1Expected = [1, readonly [1, 2, 3], 3];
 
-// Fail 因为不是深度去除readonly
-Checking<TestArr1, TestArr1Expected, Test.Fail>;
+Checking<TestArr1, TestArr1Expected, Test.Pass>;

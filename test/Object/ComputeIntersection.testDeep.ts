@@ -1,9 +1,7 @@
 import { Checking, type Test } from "../../src";
 import type { ComputeIntersectionDeep } from "../../src/Object/ComputeIntersectionDeep";
 
-type Obj0 = {
-  a: { b: string } & { c: number };
-};
+type Obj0 = { a: { b: string } & { c: number } };
 
 type Obj1 = { e: { f: string } & { g: number } };
 
