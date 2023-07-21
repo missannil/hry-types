@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://github.com/missannil/hry-types/compare/v0.15.1...v0.16.0) (2023-07-21)
+
+
+### Features
+
+* add actions of PR is up-to-date ([393dc2c](https://github.com/missannil/hry-types/commit/393dc2c5769e62feeb2a7a4f487f96bf6062ca78))
+
 ## [0.15.1](https://github.com/missannil/hry-types/compare/v0.15.0...v0.15.1) (2023-07-10)
 
 
