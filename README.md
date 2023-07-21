@@ -1,5 +1,8 @@
 ## 简介
 
+<a href="#">
+    <img src="https://img.shields.io/badge/npm-you_like-blue>"
+  </a>
 hry-types 是由恒荣耀(hry)团队开发的typescript类型工具库。
 
 ## 特点
@@ -17,9 +20,9 @@ hry-types 是由恒荣耀(hry)团队开发的typescript类型工具库。
   ```ts
   // 示例A
   import { type N } from "hry-types";
-  type Return<T extends string | number> = T extends string ? T : N.Add<T, 1>;
+  type Return<T extends string | number> = T extends `${T}1` ? T : N.Add<T, 1>;
   function foo<T extends string | number>(p: T): Return<T> {
-    return {} as any;
+    return p + 1;
   }
   const test = foo(1); // test => 2
   ```
@@ -38,7 +41,7 @@ npm install hry-types -D
 {
   "compilerOptions": {
     // ...
-    "types": ["./node_modules/hry-types"]
+    "types": ["./node_modules/hry-types", "other-types"]
   }
 }
 ```
@@ -46,4 +49,13 @@ npm install hry-types -D
 ## 使用示例
 
 ```ts
+import { type A } from "hry-types";
+import type { IfEquals } from "hry-types/src/Any/IfEquals";
+
+type foo<T extends string | number> = A.IfEquals<T, string, "string", "number">;
+// type foo<T extends string | number> = IfEquals<T, string, "string", "number">
+
+type test = foo<string>; // test => 'string'
+
+type test2 = foo<number>; // test2 => 'number'
 ```

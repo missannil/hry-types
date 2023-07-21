@@ -1,6 +1,7 @@
 // UnionOf测试文件
 
 import { Checking, type Test } from "../../src";
+
 import type { UnionOfTwoObject } from "../../src/Object/UnionOf";
 
 type O1 = { a: string; b: number; c: boolean };
