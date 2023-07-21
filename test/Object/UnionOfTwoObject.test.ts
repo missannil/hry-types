@@ -13,3 +13,4 @@ type Test1Result = UnionOfTwoObject<O1, O2>;
 type Test1Expected = { a: string | number; b: number | string; c: boolean; d: string };
 
 Checking<Test1Result, Test1Expected, Test.Pass>;
+
