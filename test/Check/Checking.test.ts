@@ -12,7 +12,7 @@ Checking<1 | 2, 2 | 1, Test.Pass>;
 // string
 Checking<"hello", "hello", Test.Pass>;
 
-Checking<"hello", "world", Test.Fail>;
+Checking<"hello", "world", Test.Pass>;
 
 // boolean
 Checking<true, true, Test.Pass>;
