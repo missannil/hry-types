@@ -71,6 +71,7 @@ GitHub Copilot: `${{ secrets.TOKEN_GITHUB }}` 是 GitHub Actions 中的一种语
 需要注意的是，机密变量的值是加密的，只有在 GitHub Actions 运行时才会解密。因此，建议不要在代码中直接使用机密变量的值，而是使用 `${{ secrets.TOKEN_GITHUB }}` 这样的语法来引用机密变量的值。
 
 ### 111
+
 GitHub Copilot: 在 GitHub Actions 的 job 中设置 token 的好处是可以访问受保护的资源，例如 GitHub API 或其他需要身份验证的服务。
 
 在上述代码中，`token` 参数是用于访问 GitHub API 的身份验证令牌。通过在 job 中设置 `token` 参数，可以确保在运行 job 时，GitHub Actions 可以使用正确的身份验证令牌来访问 GitHub API，从而执行一些操作，例如检查 pull request 是否已经更新。
@@ -79,9 +80,7 @@ GitHub Copilot: 在 GitHub Actions 的 job 中设置 token 的好处是可以访
 
 另外，建议在使用 token 时，尽可能使用最小权限原则，即只授予必要的权限，以减少潜在的安全风险。
 
-
-### 222 
-
+### 222
 
 在 GitHub Actions 中，有两种类型的机密变量：环境机密变量（Environment secrets）和仓库机密变量（Repository secrets）。
 
@@ -90,7 +89,6 @@ GitHub Copilot: 在 GitHub Actions 的 job 中设置 token 的好处是可以访
 仓库机密变量是与仓库相关联的机密变量，它们只能在当前仓库中使用。仓库机密变量存储在仓库的 Secrets 中，并且可以通过 ${{ secrets.SECRET_NAME }} 这样的语法来引用。仓库机密变量只能在当前仓库的工作流程中使用，不能在其他仓库或工作流程中共享。
 
 需要注意的是，机密变量的值是加密的，只有在 GitHub Actions 运行时才会解密。因此，建议不要在代码中直接使用机密变量的值，而是使用 ${{ secrets.SECRET_NAME }} 这样的语法来引用机密变量的值，以提高代码的安全性。
-
 
 ### 333
 

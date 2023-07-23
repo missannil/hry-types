@@ -23,5 +23,3 @@ import type { Is } from "../Any/Is";
 export type Has<Tuple, A, Match extends _Match = "extends->"> = Tuple extends [infer Head, ...infer Rest]
   ? Is<Head, A, Match> extends true ? true : Has<Rest, A, Match>
   : false;
-
-  
