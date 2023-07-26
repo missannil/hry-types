@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.1](https://github.com/missannil/hry-types/compare/v0.16.0...v0.16.1) (2023-07-26)
+
+
+### Bug Fixes
+
+* illegalFieldValidator ([#44](https://github.com/missannil/hry-types/issues/44)) ([4fd1f3b](https://github.com/missannil/hry-types/commit/4fd1f3b956e6432da8f0f5aaaf7a7e27563c35be))
+
 ## [0.16.0](https://github.com/missannil/hry-types/compare/v0.15.1...v0.16.0) (2023-07-21)
 
 
