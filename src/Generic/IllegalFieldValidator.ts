@@ -4,7 +4,7 @@ import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
 
 type _IllegalFieldValidation<
   G extends object,
-  legalKeys extends string,
+  legalKeys extends PropertyKey,
 > = {
   [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends Function ? `⚠️字段非法⚠️`
     : () => `⚠️字段非法⚠️`;
@@ -13,7 +13,7 @@ type _IllegalFieldValidation<
 /**
  * 函数中泛型G的非法字段验证
  * @param G -  object
- * @param LegalFields - 合法字段 string
+ * @param LegalFields - 合法字段 PropertyKey
  * @param Layer - 层级 0 | 1 默认0
  * @param Field - 层级字段 string 默认''
  * @example
@@ -42,7 +42,7 @@ type _IllegalFieldValidation<
  */
 export type IllegalFieldValidator<
   G extends object,
-  LegalFields extends string,
+  LegalFields extends PropertyKey,
   Layer extends 0 | 1 = 0,
   Field extends string = "",
 > = IfExtends<
