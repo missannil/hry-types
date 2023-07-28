@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.2](https://github.com/missannil/hry-types/compare/v0.16.1...v0.16.2) (2023-07-28)
+
+
+### Miscellaneous Chores
+
+* "omputeUnion" 去除ComputeIntersection包裹 ([#48](https://github.com/missannil/hry-types/issues/48)) ([6cbad3a](https://github.com/missannil/hry-types/commit/6cbad3a60109a5b41207daac420b79fba4d6a3ed))
+
 ## [0.16.1](https://github.com/missannil/hry-types/compare/v0.16.0...v0.16.1) (2023-07-26)
 
 
