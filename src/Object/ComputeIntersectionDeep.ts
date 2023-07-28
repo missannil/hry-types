@@ -13,7 +13,6 @@ import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
  * ```
  *   @returns object
  */
-export type ComputeIntersectionDeep<O> = IsNonArrNonFuncObject<O> extends true ? {
-    [K in keyof O]: ComputeIntersectionDeep<O[K]>;
-  }
-  : O;
+export type ComputeIntersectionDeep<O> = {
+  [K in keyof O]: IsNonArrNonFuncObject<O> extends true ? ComputeIntersectionDeep<O[K]> : O[K];
+};

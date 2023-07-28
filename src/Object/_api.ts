@@ -9,4 +9,4 @@ export type { NonReadonly } from "./NonReadonly";
 export type { ReturnTypeInObject } from "./ReturnTypeInObject";
 export type { Select } from "./Select";
 export type { SelectKeys } from "./SelectKeys";
-export type { UnionOfTwoObject as UnionOf } from "./UnionOf";
+export type { UnionOf } from "./UnionOf";
