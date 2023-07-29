@@ -3,7 +3,7 @@ import type { Contains } from "../../src/Any/Contains";
 
 type Test1 = Contains<1 | "a", 1>;
 
-type Test1expect = true;
+type Test1expect = true;  
 
 Checking<Test1, Test1expect, Test.Pass>;
 
