@@ -19,3 +19,9 @@ type Test3 = IsNonArrNonFuncObject<unknown[]>;
 type Test3Expect = false;
 
 Checking<Test3, Test3Expect, Test.Pass>;
+
+type Test4 = IsNonArrNonFuncObject<readonly unknown[]>;
+
+type Test4Expect = false;
+
+Checking<Test4, Test4Expect, Test.Pass>;
