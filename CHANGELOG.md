@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.3](https://github.com/missannil/hry-types/compare/v0.16.2...v0.16.3) (2023-07-31)
+
+
+### Bug Fixes
+
+* **IsNonArrNonFuncObject:** 修复传入readonly 数组时得到ture的错误 ([#51](https://github.com/missannil/hry-types/issues/51)) ([82bf8b3](https://github.com/missannil/hry-types/commit/82bf8b32fe0c8d745f7a3cfb0f3d739029aab50c))
+
 ## [0.16.2](https://github.com/missannil/hry-types/compare/v0.16.1...v0.16.2) (2023-07-28)
 
 
