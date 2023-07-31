@@ -10,6 +10,6 @@
  * ```
  */
 export type IsNonArrNonFuncObject<O> = O extends Function ? false
-  : O extends unknown[] ? false
+  : O extends ReadonlyArray<unknown> ? false
   : O extends object ? true
   : false;
