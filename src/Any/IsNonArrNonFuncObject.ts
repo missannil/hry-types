@@ -7,6 +7,7 @@
  * type Test1 = IsNonArrNonFuncObject<{ a: number }> // true
  * type Test2 = IsNonArrNonFuncObject<() => any> // false
  * type Test3 = IsNonArrNonFuncObject< unknown[] > // false
+ * type Test4 = IsNonArrNonFuncObject<readonly [1,2,3] > // false
  * ```
  */
 export type IsNonArrNonFuncObject<O> = O extends Function ? false
