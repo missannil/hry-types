@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.4](https://github.com/missannil/hry-types/compare/v0.16.3...v0.16.4) (2023-08-02)
+
+
+### Bug Fixes
+
+* 修复一些问题 ([#53](https://github.com/missannil/hry-types/issues/53)) ([7f688a6](https://github.com/missannil/hry-types/commit/7f688a635820a5adaf1ba86895e3c04f02f8c56b))
+
 ## [0.16.3](https://github.com/missannil/hry-types/compare/v0.16.2...v0.16.3) (2023-07-31)
 
 
