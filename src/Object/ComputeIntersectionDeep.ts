@@ -1,7 +1,8 @@
 import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
 
 /**
- * @remarks 相同key会被合并为一个字段，类型交叉。多个对象中存在相同key时,可能出现结果为never
+ * 递归计算交叉对象类型
+ * @remarks 相同key会被合并为一个字段。多个对象中存在相同key时,可能出现结果为never
  * @see  {@link https://github.com/microsoft/TypeScript/issues/54903 |issue 54903}
  * @param O -  object
  * @example
@@ -13,6 +14,7 @@ import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
  * ```
  *   @returns object
  */
-export type ComputeIntersectionDeep<O> = {
-  [K in keyof O]: IsNonArrNonFuncObject<O> extends true ? ComputeIntersectionDeep<O[K]> : O[K];
-};
+export type ComputeIntersectionDeep<O> = IsNonArrNonFuncObject<O> extends true ? {
+    [K in keyof O]: ComputeIntersectionDeep<O[K]>;
+  }
+  : O;
