@@ -1,6 +1,6 @@
 {
   "name": "hry-types",
-  "version": "0.16.4",
+  "version": "0.16.5",
   "description": "typescript工具类型库",
   "main": "commitlint.config.js",
   "scripts": {
