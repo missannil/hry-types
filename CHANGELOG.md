@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.5](https://github.com/missannil/hry-types/compare/v0.16.4...v0.16.5) (2023-08-06)
+
+
+### Bug Fixes
+
+* **ComputeIntersectionDeep:** 修复结果中包含类型别名 ([#55](https://github.com/missannil/hry-types/issues/55)) ([17c345f](https://github.com/missannil/hry-types/commit/17c345f0edc0a30f39a6da81ab8f358682e133ac))
+
 ## [0.16.4](https://github.com/missannil/hry-types/compare/v0.16.3...v0.16.4) (2023-08-02)
 
 
