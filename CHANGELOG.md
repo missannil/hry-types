@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.6](https://github.com/missannil/hry-types/compare/v0.16.5...v0.16.6) (2023-08-07)
+
+
+### Bug Fixes
+
+* **Object:** rename ComputeIntersect And ComputeIntersectDeep ([#57](https://github.com/missannil/hry-types/issues/57)) ([64296da](https://github.com/missannil/hry-types/commit/64296da9bde38d31dd461a07aa2c7f147a77c8b8))
+
 ## [0.16.5](https://github.com/missannil/hry-types/compare/v0.16.4...v0.16.5) (2023-08-06)
 
 
