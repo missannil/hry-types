@@ -1,7 +1,7 @@
 import type { Test } from "../../src";
 import { Checking } from "../../src";
 import type { IfEquals } from "../../src/Any/IfEquals";
-import type { ComputeIntersection } from "../../src/Object/ComputeIntersection";
+import type { Compute } from "../../src/Object/Compute";
 
 type Test1 = IfEquals<1, 1>;
 
@@ -55,7 +55,7 @@ type Test10 = IfEquals<{ a: number } & { b: number }, { a: number; b: number }, 
 Checking<Test10, "Else", Test.Pass>;
 
 // 预先计算交叉对象
-type Test11 = IfEquals<ComputeIntersection<{ a: number } & { b: number }>, { a: number; b: number }, "Then", "Else">;
+type Test11 = IfEquals<Compute<{ a: number } & { b: number }>, { a: number; b: number }, "Then", "Else">;
 
 Checking<Test11, "Then", Test.Pass>;
 

@@ -9,12 +9,12 @@ import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
  * ```ts
  * type obj0 = { a: { b: string } & { c: number } };
  * type obj1 = { e: { f: string } & { g: number } };
- * type test1 = ComputeIntersectionDeep<obj0 & obj1>;
+ * type test1 = ComputeDeep<obj0 & obj1>;
  * // =>{ a: { b: string; c: number; }; e: { f: string; g: number; }; }
  * ```
  *   @returns object
  */
-export type ComputeIntersectionDeep<O> = IsNonArrNonFuncObject<O> extends true ? {
-    [K in keyof O]: ComputeIntersectionDeep<O[K]>;
+export type ComputeDeep<O> = IsNonArrNonFuncObject<O> extends true ? {
+    [K in keyof O]: ComputeDeep<O[K]>;
   }
   : O;
