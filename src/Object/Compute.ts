@@ -12,4 +12,4 @@
  * ```
  * @returns object
  */
-export type ComputeIntersection<O> = O extends unknown ? { [K in keyof O]: O[K] } : never;
+export type Compute<O extends object> = O extends unknown ? { [K in keyof O]: O[K] } : never;

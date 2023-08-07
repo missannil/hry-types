@@ -1,7 +1,7 @@
 export type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
 export type { AddSubObjectKey as Flat } from "./AddSubObjectKey";
-export type { ComputeIntersection } from "./ComputeIntersection";
-export type { ComputeIntersectionDeep } from "./ComputeIntersectionDeep";
+export type { Compute as ComputeIntersection } from "./Compute";
+export type { ComputeDeep as ComputeIntersectionDeep } from "./ComputeDeep";
 export type { Filter } from "./Filter";
 export type { FilterKeys } from "./FilterKeys";
 export type { NonNullableInObject } from "./NonNullableInObject";

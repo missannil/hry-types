@@ -1,5 +1,5 @@
 import { Checking, type Test } from "../../src";
-import type { ComputeIntersectionDeep } from "../../src/Object/ComputeIntersectionDeep";
+import type { ComputeDeep } from "../../src/Object/ComputeDeep";
 
 // ComputeIntersection的递归
 type A = { a: string };
@@ -8,7 +8,7 @@ type B = { b: number };
 
 type C = { c: boolean };
 
-type Test1 = ComputeIntersectionDeep<A & B>;
+type Test1 = ComputeDeep<A & B>;
 
 type TestExpect1 = {
   a: string;
@@ -17,7 +17,7 @@ type TestExpect1 = {
 
 Checking<Test1, TestExpect1, Test.Pass>;
 
-type Test2 = ComputeIntersectionDeep<A & B & C>;
+type Test2 = ComputeDeep<A & B & C>;
 
 type TestExpect2 = {
   a: string;
