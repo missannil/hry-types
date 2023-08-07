@@ -1,4 +1,4 @@
-import type { ComputeIntersection, IsNonArrNonFuncObject } from "./_api";
+import type { Compute, IsNonArrNonFuncObject } from "./_api";
 
 /**
  * 建立子对象的key
@@ -17,7 +17,7 @@ type _OverWrite<Keys, O> = {
     : never;
 };
 
-type _AddSubObjectKey<O, _keys> = ComputeIntersection<
+type _AddSubObjectKey<O, _keys> = Compute<
   & O
   & _keys
   & _OverWrite<keyof _keys, O>
@@ -28,7 +28,7 @@ type _AddSubObjectKey<O, _keys> = ComputeIntersection<
  * @example
  * ```ts
  * type Obj = { a: { b: number }; d: { e: { f: string } } };
- * type TestObj = ComputeIntersection<AddSubObjectKey<Obj>>;
+ * type TestObj = Compute<AddSubObjectKey<Obj>>;
  * // TestObj => { a: { b: number }; d: { e: { f: string } }; "a.b": number; "d.e": { f: string } }
  * ```
  * @returns object

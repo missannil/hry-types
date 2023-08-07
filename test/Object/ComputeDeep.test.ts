@@ -1,7 +1,7 @@
 import { Checking, type Test } from "../../src";
 import type { ComputeDeep } from "../../src/Object/ComputeDeep";
 
-// ComputeIntersection的递归
+// Compute的递归
 type A = { a: string };
 
 type B = { b: number };
