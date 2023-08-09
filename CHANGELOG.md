@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.7](https://github.com/missannil/hry-types/compare/v0.16.6...v0.16.7) (2023-08-09)
+
+
+### Bug Fixes
+
+* rename UnionOf -&gt; UnionTwoObject ([#60](https://github.com/missannil/hry-types/issues/60)) ([65568ca](https://github.com/missannil/hry-types/commit/65568cae0c39eb8ca043a9f99d00dcde9a264e5a))
+
 ## [0.16.6](https://github.com/missannil/hry-types/compare/v0.16.5...v0.16.6) (2023-08-07)
 
 
