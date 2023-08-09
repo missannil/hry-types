@@ -8,7 +8,7 @@
  * // =>{ a: string | number; b: number | string; c: boolean; d: string }
  * ```
  */
-export type UnionOf<
+export type UnionTwoObject<
   O1,
   O2,
   SameKey extends Extract<keyof O1, keyof O2> = Extract<keyof O1, keyof O2>,
