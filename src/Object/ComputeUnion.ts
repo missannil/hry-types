@@ -1,9 +1,9 @@
 import type { IsNever } from "../Any/IsNever";
 import type { Last } from "../Union/Last";
-import type { UnionOf } from "./UnionOf";
+import type { UnionTwoObject } from "./UnionTwoObject";
 
 type __ComputeUnion<U, Result, Tail = Last<U>> = IsNever<U> extends true ? Result
-  : __ComputeUnion<Exclude<U, Tail>, UnionOf<Result, Tail>>;
+  : __ComputeUnion<Exclude<U, Tail>, UnionTwoObject<Result, Tail>>;
 
 type _ComputeUnion<U, Tail = Last<U>> = [U] extends [Tail] ? U : __ComputeUnion<Exclude<U, Tail>, Tail>;
 

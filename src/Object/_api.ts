@@ -1,5 +1,5 @@
 export type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
-export type { AddSubObjectKey as Flat } from "./AddSubObjectKey";
+export type { AddSubObjectKey } from "./AddSubObjectKey";
 export type { Compute } from "./Compute";
 export type { ComputeDeep } from "./ComputeDeep";
 export type { Filter } from "./Filter";
@@ -9,4 +9,4 @@ export type { NonReadonly } from "./NonReadonly";
 export type { ReturnTypeInObject } from "./ReturnTypeInObject";
 export type { Select } from "./Select";
 export type { SelectKeys } from "./SelectKeys";
-export type { UnionOf } from "./UnionOf";
+export type { UnionTwoObject } from "./UnionTwoObject";
