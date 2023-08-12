@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.8](https://github.com/missannil/hry-types/compare/v0.16.7...v0.16.8) (2023-08-12)
+
+
+### Bug Fixes
+
+* 测试文件导入路径修改为_api,导出IfOrEquals类型 ([#62](https://github.com/missannil/hry-types/issues/62)) ([61311de](https://github.com/missannil/hry-types/commit/61311de73bf92bf88bd3addef0e7d5e1a35bad5e))
+
 ## [0.16.7](https://github.com/missannil/hry-types/compare/v0.16.6...v0.16.7) (2023-08-09)
 
 
