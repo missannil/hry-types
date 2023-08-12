@@ -1,6 +1,6 @@
 import type { Test } from "../../src";
 import { Checking } from "../../src";
-import type { IsNever } from "../../src/Any/IsNever";
+import type { IsNever } from "../../src/Any/_api";
 
 type Test1 = IsNever<never>;
 

@@ -1,7 +1,7 @@
 // 测试 path: ./src/Any/As.test.ts
 
 import { Checking, type Test } from "../../src";
-import type { As } from "../../src/Any/As";
+import type { As } from "../../src/Any/_api";
 
 type Test1 = As<0, number>;
 

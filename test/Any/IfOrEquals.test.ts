@@ -1,5 +1,5 @@
 import { Checking, type Test } from "../../src";
-import type { IfOrEquals } from "../../src/Any/IfOrEquals";
+import type { IfOrEquals } from "../../src/Any/_api";
 
 type Test1 = IfOrEquals<1, [1, 2, 3]>;
 

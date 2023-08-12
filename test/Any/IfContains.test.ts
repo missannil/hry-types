@@ -1,6 +1,6 @@
 import type { Test } from "../../src";
 import { Checking } from "../../src";
-import type { IfContains } from "../../src/Any/IfContains";
+import type { IfContains } from "../../src/Any/_api";
 
 type Test1 = IfContains<1, 1>;
 

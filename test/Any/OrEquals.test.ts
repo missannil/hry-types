@@ -1,7 +1,7 @@
 // test for src\Any\OrEquals.ts
 import type { Test } from "../../src";
 import { Checking } from "../../src";
-import type { OrEquals } from "../../src/Any/OrEquals";
+import type { OrEquals } from "../../src/Any/_api";
 
 type Test1 = OrEquals<1, [1, 2, 3]>;
 

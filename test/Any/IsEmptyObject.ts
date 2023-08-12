@@ -1,6 +1,6 @@
 import { Checking, type Test } from "../../src";
-import type { IsEmptyObject } from "../../src/Any/IsEmptyObject";
-import type { EmptyObject } from "../../src/Misc/EmptyObject";
+import type { IsEmptyObject } from "../../src/Any/_api";
+import type { EmptyObject } from "../../src/Misc/_api";
 
 type Test1 = IsEmptyObject<{}>;
 

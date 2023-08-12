@@ -1,6 +1,6 @@
 import type { Test } from "../../src";
 import { Checking } from "../../src";
-import type { IsUnion } from "../../src/Any/IsUnion";
+import type { IsUnion } from "../../src/Any/_api";
 
 type Test1 = IsUnion<1 | 2>;
 

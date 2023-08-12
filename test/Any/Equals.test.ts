@@ -1,7 +1,7 @@
 // test for src\Any\Equals.ts
 import type { Test } from "../../src";
 import { Checking } from "../../src";
-import type { Equals } from "../../src/Any/Equals";
+import type { Equals } from "../../src/Any/_api";
 
 type Test1 = Equals<1, 1>;
 
