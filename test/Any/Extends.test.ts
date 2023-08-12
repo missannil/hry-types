@@ -1,6 +1,6 @@
 import type { Test } from "../../src";
 import { Checking } from "../../src";
-import type { Extends } from "../../src/Any/Extends";
+import type { Extends } from "../../src/Any/_api";
 
 type Test1 = Extends<1, number>;
 

@@ -1,6 +1,6 @@
 import type { Test } from "../../src";
 import { Checking } from "../../src";
-import type { IfExtends } from "../../src/Any/IfExtends";
+import type { IfExtends } from "../../src/Any/_api";
 
 type Test1 = IfExtends<1, 1>;
 

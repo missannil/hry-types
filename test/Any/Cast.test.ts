@@ -1,7 +1,5 @@
-// 测试 path: ./src/Any/Cast.test.ts
-
-// import { type Test, Checking } from "../../src";
-// import type { Cast } from "../../src/Any/_Cast";
+// import { Checking, type Test } from "../../src";
+// import type { Cast } from "../../src/Any/_api";
 
 // type Test1 = Cast<0, number>;
 

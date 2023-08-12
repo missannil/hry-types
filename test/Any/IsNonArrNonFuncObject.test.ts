@@ -1,6 +1,6 @@
 import type { Test } from "../../src";
 import { Checking } from "../../src";
-import type { IsNonArrNonFuncObject } from "../../src/Any/IsNonArrNonFuncObject";
+import type { IsNonArrNonFuncObject } from "../../src/Any/_api";
 
 type Test1 = IsNonArrNonFuncObject<{ a: number }>;
 

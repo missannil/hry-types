@@ -1,7 +1,7 @@
 import type { Test } from "../../src";
 import { Checking } from "../../src";
-import type { IfEquals } from "../../src/Any/IfEquals";
-import type { Compute } from "../../src/Object/Compute";
+import type { IfEquals } from "../../src/Any/_api";
+import type { Compute } from "../../src/Object/_api";
 
 type Test1 = IfEquals<1, 1>;
 

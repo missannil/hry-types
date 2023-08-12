@@ -1,13 +1,15 @@
 export type { As } from "./As";
-export type { Extends as _Extends } from "./Extends";
-// export type { Cast } from "./Cast";
 export type { Contains } from "./Contains";
+// export type { Cast } from "./Cast";
 export type { Equals } from "./Equals";
 export type { Extends } from "./Extends";
+export type { IfContains } from "./IfContains";
 export type { IfEquals } from "./IfEquals";
 export type { IfExtends } from "./IfExtends";
+export type { IfOrEquals } from "./IfOrEquals";
 export type { Is } from "./Is";
 export type { IsEmptyObject } from "./IsEmptyObject";
 export type { IsNever } from "./IsNever";
 export type { IsNonArrNonFuncObject } from "./IsNonArrNonFuncObject";
 export type { IsUnion } from "./IsUnion";
+export type { OrEquals } from "./OrEquals";

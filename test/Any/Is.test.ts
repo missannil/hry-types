@@ -1,6 +1,6 @@
 import type { Test } from "../../src";
 import { Checking } from "../../src";
-import type { Is } from "../../src/Any/Is";
+import type { Is } from "../../src/Any/_api";
 
 // ----------  extends  ----------
 type Test1 = Is<1, number>; // 默认值 "extends->"
