@@ -45,6 +45,6 @@ Checking<Test7, TestExpect7, Test.Pass>;
 
 type Test8 = Select<{ a?: string }, string>;
 
-type TestExpect8 = { a?: string };
+type TestExpect8 = {};
 
 Checking<Test8, TestExpect8, Test.Pass>;

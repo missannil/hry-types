@@ -1,4 +1,4 @@
-import type { IsNonArrNonFuncObject } from "../Any/IsNonArrNonFuncObject";
+import type { IsNonArrNonFuncObject } from "./_api";
 
 /**
  * 递归计算交叉对象类型

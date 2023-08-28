@@ -6,7 +6,7 @@ type _IllegalFieldValidation<
   G extends object,
   legalKeys extends PropertyKey,
 > = {
-  [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends Function ? `⚠️字段非法⚠️`
+  [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends object ? `⚠️字段非法⚠️`
     : () => `⚠️字段非法⚠️`;
 };
 
