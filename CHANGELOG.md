@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.9](https://github.com/missannil/hry-types/compare/v0.16.8...v0.16.9) (2023-08-28)
+
+
+### Bug Fixes
+
+* "SelectKeys" ([#64](https://github.com/missannil/hry-types/issues/64)) ([7bd9780](https://github.com/missannil/hry-types/commit/7bd9780147682ee3246a2df27af909911fb75c4d))
+
 ## [0.16.8](https://github.com/missannil/hry-types/compare/v0.16.7...v0.16.8) (2023-08-12)
 
 
