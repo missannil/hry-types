@@ -52,5 +52,5 @@ export type PrefixValidator<
 > = [TPrefix] extends [""] ? unknown : {
   [
     k in keyof G as k extends `${TPrefix}${string}` ? never : k
-  ]: G[k] extends Function ? `⚠️${Message}` : () => `⚠️${Message}`;
+  ]: G[k] extends object ? `⚠️${Message}` : () => `⚠️${Message}`;
 };

@@ -2,7 +2,7 @@ import type { _Match } from "../_internal/_Match";
 import type { Is } from "../Any/Is";
 
 type _SelectKeys<O, M, match extends _Match> = {
-  [K in keyof O]-?: Is<O[K] & {}, M, match> extends true ? K : never;
+  [K in keyof O]-?: Is<O[K], M, match> extends true ? K : never;
 }[keyof O];
 
 /**
