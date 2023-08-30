@@ -17,7 +17,7 @@ type _OverWrite<Keys, O> = {
     : never;
 };
 
-type _AddSubObjectKey<O, _keys> = Compute<
+type _AddSubObjectKey<O extends object, _keys extends object> = Compute<
   & O
   & _keys
   & _OverWrite<keyof _keys, O>
@@ -33,4 +33,4 @@ type _AddSubObjectKey<O, _keys> = Compute<
  * ```
  * @returns object
  */
-export type AddSubObjectKey<O> = _AddSubObjectKey<O, _CreateSubKeys<O>>;
+export type AddSubObjectKey<O extends object> = _AddSubObjectKey<O, _CreateSubKeys<O>>;

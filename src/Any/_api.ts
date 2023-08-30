@@ -10,6 +10,7 @@ export type { IfOrEquals } from "./IfOrEquals";
 export type { Is } from "./Is";
 export type { IsEmptyObject } from "./IsEmptyObject";
 export type { IsNever } from "./IsNever";
-export type { IsNonArrNonFuncObject } from "./IsNonArrNonFuncObject";
+export type { IsPureObject } from "./IsPureObject";
 export type { IsUnion } from "./IsUnion";
 export type { OrEquals } from "./OrEquals";
+export type { ReadonlyDeep } from "./ReadonlyDeep";

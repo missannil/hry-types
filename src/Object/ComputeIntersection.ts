@@ -1,3 +1,5 @@
+import type { IsPureObject } from "../Any/IsPureObject";
+
 /**
  * 计算交叉对象类型
  * @remarks 相同key会被合并为一个字段，类型交叉。多个对象中存在相同key时,可能出现结果为never
@@ -12,4 +14,4 @@
  * ```
  * @returns object
  */
-export type Compute<O extends object> = O extends unknown ? { [K in keyof O]: O[K] } : never;
+export type ComputeIntersection<O extends object> = IsPureObject<O> extends true ? { [K in keyof O]: O[K] } : O;

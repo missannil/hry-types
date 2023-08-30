@@ -1,4 +1,4 @@
-import type { IsNonArrNonFuncObject } from "./_api";
+import type { IsPureObject } from "../Any/IsPureObject";
 
 /**
  * 递归计算交叉对象类型
@@ -14,7 +14,8 @@ import type { IsNonArrNonFuncObject } from "./_api";
  * ```
  *   @returns object
  */
-export type ComputeDeep<O> = IsNonArrNonFuncObject<O> extends true ? {
+export type ComputeDeep<O extends object> = IsPureObject<O> extends true ? {
+    // @ts-ignore
     [K in keyof O]: ComputeDeep<O[K]>;
   }
   : O;
