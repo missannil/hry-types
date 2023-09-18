@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.11](https://github.com/missannil/hry-types/compare/v0.16.10...v0.16.11) (2023-09-18)
+
+
+### Bug Fixes
+
+* rename ([#68](https://github.com/missannil/hry-types/issues/68)) ([eeeee09](https://github.com/missannil/hry-types/commit/eeeee0938a5b74d3a984dfd751e7874159959ca2))
+
 ## [0.16.10](https://github.com/missannil/hry-types/compare/v0.16.9...v0.16.10) (2023-09-18)
 
 
