@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.10](https://github.com/missannil/hry-types/compare/v0.16.9...v0.16.10) (2023-09-18)
+
+
+### Bug Fixes
+
+* "IllegalFieldValidator" 增加错误提示字段参数。 ([#66](https://github.com/missannil/hry-types/issues/66)) ([6da7c56](https://github.com/missannil/hry-types/commit/6da7c5654bfd6b2c1827b8d6a5842c69cb4f4ae6))
+
 ## [0.16.9](https://github.com/missannil/hry-types/compare/v0.16.8...v0.16.9) (2023-08-28)
 
 
