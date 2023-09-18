@@ -1,13 +1,12 @@
-export type { IsPureObject as IsNonArrNonFuncObject } from "../Any/IsPureObject";
+export type { IsPureObject } from "../Any/IsPureObject";
 export type { AddSubObjectKey } from "./AddSubObjectKey";
-export type { ComputeIntersection as Compute } from "./ComputeIntersection";
-export type { ComputeDeep } from "./ComputeIntersectionDeep";
+export type { ComputeIntersection } from "./ComputeIntersection";
+export type { ComputeIntersectionDeep } from "./ComputeIntersectionDeep";
 export type { Filter } from "./Filter";
 export type { FilterKeys } from "./FilterKeys";
 export type { NonNullableInObject } from "./NonNullableInObject";
 export type { NonReadonly } from "./NonReadonly";
 export type { OptionalKeys } from "./OptionalKeys";
-// export type { ReadonlyDeep } from "./ReadonlyDeep";
 export type { RequiredKeys } from "./RequiredKeys";
 export type { ReturnTypeInObject } from "./ReturnTypeInObject";
 export type { Select } from "./Select";

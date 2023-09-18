@@ -1,10 +1,10 @@
-import type { Compute, IsNonArrNonFuncObject } from "./_api";
+import type { ComputeIntersection, IsPureObject } from "./_api";
 
 /**
  * 建立子对象的key
  */
 type _CreateSubKeys<O> = {
-  [k in keyof O as IsNonArrNonFuncObject<O[k]> extends true ? `${k & string}.${keyof O[k] & string}` : never]: unknown;
+  [k in keyof O as IsPureObject<O[k]> extends true ? `${k & string}.${keyof O[k] & string}` : never]: unknown;
 };
 
 /**
@@ -17,7 +17,7 @@ type _OverWrite<Keys, O> = {
     : never;
 };
 
-type _AddSubObjectKey<O extends object, _keys extends object> = Compute<
+type _AddSubObjectKey<O extends object, _keys extends object> = ComputeIntersection<
   & O
   & _keys
   & _OverWrite<keyof _keys, O>
