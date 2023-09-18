@@ -57,8 +57,8 @@ Checking<Test2, Test2Expected, Test.Pass>;
 
 // unknown
 
-type Test3 = ReadonlyDeep<unknown>;
+type Test3 = { a: readonly ReadonlyDeep<unknown>[] };
 
-type Test3Expected = unknown;
+type Test3Expected = { a: readonly unknown[] };
 
 Checking<Test3, Test3Expected, Test.Pass>;
