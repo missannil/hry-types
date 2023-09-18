@@ -1,6 +1,6 @@
 import type { Test } from "../../src";
 import { Checking } from "../../src/Check/Checking";
-import type { Compute } from "../../src/Object/Compute";
+import type { ComputeIntersection } from "../../src/Object/ComputeIntersection";
 
 // number
 Checking<1, 1, Test.Pass>;
@@ -25,12 +25,12 @@ Checking<{ num: number }, { num: number }, Test.Pass>;
 Checking<{ num: 1 }, { num: number }, Test.Fail>;
 
 // intersection object
-Checking<Compute<{ num: number } & { str: string }>, { num: number; str: string }, Test.Pass>;
+Checking<ComputeIntersection<{ num: number } & { str: string }>, { num: number; str: string }, Test.Pass>;
 
-Checking<Compute<{ num: number } & { num: string }>, { num: never }, Test.Pass>;
+Checking<ComputeIntersection<{ num: number } & { num: string }>, { num: never }, Test.Pass>;
 
 // ⚠️下面并不符合预期,[issue](https://github.com/microsoft/TypeScript/issues/54903)
-Checking<Compute<{ num: number } & { num: string } & { num: boolean }>, never, Test.Pass>;
+Checking<ComputeIntersection<{ num: number } & { num: string } & { num: boolean }>, never, Test.Pass>;
 
 // union object
 Checking<{ num: number } | { str: string }, { str: string } | { num: number }, Test.Pass>;
