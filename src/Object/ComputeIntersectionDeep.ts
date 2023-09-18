@@ -14,8 +14,8 @@ import type { IsPureObject } from "../Any/IsPureObject";
  * ```
  *   @returns object
  */
-export type ComputeDeep<O extends object> = IsPureObject<O> extends true ? {
+export type ComputeIntersectionDeep<O extends object> = IsPureObject<O> extends true ? {
     // @ts-ignore
-    [K in keyof O]: ComputeDeep<O[K]>;
+    [K in keyof O]: ComputeIntersectionDeep<O[K]>;
   }
   : O;
