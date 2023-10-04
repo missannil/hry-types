@@ -1,3 +1,5 @@
+import type { EmptyObject } from "../Misc/_api";
+
 /**
  * 验证泛型对象的前缀是否正确
  * @param G - 泛型 object
@@ -49,8 +51,9 @@ export type PrefixValidator<
   G extends object,
   TPrefix extends string,
   Message extends string = "前缀错误",
-> = [TPrefix] extends [""] ? unknown : {
-  [
-    k in keyof G as k extends `${TPrefix}${string}` ? never : k
-  ]: G[k] extends object ? `⚠️${Message}` : () => `⚠️${Message}`;
-};
+  Result = TPrefix extends "" ? unknown : {
+    [
+      k in keyof G as k extends `${TPrefix}_${string}` ? never : k
+    ]: G[k] extends object ? `⚠️${Message}` : () => `⚠️${Message}`;
+  },
+> = EmptyObject extends Result ? unknown : Result;

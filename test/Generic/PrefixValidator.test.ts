@@ -16,14 +16,16 @@ function test1<T extends object>(O: T & PrefixValidator<T, "aaa">): T {
 }
 
 test1({
-  aaa: 123,
-  aaaa: "str",
   aaa_num: 123,
-  aaaStr: "str",
+  aaa_str: "str",
   // @ts-expect-error 前缀错误
   str: "str",
   // @ts-expect-error 前缀错误
   _str: "str",
+  // @ts-expect-error 前缀错误
+  aaaa_str: "str",
+  // @ts-expect-error 前缀错误
+  aaaStr: "str",
 });
 
 // 验证前缀为"num" | "_num"
@@ -32,8 +34,8 @@ function test2<T extends object>(O: T & PrefixValidator<T, "num" | "_num">): T {
 }
 
 test2({
-  num: 123,
-  _num: "str",
+  num_xxx: 123,
+  _num_xxx: "str",
   // @ts-expect-error 前缀错误
   xxx: 123,
 });
