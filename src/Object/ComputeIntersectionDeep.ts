@@ -9,7 +9,7 @@ import type { IsPureObject } from "../Any/IsPureObject";
  * ```ts
  * type obj0 = { a: { b: string } & { c: number } };
  * type obj1 = { e: { f: string } & { g: number } };
- * type test1 = ComputeDeep<obj0 & obj1>;
+ * type test1 = ComputeIntersectionDeep<obj0 & obj1>;
  * // =>{ a: { b: string; c: number; }; e: { f: string; g: number; }; }
  * ```
  *   @returns object

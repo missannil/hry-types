@@ -1,13 +1,14 @@
 import type { As } from "../Any/As";
 import type { IfExtends } from "../Any/IfExtends";
 import type { IsPureObject } from "../Any/IsPureObject";
+import type { Func } from "../Misc/_api";
 
 type _IllegalFieldValidation<
   G extends object,
   legalKeys extends PropertyKey,
   Error extends string = "字段非法",
 > = {
-  [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends object ? `⚠️${Error}⚠️`
+  [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends Func ? `⚠️${Error}⚠️`
     : () => `⚠️${Error}⚠️`;
 };
 

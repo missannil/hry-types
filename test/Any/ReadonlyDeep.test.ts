@@ -2,6 +2,26 @@ import { Checking, type Test } from "../../src";
 import type { BuiltIns } from "../../src/_internal/BuiltIns";
 import type { ReadonlyDeep } from "../../src/Any/_api";
 
+type IsUnknown = ReadonlyDeep<unknown>;
+
+Checking<IsUnknown, unknown, Test.Pass>;
+
+type IsBuiltIns = ReadonlyDeep<BuiltIns>;
+
+Checking<IsBuiltIns, BuiltIns, Test.Pass>;
+
+type IsFunction = ReadonlyDeep<Function>;
+
+Checking<IsFunction, Function, Test.Pass>;
+
+type IsSet = ReadonlyDeep<Set<unknown>>;
+
+Checking<IsSet, Set<unknown>, Test.Pass>;
+
+type IsMap = ReadonlyDeep<Map<unknown, unknown>>;
+
+Checking<IsMap, Map<unknown, unknown>, Test.Pass>;
+
 type Obj = {
   num: number;
   str?: string;
@@ -9,20 +29,12 @@ type Obj = {
   bool: boolean;
   fun: (...arg: any[]) => any;
   arr: string[];
-  tuple: [number, string, { a: number }];
+  tuple: [number, string[], { a: number }];
 };
 
-// 非联合对象
-type Test1 = ReadonlyDeep<Obj & { obj: Obj }>;
+type TestObj = ReadonlyDeep<{ obj: Obj }>;
 
-type Test1Expected = {
-  readonly num: number;
-  readonly str?: string;
-  readonly bigInt: bigint;
-  readonly bool: boolean;
-  readonly fun: (...arg: any[]) => any;
-  readonly arr: readonly string[];
-  readonly tuple: readonly [number, string, { readonly a: number }];
+type TestObjExpected = {
   readonly obj: {
     readonly num: number;
     readonly str?: string;
@@ -30,35 +42,34 @@ type Test1Expected = {
     readonly bool: boolean;
     readonly fun: (...arg: any[]) => any;
     readonly arr: readonly string[];
-    readonly tuple: readonly [number, string, { readonly a: number }];
+    readonly tuple: readonly [number, readonly string[], { readonly a: number }];
   };
 };
 
-Checking<Test1, Test1Expected, Test.Pass>;
+Checking<TestObj, TestObjExpected, Test.Pass>;
 
 // 联合类型
 
-type Test2 = ReadonlyDeep<
+type TestUnion = ReadonlyDeep<
   | string[]
   | unknown[]
-  | [Test1, string[], () => number]
+  | [TestObj, string[], () => number]
   | (() => number)
   | BuiltIns
 >;
 
-type Test2Expected =
+type TestUnionExpected =
   | readonly string[]
   | readonly unknown[]
-  | readonly [Test1Expected, readonly string[], () => number]
+  | readonly [TestObjExpected, readonly string[], () => number]
   | (() => number)
   | BuiltIns;
 
-Checking<Test2, Test2Expected, Test.Pass>;
+Checking<TestUnion, TestUnionExpected, Test.Pass>;
 
-// unknown
+const foo: ReadonlyDeep<{ a: { str: string } }> = {} as any;
 
-type Test3 = ReadonlyDeep<unknown>;
+type fooExpected = { readonly a: { readonly str: string } };
 
-type Test3Expected = unknown;
-
-Checking<Test3, Test3Expected, Test.Pass>;
+// 悬停在foo上提示为 `_ReadonlyDeep<{ a: { str: string } }>` 而非预期 `{ readonly a: { readonly str: string } }`
+Checking<typeof foo, fooExpected, Test.Pass>;
