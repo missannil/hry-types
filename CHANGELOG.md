@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://github.com/missannil/hry-types/compare/v0.16.12...v0.17.0) (2023-12-02)
+
+
+### Features
+
+* add NonReadonlyDeep ([b0bde16](https://github.com/missannil/hry-types/commit/b0bde16711a08bcb7064a700d2ca1b967f892227))
+
 ## [0.16.12](https://github.com/missannil/hry-types/compare/v0.16.11...v0.16.12) (2023-10-06)
 
 
