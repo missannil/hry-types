@@ -6,6 +6,7 @@ export type { Filter } from "./Filter";
 export type { FilterKeys } from "./FilterKeys";
 export type { NonNullableInObject } from "./NonNullableInObject";
 export type { NonReadonly } from "./NonReadonly";
+export type { NonReadonlyDeep } from "./NonReadonlyDeep";
 export type { OptionalKeys } from "./OptionalKeys";
 export type { RequiredKeys } from "./RequiredKeys";
 export type { ReturnTypeInObject } from "./ReturnTypeInObject";

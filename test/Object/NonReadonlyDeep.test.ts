@@ -1,5 +1,5 @@
 import { Checking, type Test } from "../../src";
-import type { NonReadonlyDeep } from "../../src/Object/NonReadonlyDeep";
+import type { NonReadonlyDeep } from "../../src/Object/_api";
 
 type Obj1 = { readonly num: 123; readonly str?: string; readonly union: boolean; readonly fn: () => string };
 
