@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.0](https://github.com/missannil/hry-types/compare/v0.17.0...v0.18.0) (2024-01-12)
+
+
+### Features
+
+* add Tuple-&gt; Drop ([fccb737](https://github.com/missannil/hry-types/commit/fccb73778f3bd9441414e1913ee1b76fc436da2c))
+
 ## [0.17.0](https://github.com/missannil/hry-types/compare/v0.16.12...v0.17.0) (2023-12-02)
 
 
