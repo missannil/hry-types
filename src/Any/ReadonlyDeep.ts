@@ -1,7 +1,7 @@
 import type { BuiltIns } from "../_internal/BuiltIns";
 
 // 为了鼠标悬停时为_ReadonlyDeep而非细致的子项(看起来乱)
-type _ReadonlyDeep<O> = {
+export type _ReadonlyDeep<O> = {
   readonly [k in keyof O]: ReadonlyDeep<O[k]>;
 };
 

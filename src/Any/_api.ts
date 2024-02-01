@@ -13,4 +13,4 @@ export type { IsNever } from "./IsNever";
 export type { IsPureObject } from "./IsPureObject";
 export type { IsUnion } from "./IsUnion";
 export type { OrEquals } from "./OrEquals";
-export type { ReadonlyDeep } from "./ReadonlyDeep";
+export type { _ReadonlyDeep, ReadonlyDeep } from "./ReadonlyDeep";
