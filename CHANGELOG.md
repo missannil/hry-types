@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.1](https://github.com/missannil/hry-types/compare/v0.18.0...v0.18.1) (2024-02-01)
+
+
+### Bug Fixes
+
+* 导出_ReadonlyDeep类型 ([cb42db1](https://github.com/missannil/hry-types/commit/cb42db11415a6a654a4369d21e977da9fe89886e))
+
 ## [0.18.0](https://github.com/missannil/hry-types/compare/v0.17.0...v0.18.0) (2024-01-12)
 
 
