@@ -14,6 +14,13 @@
 
 * 更新npm_token ([5adf744](https://github.com/missannil/hry-types/commit/5adf744657ac95cf24fe5e9a2fbcefe55228613d))
 
+## [0.19.0](https://github.com/missannil/hry-types/compare/v0.19.0...v0.19.0) (2025-01-11)
+
+
+### Miscellaneous Chores
+
+* 更新npm_token ([5adf744](https://github.com/missannil/hry-types/commit/5adf744657ac95cf24fe5e9a2fbcefe55228613d))
+
 ## [0.19.0](https://github.com/missannil/hry-types/compare/v0.18.1...v0.19.0) (2025-01-11)
 
 
