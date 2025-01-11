@@ -4,6 +4,7 @@ export type { ComputeIntersection } from "./ComputeIntersection";
 export type { ComputeIntersectionDeep } from "./ComputeIntersectionDeep";
 export type { Filter } from "./Filter";
 export type { FilterKeys } from "./FilterKeys";
+export type { MakeNever } from "./MakeNever";
 export type { NonNullableInObject } from "./NonNullableInObject";
 export type { NonReadonly } from "./NonReadonly";
 export type { NonReadonlyDeep } from "./NonReadonlyDeep";
