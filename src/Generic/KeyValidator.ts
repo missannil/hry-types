@@ -10,7 +10,7 @@
  *   return O;
  * }
  * test({
- *   aaa_num: 123,//  ok
+ *   aaa_num: 123,// ok
  *   _aaa_str: "str",// ok
  *   //@ts-expect-error 前缀错误
  *   xxx:123,
