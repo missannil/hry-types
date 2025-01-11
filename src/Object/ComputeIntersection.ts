@@ -7,9 +7,9 @@ import type { IsPureObject } from "../Any/IsPureObject";
  * @param O - 对象类型
  * @example
  * ```ts
- * type Test1 = Compute<{ name: string } & { age: number }>;
+ * type Test1 = ComputeIntersection<{ name: string } & { age: number }>;
  *  // =>{ name: string; age: number; }
- * type Test2 = Compute<{ name: string } & { name: number }>;
+ * type Test2 = ComputeIntersection<{ name: string } & { name: number }>;
  * // =>{ name: never; }
  * ```
  * @returns object
