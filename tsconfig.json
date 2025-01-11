@@ -8,8 +8,6 @@
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "esModuleInterop": true,
-    "diagnostics": true,
-    // "watch": true,
     "skipDefaultLibCheck": true,
     "noEmit": true,
     "removeComments": true,
@@ -17,8 +15,6 @@
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    // "suppressImplicitAnyIndexErrors": true, //为true关闭隐式索引错误,但很激进,建议使用@ts-ignore
-    "verbatimModuleSyntax": true // 5.0模块特性,任何没有类型修饰符的导入或导出都会被保留。任何使用类型修饰符的内容都将被完全删除
   },
   "include": ["./src", "./test/"]
 }
