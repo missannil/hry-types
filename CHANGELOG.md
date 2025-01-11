@@ -1,8 +1,5 @@
 # Changelog
 
-## [0.19.0](https://github.com/missannil/hry-types/compare/v0.18.1...v0.19.0) (2025-01-11)
-
-
 ### Features
 
 * 0.19.0 ([2cea00f](https://github.com/missannil/hry-types/commit/2cea00f934685d328876331f775a1429454bd022))
