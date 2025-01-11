@@ -41,5 +41,5 @@ jobs:
             - run: npm publish
               env:
                   # 在项目-settings-secrets and variables-actions 下建立Environment secrets,名字为NPM_TOKEN,值为npm下建立的密钥。
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  NODE_AUTH_TOKEN: ${{ secrets.MISSANNIL_HRY_TYPES_PUBLISH }}
               if: ${{ steps.release.outputs.release_created }}
