@@ -1,16 +1,16 @@
 import type { As } from "../Any/As";
 import type { IfExtends } from "../Any/IfExtends";
 import type { IsPureObject } from "../Any/IsPureObject";
-import type { Func } from "../Misc/_api";
+import type { EmptyObject, Func } from "../Misc/_api";
 
 type _IllegalFieldValidation<
   G extends object,
   legalKeys extends PropertyKey,
   Error extends string = "字段非法",
 > = {
-  [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends Func ? `⚠️${Error}⚠️`
+    [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends Func ? `⚠️${Error}⚠️`
     : () => `⚠️${Error}⚠️`;
-};
+  };
 
 /**
  * 函数中泛型G的非法字段验证
@@ -48,56 +48,58 @@ export type IllegalFieldValidator<
   Layer extends 0 | 1 = 0,
   Field extends string = "",
   Error extends string = "非法字段",
-> = IfExtends<
-  {},
-  G,
-  unknown, // G为空对象 省略检测
-  IfExtends<
-    Layer,
-    0,
-    // leyer为0时
+  result = IfExtends<
+    {},
+    G,
+    unknown, // G为空对象 省略检测
     IfExtends<
-      Field,
-      "",
-      // Field等于''时
-      _IllegalFieldValidation<G, LegalFields, Error>,
-      // Field不等于''时
+      Layer,
+      0,
+      // leyer为0时
       IfExtends<
-        // @ts-ignore
-        IsPureObject<G[Field]>,
-        true,
-        // @ts-ignore
-        { [s in Field]: _IllegalFieldValidation<G[Field], LegalFields, Error> },
-        unknown
-      >
-    >,
-    // leyer层级为1时,
-    IfExtends<
-      Field,
-      "",
-      // Field 等于 ''
-      {
-        [k in keyof G]: IfExtends<
-          IsPureObject<G[k]>,
+        Field,
+        "",
+        // Field等于''时
+        _IllegalFieldValidation<G, LegalFields, Error>,
+        // Field不等于''时
+        IfExtends<
+          // @ts-ignore
+          IsPureObject<G[Field]>,
           true,
-          _IllegalFieldValidation<As<G[k], object>, LegalFields, Error>,
+          // @ts-ignore
+          { [s in Field]: _IllegalFieldValidation<G[Field], LegalFields, Error> },
           unknown
-        >;
-      },
-      // Field 不等于 ''
-      {
-        [k in keyof G]: IfExtends<
-          IsPureObject<G[k]>,
-          true,
-          Field extends keyof G[k] ? {
+        >
+      >,
+      // leyer层级为1时,
+      IfExtends<
+        Field,
+        "",
+        // Field 等于 ''
+        {
+          [k in keyof G]: IfExtends<
+            IsPureObject<G[k]>,
+            true,
+            _IllegalFieldValidation<As<G[k], object>, LegalFields, Error>,
+            unknown
+          >;
+        },
+        // Field 不等于 ''
+        {
+          [k in keyof G]: IfExtends<
+            IsPureObject<G[k]>,
+            true,
+            Field extends keyof G[k] ? {
               [s in Field]:
-                // @ts-ignore
-                _IllegalFieldValidation<G[k][Field], LegalFields, Error>;
+              // @ts-ignore
+              _IllegalFieldValidation<G[k][Field], LegalFields, Error>;
             }
             : unknown,
-          unknown
-        >;
-      }
+            unknown
+          >;
+        }
+      >
     >
   >
->;
+
+> = EmptyObject extends result ? unknown : result;
