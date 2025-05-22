@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.3](https://github.com/missannil/hry-types/compare/v0.19.2...v0.19.3) (2025-05-22)
+
+
+### Bug Fixes
+
+* IllegalFieldValidation泛型返回{}改为unknown ([300607f](https://github.com/missannil/hry-types/commit/300607f3e2139a1cdacd01907ba02472214470a5))
+
 ## [0.19.2](https://github.com/missannil/hry-types/compare/v0.19.1...v0.19.2) (2025-01-11)
 
 
