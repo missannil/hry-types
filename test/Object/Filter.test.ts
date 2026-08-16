@@ -25,7 +25,7 @@ type TestExpect4 = { b: string; c: boolean };
 
 Checking<Test4, TestExpect4, Test.Pass>;
 
-type Test5 = Filter<{ a: number | string; b: string; c: boolean }, string, "equals">;
+type Test5 = Filter<{ a: number | string; b: string; c: boolean }, string, "equal">;
 
 type TestExpect5 = { a: number | string; c: boolean };
 

@@ -1,7 +1,8 @@
 import type { _Match } from "../_internal/_Match";
 import type { Is } from "../Any/Is";
+import type { EnsureNonUnion } from "../Constraint/EnsureNonUnion";
 
-type _SelectKeys<O, M, match extends _Match> = {
+type _SelectKeys<O, M, match extends EnsureNonUnion<match, _Match>> = {
   [K in keyof O]-?: Is<O[K], M, match> extends true ? K : never;
 }[keyof O];
 
@@ -18,10 +19,11 @@ type _SelectKeys<O, M, match extends _Match> = {
  * type Test4 = Select<{ a: number | string; b: string; c: boolean }, number | string, "<-extends"> // {}
  * type Test5 = Select<{ a: number; b: string; c: boolean }, number | string, "<-contains">; // { a: number; b: string }
  * type Test6 = Select<{ a: string | number; b: string | boolean; c: boolean }, string, "contains->"> // { a: string | number; b: string | boolean }
- * type Test7 = Select<{ a: number | string; b: string; c: boolean }, number | string, "equals"> // { a: number | string }
+ * type Test7 = Select<{ a: number | string; b: string; c: boolean }, number | string, "equal"> // { a: number | string }
  * type Test8 = Select<{ a?: string }, string> // { a?: string }
  * ```
  * @returns object
  */
-export type SelectKeys<O, M, match extends _Match = "extends->"> = O extends unknown ? _SelectKeys<O, M, match>
+export type SelectKeys<O, M, match extends EnsureNonUnion<match, _Match> = "extends->"> = O extends unknown
+  ? _SelectKeys<O, M, match>
   : never;

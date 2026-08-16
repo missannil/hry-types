@@ -1,5 +1,6 @@
 import type { _Match } from "../_internal/_Match";
 import type { Is } from "../Any/Is";
+import type { EnsureNonUnion } from "../Constraint/EnsureNonUnion";
 
 /**
  * 元组中是否包含匹配的类型
@@ -13,13 +14,13 @@ import type { Is } from "../Any/Is";
  * type Test2 = Has<TestTuple, "str">; // false
  * type Test3 = Has<TestTuple, "str","<-extends">; // true
  * type Test4 = Has<TestTuple, "str","extends->">; // false
- * type Test5 = Has<TestTuple, "str","equals">; // false
+ * type Test5 = Has<TestTuple, "str","equal">; // false
  * type Test6 = Has<TestTuple, any>; // true
- * type Test7 = Has<TestTuple, never,"equals">; // true
+ * type Test7 = Has<TestTuple, never,"equal">; // true
  *
  * ```
  * @returns true or false
  */
-export type Has<Tuple, A, Match extends _Match = "extends->"> = Tuple extends [infer Head, ...infer Rest]
-  ? Is<Head, A, Match> extends true ? true : Has<Rest, A, Match>
+export type Has<Tuple, A, Match extends EnsureNonUnion<Match, _Match> = "extends->"> = Tuple extends
+  [infer Head, ...infer Rest] ? Is<Head, A, Match> extends true ? true : Has<Rest, A, Match>
   : false;

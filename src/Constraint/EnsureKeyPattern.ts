@@ -19,7 +19,7 @@
  * });
  * ```
  */
-export type KeyValidator<
+export type EnsureKeyPattern<
   G extends object,
   validityKeys extends string,
   ErrMsg extends string = "字段错误",

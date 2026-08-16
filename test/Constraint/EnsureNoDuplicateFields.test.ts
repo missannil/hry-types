@@ -1,7 +1,7 @@
-import type { DuplicateFieldValidator } from "../../src/Generic/DuplicateFieldValidator";
+import type { EnsureNoDuplicateFields } from "../../src/Constraint/EnsureNoDuplicateFields";
 
 const fn = <O extends object>(
-  obj: O & DuplicateFieldValidator<O, "type" | "value", "重复字段">,
+  obj: O & EnsureNoDuplicateFields<O, "type" | "value", "重复字段">,
 ): void => {
   obj;
 };

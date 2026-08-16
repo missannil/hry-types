@@ -3,7 +3,7 @@
  * @remarks 该类型不会对联合类型(A1)做分发判断
  * @param A1 - 任意类型
  * @param A2 - 任意类型
- * @returns true or false
+ * @returns Then or Else
  * @example
  * ```ts
  * type Test1 = IfExtends<1, 1> // unknown

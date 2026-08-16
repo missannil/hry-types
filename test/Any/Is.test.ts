@@ -54,13 +54,13 @@ type Test8Expected = false;
 Checking<Test8, Test8Expected, Test.Pass>;
 
 // ---------- equals ----------
-type Test9 = Is<1, 1, "equals">;
+type Test9 = Is<1, 1, "equal">;
 
 type Test9Expected = true;
 
 Checking<Test9, Test9Expected, Test.Pass>;
 
-type Test10 = Is<number, 1, "equals">;
+type Test10 = Is<number, 1, "equal">;
 
 type Test10Expected = false;
 

@@ -29,16 +29,20 @@ jobs:
               # if语句为真运行actions。
               # 当id为release的action结果为created时(即并入了main分支时)
               if: ${{ steps.release.outputs.release_created }}
+            - uses: pnpm/action-setup@v4
+              with:
+                  version: 11.8.0
+              if: ${{ steps.release.outputs.release_created }}
               # 开启node坏境
             - uses: actions/setup-node@v3
               with:
                   node-version: 18
                   registry-url: 'https://registry.npmjs.org'
               if: ${{ steps.release.outputs.release_created }}
-            - run: npm i husky -D
+            - run: pnpm add husky -D
               if: ${{ steps.release.outputs.release_created }}
               # 发布包命令
-            - run: npm publish
+            - run: pnpm publish
               env:
                   # 在项目-settings-secrets and variables-actions 下建立Environment secrets,名字为NPM_TOKEN,值为npm下建立的密钥。
                   NODE_AUTH_TOKEN: ${{ secrets.MISSANNIL_HRY_TYPES_PUBLISH }}

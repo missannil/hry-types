@@ -1,6 +1,6 @@
 import type { IfExtends } from "../Any/IfExtends";
 
-type _DuplicateFieldValidator<
+type _EnsureNoDuplicateFields<
   G extends object,
   Compared extends PropertyKey,
   Message extends string,
@@ -29,7 +29,7 @@ type _DuplicateFieldValidator<
  * @example
  * ```ts
  * const fn = <O extends object>(
- *   obj: O & DuplicateFieldValidator<O, "type" | "value", "重复字段">,
+ *   obj: O & EnsureNoDuplicateFields<O, "type" | "value", "重复字段">,
  * ): void => {
  *   obj;
  * };
@@ -43,8 +43,8 @@ type _DuplicateFieldValidator<
  * });
  * ```
  */
-export type DuplicateFieldValidator<
+export type EnsureNoDuplicateFields<
   G extends object,
   Compared extends PropertyKey,
   Message extends string = "重复字段",
-> = _DuplicateFieldValidator<G, Compared, Message>;
+> = _EnsureNoDuplicateFields<G, Compared, Message>;

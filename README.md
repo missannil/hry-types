@@ -31,7 +31,7 @@ hry-types 是由恒荣耀(hry)团队开发的typescript类型工具库。
 ## 安装
 
 ```bash
-npm install hry-types -D
+pnpm add hry-types -D
 ```
 
 ## tsconfig

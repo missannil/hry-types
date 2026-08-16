@@ -1,5 +1,5 @@
 import { Checking, type Test } from "../../src";
-import type { NoInfer } from "../../src/Generic/NoInfer";
+import type { NoInfer } from "../../src/Constraint/NoInfer";
 
 const fn = <A>(a0: A, a1: A): A => {
   a0;

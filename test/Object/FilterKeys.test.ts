@@ -37,7 +37,7 @@ type TestExpect6 = "c";
 
 Checking<Test6, TestExpect6, Test.Pass>;
 
-type Test7 = FilterKeys<{ a: number | string; b: string; c: boolean }, number | string, "equals">;
+type Test7 = FilterKeys<{ a: number | string; b: string; c: boolean }, number | string, "equal">;
 
 type TestExpect7 = "b" | "c";
 

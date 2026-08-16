@@ -30,40 +30,40 @@ type Test4Expected = false;
 
 Checking<Test4, Test4Expected, Test.Pass>;
 
-type Test5 = Has<TestTuple, 1, "equals">;
+type Test5 = Has<TestTuple, 1, "equal">;
 
 type Test5Expected = true;
 
 Checking<Test5, Test5Expected, Test.Pass>;
 
-// 对于 元组中可能存在互为父子类型(如 never、any、unknown、{})的情况,应使用 "equals" 模式
+// 对于 元组中可能存在互为父子类型(如 never、any、unknown、{})的情况,应使用 "equal" 模式
 type TestTuple1 = [never, any, {}, [], { a: string }];
 
-type Test6 = Has<TestTuple1, never, "equals">;
+type Test6 = Has<TestTuple1, never, "equal">;
 
 type Test6Expected = true;
 
 Checking<Test6, Test6Expected, Test.Pass>;
 
-type Test7 = Has<TestTuple1, any, "equals">;
+type Test7 = Has<TestTuple1, any, "equal">;
 
 type Test7Expected = true;
 
 Checking<Test7, Test7Expected, Test.Pass>;
 
-type Test8 = Has<TestTuple1, object, "equals">;
+type Test8 = Has<TestTuple1, object, "equal">;
 
 type Test8Expected = false;
 
 Checking<Test8, Test8Expected, Test.Pass>;
 
-type Test9 = Has<TestTuple1, {}, "equals">;
+type Test9 = Has<TestTuple1, {}, "equal">;
 
 type Test9Expected = true;
 
 Checking<Test9, Test9Expected, Test.Pass>;
 
-type Test10 = Has<TestTuple1, string[], "equals">;
+type Test10 = Has<TestTuple1, string[], "equal">;
 
 type Test10Expected = false;
 

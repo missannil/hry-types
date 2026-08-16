@@ -1,7 +1,7 @@
-import type { IllegalFieldValidator } from "../../src/Generic/IllegalFieldValidator";
+import type { EnsureAllowedFields } from "../../src/Constraint/EnsureAllowedFields";
 
 const fn0 = <O extends object>(
-  obj: O & IllegalFieldValidator<O, "a" | "b">,
+  obj: O & EnsureAllowedFields<O, "a" | "b">,
 ): void => {
   obj;
 };
@@ -23,7 +23,7 @@ fn0({
 
 // 验证层级0下的value字段下的所有字段
 const fn1 = <O extends object>(
-  obj: O & IllegalFieldValidator<O, "a" | "b", 0, "value">,
+  obj: O & EnsureAllowedFields<O, "a" | "b", 0, "value">,
 ): void => {
   obj;
 };
@@ -44,7 +44,7 @@ fn1({
 
 // 检测1层下的所有字段
 const fun3 = <O extends object>(
-  obj: O & IllegalFieldValidator<O, "a" | "b", 1>,
+  obj: O & EnsureAllowedFields<O, "a" | "b", 1>,
 ): void => {
   obj;
 };
@@ -73,7 +73,7 @@ fun3({
 
 // 检测1层下value字段下的所有字段
 const fun4 = <O extends object>(
-  obj: O & IllegalFieldValidator<O, "a" | "b", 1, "value">,
+  obj: O & EnsureAllowedFields<O, "a" | "b", 1, "value">,
 ): void => {
   obj;
 };

@@ -47,7 +47,7 @@ type TestExpect6 = "str" | "literal_str" | "unionStr_num";
 
 Checking<Test6, TestExpect6, Test.Pass>;
 
-type Test7 = SelectKeys<Obj, number | string, "equals">;
+type Test7 = SelectKeys<Obj, number | string, "equal">;
 
 type TestExpect7 = "unionStr_num";
 

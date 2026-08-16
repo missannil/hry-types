@@ -9,17 +9,21 @@ jobs:
     timeout-minutes: 1
     steps:
       - uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.8.0
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
       - name:  test lint
-        run: npx eslint . --max-warnings=0
+        run: pnpm exec eslint . --max-warnings=0
       - name: Install dprint
         run: curl -fsSL https://dprint.dev/install.sh | sh
       - name : test format   
-        run:   npx dprint check
+        run:   pnpm exec dprint check
       - name : test types  
-        run:   npx tsc 
+        run:   pnpm exec tsc

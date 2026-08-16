@@ -8,9 +8,9 @@ type _IllegalFieldValidation<
   legalKeys extends PropertyKey,
   Error extends string = "字段非法",
 > = {
-    [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends Func ? `⚠️${Error}⚠️`
+  [k in keyof G as Exclude<k, legalKeys> extends never ? never : k]: G[k] extends Func ? `⚠️${Error}⚠️`
     : () => `⚠️${Error}⚠️`;
-  };
+};
 
 /**
  * 函数中泛型G的非法字段验证
@@ -21,7 +21,7 @@ type _IllegalFieldValidation<
  * @example
  * ```ts
  * const fn0 = <O extends object>(
- *   obj: O & IllegalFieldValidator<O, "a" | "b">,
+ *   obj: O & EnsureAllowedFields<O, "a" | "b">,
  * ): void => {
  *   obj;
  * };
@@ -42,7 +42,7 @@ type _IllegalFieldValidation<
  * });
  * ```
  */
-export type IllegalFieldValidator<
+export type EnsureAllowedFields<
   G extends object,
   LegalFields extends PropertyKey,
   Layer extends 0 | 1 = 0,
@@ -90,16 +90,15 @@ export type IllegalFieldValidator<
             IsPureObject<G[k]>,
             true,
             Field extends keyof G[k] ? {
-              [s in Field]:
-              // @ts-ignore
-              _IllegalFieldValidation<G[k][Field], LegalFields, Error>;
-            }
-            : unknown,
+                [s in Field]:
+                  // @ts-ignore
+                  _IllegalFieldValidation<G[k][Field], LegalFields, Error>;
+              }
+              : unknown,
             unknown
           >;
         }
       >
     >
-  >
-
+  >,
 > = EmptyObject extends result ? unknown : result;

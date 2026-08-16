@@ -1,6 +1,5 @@
 export type { As } from "./As";
 export type { Contains } from "./Contains";
-// export type { Cast } from "./Cast";
 export type { Equals } from "./Equals";
 export type { Extends } from "./Extends";
 export type { IfContains } from "./IfContains";

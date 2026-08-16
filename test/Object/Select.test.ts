@@ -37,7 +37,7 @@ type TestExpect6 = { a: string | number; b: string | boolean };
 
 Checking<Test6, TestExpect6, Test.Pass>;
 
-type Test7 = Select<{ a: number | string; b: string; c: boolean }, number | string, "equals">;
+type Test7 = Select<{ a: number | string; b: string; c: boolean }, number | string, "equal">;
 
 type TestExpect7 = { a: number | string };
 

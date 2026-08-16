@@ -1,7 +1,7 @@
-import type { KeyValidator } from "../../src/Generic/KeyValidator";
+import type { EnsureKeyPattern } from "../../src/Constraint/EnsureKeyPattern";
 
 // 验证字段 为`aaa_${string}`
-function test1<T extends object>(O: T & KeyValidator<T, `aaa_${string}`>): T {
+function test1<T extends object>(O: T & EnsureKeyPattern<T, `aaa_${string}`>): T {
   return O;
 }
 
@@ -19,7 +19,7 @@ test1({
 });
 
 // 验证字段 `num_${string}` | `_num_${string}`
-function test2<T extends object>(O: T & KeyValidator<T, `num_${string}` | `_num_${string}`>): T {
+function test2<T extends object>(O: T & EnsureKeyPattern<T, `num_${string}` | `_num_${string}`>): T {
   return O;
 }
 

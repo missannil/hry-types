@@ -1,6 +1,6 @@
 /**
  * 检查`O`是否为纯对象。
- * @remarks 纯对象是指除了 `Date`、`RegExp`、`Function`、`ReadonlyArray<uknown>`、`Set`、`Map`的object类型
+ * @remarks 纯对象不包括 `Date`、`RegExp`、`Function`、数组、`Set` 和 `Map`。
  * @example
  * ```ts
  * type Test0 = IsPureObject<{ a: number }> // true
@@ -14,7 +14,17 @@
  * ```
  * @returns 返回 `true` 或 `false`。
  */
-export type IsPureObject<O> = O extends object
-  ? O extends Date | RegExp | Function | ReadonlyArray<unknown> | Set<unknown> | Map<unknown, unknown> ? false
-  : true
+export type IsPureObject<O> = [O] extends [never] ? false
+  : O extends object ? O extends
+      | Date
+      | RegExp
+      | Function
+      | ReadonlyArray<unknown>
+      | Set<unknown>
+      | Map<unknown, unknown>
+      | WeakMap<object, unknown>
+      | WeakSet<object>
+      | ArrayBuffer
+      | Promise<unknown> ? false
+    : true
   : false;

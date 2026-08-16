@@ -1,4 +1,5 @@
 export type { IsPureObject } from "../Any/IsPureObject";
+export type { AddNullForObject } from "./AddNullForObject";
 export type { AddSubObjectKey } from "./AddSubObjectKey";
 export type { ComputeIntersection } from "./ComputeIntersection";
 export type { ComputeIntersectionDeep } from "./ComputeIntersectionDeep";
@@ -9,8 +10,11 @@ export type { NonNullableInObject } from "./NonNullableInObject";
 export type { NonReadonly } from "./NonReadonly";
 export type { NonReadonlyDeep } from "./NonReadonlyDeep";
 export type { OptionalKeys } from "./OptionalKeys";
+export type { RemovePrefix } from "./RemovePrefix";
+export type { Replace } from "./Replace";
 export type { RequiredKeys } from "./RequiredKeys";
 export type { ReturnTypeInObject } from "./ReturnTypeInObject";
 export type { Select } from "./Select";
 export type { SelectKeys } from "./SelectKeys";
+export type { Simplify } from "./Simplify";
 export type { UnionTwoObject } from "./UnionTwoObject";

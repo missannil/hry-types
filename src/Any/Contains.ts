@@ -1,9 +1,9 @@
 /**
- * 判断A1是否含有A2的子类型
+ * 判断 A1 的联合成员中是否存在可赋值给 A2 的成员。
  * @remarks  泛型A1为联合类型时,会分发判断。
  * @param A1 - Any类型
  * @param A2 - Any类型
- * @returns true or false
+ * @returns true 或 false
  * @example
  * ```ts
  * type Test1 = Contains<1 | "a", 1>; // true
