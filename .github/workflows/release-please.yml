@@ -65,7 +65,7 @@ jobs:
             pnpm publish
           fi
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.MISSANNIL_HRY_TYPES_PUBLISH }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   manual-publish:
     runs-on: ubuntu-latest
@@ -91,4 +91,4 @@ jobs:
       - run: pnpm run check
       - run: pnpm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.MISSANNIL_HRY_TYPES_PUBLISH }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
