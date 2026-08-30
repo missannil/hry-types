@@ -6,24 +6,27 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 1
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 11.8.0
+          version: 11.24.0
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version: 24
+          cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name:  test lint
         run: pnpm exec eslint . --max-warnings=0
       - name: Install dprint
-        run: curl -fsSL https://dprint.dev/install.sh | sh
-      - name : test format   
-        run:   pnpm exec dprint check
-      - name : test types  
-        run:   pnpm exec tsc
+        run: |
+          curl -fsSL https://dprint.dev/install.sh | sh
+          echo "$HOME/.dprint/bin" >> "$GITHUB_PATH"
+      - name: Test format
+        run: pnpm exec dprint check
+      - name: Test types
+        run: pnpm exec tsc --noEmit --pretty false
