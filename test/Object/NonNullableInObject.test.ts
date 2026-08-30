@@ -1,5 +1,6 @@
-import { Checking, type Test } from "../../src";
-import type { NonNullableInObject } from "../../src/Object/NonNullableInObject";
+import { type Test } from "../../src";
+import { Checking } from "../../src/_internal/Checking";
+import type { NonNullableInObject } from "../../src/Object/_index";
 
 type Obj1 = { a: number | undefined; b?: string; c: null; d: boolean };
 

@@ -1,95 +1,61 @@
 import type { _Match } from "../_internal/_Match";
 import type { EnsureNonUnion } from "../Constraint/EnsureNonUnion";
 import type { As } from "./As";
-import type { Contains } from "./Contains";
-import type { Equals } from "./Equals";
-import type { Extends } from "./Extends";
+import type { IsAllExtends } from "./IsAllExtends";
+import type { IsEqual } from "./IsEqual";
+import type { IsSomeExtends } from "./IsSomeExtends";
 /**
- * 判断两个类型关系(继承,包含,相等),返回唯一结果 true 或 false。
- * @remarks 当使用 extends 判断两个类型关系时，使用裸泛型(非[T])时,T可能因为是联合类型会发生分发。结果可能是 真值分支、假值分支、两个分支的联合，或泛型参数为 never 时得到 never。
+/**
+ * 根据指定的类型匹配策略，判断 A1 与 A2 的类型关系。
  *
+ * @remarks
+ * TypeScript 原生仅提供 `extends` 作为类型关系判断的基础机制，它有下面这些特性。
+ * - 分发性 条件判断的裸泛型参数为联合类型时，会对联合类型的每个成员进行分发判断。
+ * - 方向性：`extends` 的类型关系判断是单向的，即判断 A1 是否可以赋值给 A2。
+ * - 结果非唯一性 由于条件类型可能发生分发，判断结果可能是 `真值 | 假值`， 而不是唯一的 `真值` 或 `假值`。
+ * 上面的特性虽然可以通过 `[A1] extends [A2]` 来解决分发性问题,通过 `A2 extends A1` 来解决方向性问题，通过
+ * `true extends (A1 extends A2 ? true : false)? true :false` 来解决结果不唯一性问题，但这样会在不同泛型类型中写大量重复的类型判断逻辑。
+ *
+ * Is 将这些常用的类型关系判断统一为可选择的匹配策略，
+ * 在需要控制类型关系判断行为的泛型中提供统一入口。
+ * 但这不意味着所有类型关系判断都必须使用 Is。
+ * 在某些情况下，直接使用 `extends` 更为简洁：
+ * - 确定 A1 不会是联合类型时，可以不考虑分发性；
+ * - 可以方便地调换 A1、A2 的位置时，可以不考虑方向性；
+ * - 真值或假值分支中有 `never`，即使存在分发，判断结果仍然是唯一的 `真值`(`真值 | never`) 或 `假值`(`假值 | never`)，可以不考虑结果非唯一性。
+ *
+ * 匹配策略中的箭头表示判断方向：
+ * - `allExtends->` - 判断 A1 是否可以赋值给 A2。
+ * - `<-allExtends` - 判断 A2 是否可以赋值给 A1。
+ * - `someExtends->` - 判断 A1 的成员中是否存在可以赋值给 A2 的类型。
+ * - `<-someExtends` - 判断 A2 的成员中是否存在可以赋值给 A1 的类型。
+ * - `equal` - 判断 A1 与 A2 是否相等。
+ *
+ * 箭头方向的设计是因为某些复杂泛型在语义上就决定了A1和A2的位置不可以随意交换。
+ * 例如:
  * ```ts
- * type IsString<T> = T extends string ? true : false;
- *
- * type Test1 = IsString<string>; // true，命中 真值分支
- * type Test2 = IsString<number>; // false，命中 假值分支
- * type Test3 = IsString<string | number>; // true | false，联合类型发生分发
- * type Test4 = IsString<never>; // never，never 没有可供分发的成员
+ * // 判断对象中是否存在与number类型匹配的属性
+ * type Example = Has<{ a:1 | string,b:number},number>;
  * ```
+ * 上述例子中，`Has` 泛型的参数位置具有固定的语义，A1 对应对象类型，A2 对应要检查的类型，因此不能随意交换。
+ * 此时方向设计就显得尤为重要。
  *
- * 这类结果在使用时可能会造成一定的麻烦，Is 类型通过第三个泛型参数（匹配规则）将判断结果归一化为 true 或 false。
- 匹配规则:
-  1. extends-\>: 默认值,A1是否为A2的子类型,不会考虑联合类型的分发判断。
-  2. contains-\>: A1是否含有A2的子类型,针对联合类型的判断。
-  3. equals: A1是否等于A2,使用Equals类型判断。
-  4. \<-extends: A2是否为A1的子类型,不会考虑联合类型的分发判断。即extends-\>的反向判断。
-  5. \<-contains: A2是否含有A1的子类型,针对联合类型的判断。即contains-\>的反向判断。
-
+ * EnsureNonUnion 用于约束匹配策略 M 必须为单一策略,实际上是因为当前 Is 设计为只接受单一匹配策略,不想为了处理联合匹配策略而进行过渡设计。
  *
- * @param A1 - 任意类型
- * @param A2 - 任意类型
- * @param M - 判断规则(可选,默认为"extends-\>")
- * @returns true or false
- * @example
- * ```ts
- * type Test1 = Is<1, number>;// true
- * type Test2 = Is<1, number,'<-extends'>;// false
- * type Test3 = Is< {} | [], unknown[],'contains->'>;// true
- * ```
+ *
+ * @param A1 - 第一个类型。
+ * @param A2 - 第二个类型。
+ * @param M - 类型匹配策略，默认为 `allExtends->`。
+ * @returns true 或 false。
  */
 export type Is<
   A1,
   A2,
-  M extends EnsureNonUnion<M, _Match> = "extends->",
+  M extends EnsureNonUnion<M, _Match> = "allExtends->",
 > = {
-  "contains->": Contains<A1, A2>;
-  "extends->": Extends<A1, A2>;
-  "<-contains": Contains<A2, A1>;
-  "<-extends": Extends<A2, A1>;
-  "equal": Equals<A1, A2>;
+  "allExtends->": IsAllExtends<A1, A2>;
+  "<-allExtends": IsAllExtends<A2, A1>;
+  "someExtends->": IsSomeExtends<A1, A2>;
+  "<-someExtends": IsSomeExtends<A2, A1>;
+  "equal": IsEqual<A1, A2>;
 }[As<M, _Match>];
-
-/**
- * 纯对象类型：排除函数、数组、Map、Set、Date、RegExp 等
- */
-export type PlainObject<T = unknown> =
-  & {
-    [K in keyof T]: T[K];
-  }
-  & {
-    constructor?: never; // 排除 class 实例
-  }
-  & (
-    // 关键：利用条件类型排除非纯对象
-    T extends Function | any[] | Map<any, any> | Set<any> | Date | RegExp ? never
-      : object
-  );
-
-// export type JsonObject = { [Key in string]: JsonValue };
-
-// /**
-// Matches a JSON array.
-
-// @category JSON
-// */
-// export type JsonArray = JsonValue[] | readonly JsonValue[];
-
-// /**
-// Matches any valid JSON primitive value.
-
-// @category JSON
-// */
-// export type JsonPrimitive = string | number | boolean | null;
-
-// /**
-// Matches any valid JSON value.
-
-// @see `Jsonify` if you need to transform a type to one that is assignable to `JsonValue`.
-
-// @category JSON
-// */
-// export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
-
-// export { };
-
-// type aaa<T extends JsonObject> = T;

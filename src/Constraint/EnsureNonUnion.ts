@@ -8,12 +8,12 @@ import type { IsUnion } from "../Any/IsUnion";
  * @returns T 不是联合类型时返回 Valid，否则返回 Error
  * @example
  * ```ts
- * type Test1 = EnsureNonUnion<"extends->", string>; // string
- * type Test2 = EnsureNonUnion<"extends->" | "equal", string>; // "类型不能是联合类型"
+ * type Test1 = EnsureNonUnion<"allExtends->", string>; // string
+ * type Test2 = EnsureNonUnion<"allExtends->" | "equal", string>; // "类型不能是联合类型"
  * ```
  */
 export type EnsureNonUnion<
   T,
-  Valid,
-  Error extends string = "类型不能是联合类型",
-> = IsUnion<T> extends true ? Error : Valid;
+  Constraint,
+  Error extends string = "不允许联合类型",
+> = IsUnion<T> extends true ? Error : Constraint;

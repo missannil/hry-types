@@ -12,8 +12,8 @@ import type { EnsureNonUnion } from "../Constraint/EnsureNonUnion";
  * type TestTuple = [1, string, boolean, never, any];
  * type Test1 = Has<TestTuple, 1>; // true
  * type Test2 = Has<TestTuple, "str">; // false
- * type Test3 = Has<TestTuple, "str","<-extends">; // true
- * type Test4 = Has<TestTuple, "str","extends->">; // false
+ * type Test3 = Has<TestTuple, "str","<-allExtends->">; // true
+ * type Test4 = Has<TestTuple, "str","allExtends->">; // false
  * type Test5 = Has<TestTuple, "str","equal">; // false
  * type Test6 = Has<TestTuple, any>; // true
  * type Test7 = Has<TestTuple, never,"equal">; // true
@@ -21,6 +21,13 @@ import type { EnsureNonUnion } from "../Constraint/EnsureNonUnion";
  * ```
  * @returns true or false
  */
-export type Has<Tuple, A, Match extends EnsureNonUnion<Match, _Match> = "extends->"> = Tuple extends
-  [infer Head, ...infer Rest] ? Is<Head, A, Match> extends true ? true : Has<Rest, A, Match>
+export type Has<Tuple extends readonly unknown[], A, Match extends EnsureNonUnion<Match, _Match> = "allExtends->"> =
+  _Has<
+    Tuple,
+    A,
+    Extract<Match, _Match>
+  >;
+
+export type _Has<Tuple, A, Match extends _Match = "allExtends->"> = Tuple extends [infer Head, ...infer Rest]
+  ? Is<Head, A, Match> extends true ? true : _Has<Rest, A, Match>
   : false;

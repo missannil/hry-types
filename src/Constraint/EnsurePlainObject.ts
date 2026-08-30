@@ -1,4 +1,4 @@
-import type { IsPureObject } from "../Any/IsPureObject";
+import type { IsPlainObject } from "../Any/IsPlainObject";
 
 /**
  * 纯对象验证器。
@@ -27,6 +27,6 @@ import type { IsPureObject } from "../Any/IsPureObject";
  */
 export type EnsurePlainObject<
   T,
-  Valid = object,
+  Constraint = object,
   Error extends string = "只能是纯对象",
-> = IsPureObject<T> extends true ? Valid : Error;
+> = IsPlainObject<T> extends true ? Constraint : Error;

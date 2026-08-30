@@ -1,32 +1,29 @@
 ## 简介
 
 <a href="#">
-    <img src="https://img.shields.io/badge/npm-you_like-blue>"
+  <img src="https://img.shields.io/badge/npm-you_like-blue>"
 </a>
 hry-types 是由恒荣耀(hry)团队开发的typescript类型工具库。
 
 ## 特点
 
 - 项目中注释和文档等全部使用中文。
-- 泛型分类,方便查找。
-- 类型编译速度更快。
 
-## 一些思想
-
-- 为特定类型而生
-  每个分类下的泛型都应只为此分类而建立的。因为使用者很明确使用泛型的场景。例如,编写一个针对对象类型的Filter泛型时,不应该考虑传入非对象类型时的场景。测试用例同样。
-- 减少泛型的不必要约束
-  因为泛型都是针对特定类型的,所以参数可以无需写泛型约束,这在复杂类型推导时,可以避免写过多的 'extends'用以缩窄类型。
+- 严格泛型与宽泛泛型
+  对于需要校验参数类型的泛型,提供两个版本:原泛型负责对外提供严格的参数约束,带下划线前缀的泛型去除参数约束,用于其他泛型内部组合。严格版本统一转发给宽泛版本实现。
   ```ts
-  // 示例A
-  import { type N } from "hry-types";
-  type Return<T extends string | number> = T extends `${T}1` ? T : N.Add<T, 1>;
-  function foo<T extends string | number>(p: T): Return<T> {
-    return p + 1;
-  }
-  const test = foo(1); // test => 2
+  import type { _MergeUnion, MergeUnion } from "hry-types";
+
+  type User = { id: string };
+  type Admin = { id: number; name: string };
+
+  // 对外使用严格版本,传入参数会进行普通对象校验
+  type UserAndAdmin = MergeUnion<User, Admin>;
+
+  // 其他泛型内部已经完成参数校验时,使用宽泛版本避免中间类型再次触发约束
+  type MergeResult<T, U> = _MergeUnion<T, U>;
   ```
-  示例A中使用了N(number)类别中的泛型Add。 当你写Return类型的Add部分时,你一定知道传入T类型必为number,若写Add泛型时加入了一参的泛型约束(number),那如上写法ts会报错(Add位置),因为ts认为传入T类型为 string | number,导致你要多写一个" extends number ? N.Add<T,1> : never " 来缩窄传入的T类型。
+  宽泛版本使用单个下划线前缀,严格版本和宽泛版本的实现保持一致。下划线版本主要用于类型工具之间的组合,直接对外使用时应优先选择严格版本。
 
 ## 安装
 
@@ -41,7 +38,7 @@ pnpm add hry-types -D
 {
   "compilerOptions": {
     // ...
-    "types": ["./node_modules/hry-types", "other-types"]
+    "types": ["hry-types"]
   }
 }
 ```

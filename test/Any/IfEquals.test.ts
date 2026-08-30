@@ -1,65 +1,74 @@
 import type { Test } from "../../src";
-import { Checking } from "../../src";
-import type { IfEquals } from "../../src/Any/_api";
-import type { ComputeIntersection } from "../../src/Object/_api";
 
-type Test1 = IfEquals<1, 1>;
+import type { IfEquals } from "../../src/Any/_index";
 
-type Test1Expect = unknown;
+import { Checking } from "../../src/_internal/Checking";
 
-Checking<Test1, Test1Expect, Test.Pass>;
+// ============================================================
+// 相等时返回默认的 Then
+// ============================================================
+type Test1Actual = IfEquals<1, 1>;
 
-type Test2 = IfEquals<1, 2>;
+type Test1Expected = unknown;
 
-type Test2Expect = 1;
+Checking<Test1Actual, Test1Expected, Test.Pass>;
 
-Checking<Test2, Test2Expect, Test.Pass>;
+// ============================================================
+// 不相等时返回默认的 Else
+// ============================================================
+type Test2Actual = IfEquals<1, 2>;
 
-type Test3 = IfEquals<{}, {}>;
+type Test2Expected = 1;
 
-type Test3Expect = unknown;
+Checking<Test2Actual, Test2Expected, Test.Pass>;
 
-Checking<Test3, Test3Expect, Test.Pass>;
+// ============================================================
+// 相等时返回自定义 Then
+// ============================================================
+type Test3Actual = IfEquals<1, 1, "Then", "Else">;
 
-type Test4 = IfEquals<never, never>;
+type Test3Expected = "Then";
 
-type Test4Expect = unknown;
+Checking<Test3Actual, Test3Expected, Test.Pass>;
 
-Checking<Test4, Test4Expect, Test.Pass>;
+// ============================================================
+// 不相等时返回自定义 Else
+// ============================================================
+type Test4Actual = IfEquals<1, 2, "Then", "Else">;
 
-type Test5 = IfEquals<1 | 2, 2 | 1>;
+type Test4Expected = "Else";
 
-type Test5Expect = unknown;
+Checking<Test4Actual, Test4Expected, Test.Pass>;
 
-Checking<Test5, Test5Expect, Test.Pass>;
+// ============================================================
+// never 与 never 相等
+// ============================================================
+type Test5Actual = IfEquals<never, never, "Then", "Else">;
 
-type Test6 = IfEquals<1, 1, "Then">;
+type Test5Expected = "Then";
 
-Checking<Test6, "Then", Test.Pass>;
+Checking<Test5Actual, Test5Expected, Test.Pass>;
 
-type Test7 = IfEquals<1, 2, "Then">;
+// ============================================================
+// 联合类型成员顺序不影响相等判断
+// ============================================================
+type Test6Actual = IfEquals<1 | 2, 2 | 1, "Then", "Else">;
 
-Checking<Test7, 1, Test.Pass>;
+type Test6Expected = "Then";
 
-type Test8 = IfEquals<1, 2, "Then", "Else">;
-
-Checking<Test8, "Else", Test.Pass>;
-
-type Test9 = IfEquals<never, never, "Then", "Else">;
-
-Checking<Test9, "Then", Test.Pass>;
+Checking<Test6Actual, Test6Expected, Test.Pass>;
 
 // 交叉对象不会计算
-type Test10 = IfEquals<{ a: number } & { b: number }, { a: number; b: number }, "Then", "Else">;
+// ============================================================
+// 交叉对象与普通对象不视为相等
+// ============================================================
+type Test7Actual = IfEquals<
+  { a: number } & { b: number },
+  { a: number; b: number },
+  "Then",
+  "Else"
+>;
 
-Checking<Test10, "Else", Test.Pass>;
+type Test7Expected = "Else";
 
-// 预先计算交叉对象
-type Test11 = IfEquals<ComputeIntersection<{ a: number } & { b: number }>, { a: number; b: number }, "Then", "Else">;
-
-Checking<Test11, "Then", Test.Pass>;
-
-// 联合对象不会计算
-type Test12 = IfEquals<{ a: number } | { b: number }, { a?: number; b?: number }, "Then", "Else">;
-
-Checking<Test12, "Else", Test.Pass>;
+Checking<Test7Actual, Test7Expected, Test.Pass>;

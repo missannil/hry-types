@@ -1,50 +1,158 @@
-import { Checking, type Test } from "../../src";
-import type { Select } from "../../src/Object/Select";
+import { type Test } from "../../src";
 
-type Test1 = Select<{ a: 123 }, number>;
+import { Checking } from "../../src/_internal/Checking";
 
-type TestExpect1 = { a: 123 };
+import type { Select } from "../../src/Object/_index";
+
+type Obj = {
+  num: number;
+
+  literal_num: 123;
+
+  str?: string;
+
+  literal_str?: "str";
+
+  unionStr_num: string | number;
+
+  bool: boolean;
+};
+
+// ============================================================
+// 基础匹配
+// Scope = "all"
+// ============================================================
+
+type Test1 = Select<Obj, number>;
+
+type TestExpect1 = {
+  num: number;
+
+  literal_num: 123;
+};
 
 Checking<Test1, TestExpect1, Test.Pass>;
 
-type Test2 = Select<{ a: number; b: string }, number>;
+// ============================================================
+// Union 匹配类型
+// ============================================================
 
-type TestExpect2 = { a: number };
+type Test2 = Select<Obj, number | string>;
+
+type TestExpect2 = {
+  num: number;
+
+  literal_num: 123;
+
+  str?: string;
+
+  literal_str?: "str";
+
+  unionStr_num: string | number;
+};
 
 Checking<Test2, TestExpect2, Test.Pass>;
 
-type Test3 = Select<{ a: number; b: string; c: boolean }, number | string>;
+// ============================================================
+// someExtends->
+// ============================================================
 
-type TestExpect3 = { a: number; b: string };
+type Test3 = Select<Obj, string, "someExtends->">;
+
+type TestExpect3 = {
+  str?: string;
+
+  literal_str?: "str";
+
+  unionStr_num: string | number;
+};
 
 Checking<Test3, TestExpect3, Test.Pass>;
 
-type Test4 = Select<{ a: number; b: string; c: boolean }, number | string, "<-extends">;
+// ============================================================
+// equal
+// ============================================================
 
-type TestExpect4 = {};
+type Test4 = Select<Obj, number | string, "equal">;
+
+type TestExpect4 = {
+  unionStr_num: string | number;
+};
 
 Checking<Test4, TestExpect4, Test.Pass>;
 
-type Test5 = Select<{ a: number; b: string; c: boolean }, number | string, "<-contains">;
+// ============================================================
+// Scope = "required"
+// 仅匹配必选属性
+// ============================================================
 
-type TestExpect5 = { a: number; b: string };
+type Test5 = Select<
+  Obj,
+  string,
+  "allExtends->",
+  "required"
+>;
+
+type TestExpect5 = {};
 
 Checking<Test5, TestExpect5, Test.Pass>;
 
-type Test6 = Select<{ a: string | number; b: string | boolean; c: boolean }, string, "contains->">;
+// ============================================================
+// Scope = "optional"
+// 仅匹配可选属性
+// ============================================================
 
-type TestExpect6 = { a: string | number; b: string | boolean };
+type Test6 = Select<
+  Obj,
+  string,
+  "allExtends->",
+  "optional"
+>;
+
+type TestExpect6 = {
+  str?: string;
+
+  literal_str?: "str";
+};
 
 Checking<Test6, TestExpect6, Test.Pass>;
 
-type Test7 = Select<{ a: number | string; b: string; c: boolean }, number | string, "equal">;
+// ============================================================
+// Scope = "required" + Union 匹配
+// ============================================================
 
-type TestExpect7 = { a: number | string };
+type Test7 = Select<
+  Obj,
+  number | string,
+  "allExtends->",
+  "required"
+>;
+
+type TestExpect7 = {
+  num: number;
+
+  literal_num: 123;
+
+  unionStr_num: string | number;
+};
 
 Checking<Test7, TestExpect7, Test.Pass>;
 
-type Test8 = Select<{ a?: string }, string>;
+// ============================================================
+// Scope = "optional" + Union 匹配
+// ============================================================
 
-type TestExpect8 = {};
+type Test8 = Select<
+  Obj,
+  number | string,
+  "allExtends->",
+  "optional"
+>;
+
+type TestExpect8 = {
+  str?: string;
+
+  literal_str?: "str";
+};
 
 Checking<Test8, TestExpect8, Test.Pass>;

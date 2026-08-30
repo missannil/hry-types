@@ -1,5 +1,5 @@
 import type { Test } from "../../src";
-import { Checking } from "../../src";
+import { Checking } from "../../src/_internal/Checking";
 import type { IntersectOf } from "../../src/Union/IntersectOf";
 
 type Test1 = IntersectOf<string | number>;

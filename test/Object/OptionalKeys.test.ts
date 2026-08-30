@@ -1,5 +1,6 @@
-import { Checking, type Test } from "../../src";
-import type { OptionalKeys } from "../../src/Object/_api";
+import { type Test } from "../../src";
+import { Checking } from "../../src/_internal/Checking";
+import type { OptionalKeys } from "../../src/Object/_index";
 
 type Obj1 = { a: string; b?: number };
 
@@ -11,11 +12,8 @@ type test1Expect = "b";
 
 Checking<test1Expect, Test1, Test.Pass>;
 
-type Test2 = OptionalKeys<Obj2 | Obj1>;
-
-type test2Expect = "b" | "d";
-
-Checking<test2Expect, Test2, Test.Pass>;
+// @ts-expect-error 不支持联合对象
+OptionalKeys<Obj2 | Obj1>;
 
 type Test3 = OptionalKeys<{ a: string; b: number }>;
 

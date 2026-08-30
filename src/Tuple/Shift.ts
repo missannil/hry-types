@@ -1,2 +1,3 @@
-export type Shift<L extends readonly unknown[]> = L extends [unknown, ...infer Rest] ? Rest
-  : [];
+export type Shift<
+  L extends readonly unknown[],
+> = L extends readonly [unknown, ...infer Rest] ? Rest : [];

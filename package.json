@@ -21,15 +21,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@commitlint/config-conventional": "^17.6.5",
-    "@typescript-eslint/eslint-plugin": "^6.3.0",
-    "@typescript-eslint/parser": "^6.3.0",
-    "commitlint": "^17.6.5",
-    "eslint": "^8.42.0",
-    "eslint-plugin-tsdoc": "^0.2.17",
-    "husky": "^8.0.3",
-    "prettier": "^2.8.8",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.68.0",
+    "@typescript-eslint/parser": "^8.68.0",
+    "commitlint": "^21.2.2",
+    "eslint": "^8.57.1",
+    "eslint-plugin-tsdoc": "^0.5.2",
+    "husky": "^9.1.7",
+    "prettier": "^3.9.6",
     "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@11.8.0+sha512.c1f5e7c4cb241c8f174b743851d82f42b802324afc8b0f116b96adb15aa06664948dde36960a3ba1079ba5b4b29dd0140135b94b5b5f5263592249d68e555f26"
+  "packageManager": "pnpm@11.24.0+sha512.bd27e345e976dcb0be0b7a1228217b049a817e21b1f355c90dbe7dc46671895a8bc1e6d06c24554505ea93ea0b45f489a27ec1bfbc8de6a9659fca0f16fa0000"
 }

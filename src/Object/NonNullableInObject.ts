@@ -1,4 +1,4 @@
-import type { IsNever } from "../Any/_api";
+import type { IsNever } from "../Any/_index";
 
 /**
  * 去除对象类型中包含的undefined和null类型,若结果为never,则去除该字段
@@ -27,5 +27,5 @@ import type { IsNever } from "../Any/_api";
  * @returns object
  */
 export type NonNullableInObject<T> = {
-  [k in keyof T as IsNever<T[k] & {}> extends true ? never : k]: T[k] & {};
+  [k in keyof T as IsNever<NonNullable<T[k]>> extends true ? never : k]: NonNullable<T[k]>;
 };

@@ -46,18 +46,12 @@ module.exports = {
     "@typescript-eslint/no-namespace": 0, // 不可以使用namespace
     "prefer-const": 1, // 为什么不写const 呢？
     "@typescript-eslint/no-empty-interface": 2, // 不可以写空接口
+    "@typescript-eslint/no-empty-object-type": 0,
+    "@typescript-eslint/no-unsafe-function-type": 0,
     "no-mixed-spaces-and-tabs": "off",
     "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/no-unused-expressions": 0,
+    "no-unused-expressions": 0,
     "padding-line-between-statements": 0,
-    "@typescript-eslint/padding-line-between-statements": [
-      "warn",
-      { blankLine: "always", prev: "const", next: "expression" },
-      { blankLine: "always", prev: "*", next: "class" },
-      { blankLine: "always", prev: "class", next: "*" },
-      { blankLine: "always", prev: "*", next: "return" },
-      { blankLine: "always", prev: "expression", next: "*" },
-      { blankLine: "always", prev: "*", next: ["interface", "type"] },
-      { blankLine: "always", prev: ["interface", "type"], next: "*" },
-    ],
   },
 };

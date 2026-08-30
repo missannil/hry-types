@@ -1,49 +1,58 @@
-# 工作流名称
 name: release-please
+
 on:
-    push:
-        branches:
-          - main
-# 权限
+  push:
+    branches:
+      - main
+
 permissions:
-    contents: write
-    pull-requests: write
-# 工作流程
+  contents: write
+  pull-requests: write
+
 jobs:
-    # 第一个工作
-    release-please:
-        # 运行环境
-        runs-on: ubuntu-latest
-        steps:
-            # 使用哪个action
-            - uses: google-github-actions/release-please-action@v3
-              # action id 便于其他流访问
-              id: release
-              with:
-                  #项目类型
-                  release-type: node
-                  #包名称
-                  package-name: hry-types
-              # 以下为npm发布逻辑
-            - uses: actions/checkout@v3
-              # if语句为真运行actions。
-              # 当id为release的action结果为created时(即并入了main分支时)
-              if: ${{ steps.release.outputs.release_created }}
-            - uses: pnpm/action-setup@v4
-              with:
-                  version: 11.8.0
-              if: ${{ steps.release.outputs.release_created }}
-              # 开启node坏境
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: 18
-                  registry-url: 'https://registry.npmjs.org'
-              if: ${{ steps.release.outputs.release_created }}
-            - run: pnpm add husky -D
-              if: ${{ steps.release.outputs.release_created }}
-              # 发布包命令
-            - run: pnpm publish
-              env:
-                  # 在项目-settings-secrets and variables-actions 下建立Environment secrets,名字为NPM_TOKEN,值为npm下建立的密钥。
-                  NODE_AUTH_TOKEN: ${{ secrets.MISSANNIL_HRY_TYPES_PUBLISH }}
-              if: ${{ steps.release.outputs.release_created }}
+  changelog-and-release:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      version: ${{ steps.release.outputs.version }}
+    steps:
+      - uses: googleapis/release-please-action@v5
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+
+  build-and-publish:
+    runs-on: ubuntu-latest
+    needs: changelog-and-release
+    if: ${{ needs.changelog-and-release.outputs.release_created == 'true' }}
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+        with:
+                  version: 11.24.0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run check
+
+      - run: |
+          if echo "${{ needs.changelog-and-release.outputs.version }}" | grep -q "alpha"; then
+            pnpm publish --tag alpha
+          elif echo "${{ needs.changelog-and-release.outputs.version }}" | grep -q "beta"; then
+            pnpm publish --tag beta
+          elif echo "${{ needs.changelog-and-release.outputs.version }}" | grep -q "dev"; then
+            pnpm publish --tag dev
+          elif echo "${{ needs.changelog-and-release.outputs.version }}" | grep -q "rc"; then
+            pnpm publish --tag rc
+          else
+            pnpm publish
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.MISSANNIL_HRY_TYPES_PUBLISH }}

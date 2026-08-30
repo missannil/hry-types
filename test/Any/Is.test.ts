@@ -1,67 +1,78 @@
 import type { Test } from "../../src";
-import { Checking } from "../../src";
-import type { Is } from "../../src/Any/_api";
+import { Checking } from "../../src/_internal/Checking";
+import type { Is } from "../../src/Any/_index";
 
-// ----------  extends  ----------
-type Test1 = Is<1, number>; // 默认值 "extends->"
+// ============================================================
+// 默认：allExtends-> 匹配策略
+// ============================================================
+type Actual1 = Is<1, number>;
 
-type Test1Expected = true;
+type Expected1 = true;
 
-Checking<Test1, Test1Expected, Test.Pass>;
+Checking<Actual1, Expected1, Test.Pass>;
 
-type Test2 = Is<number, 1, "<-extends">; // 等同于 Test1
+type Actual2 = Is<1, number>;
 
-type Test2Expected = true;
+type Expected2 = Is<1, number, "allExtends->">;
 
-Checking<Test2, Test2Expected, Test.Pass>;
+Checking<Actual2, Expected2, Test.Pass>;
 
-type Test3 = Is<1 | "str", number, "extends->">; // 不分发联合类型
+// ============================================================
+// someExtends-> 匹配策略
+// ============================================================
+type Actual3 = Is<1 | "a", number, "someExtends->">;
 
-type Test3Expected = false;
+type Expected3 = true;
 
-Checking<Test3, Test3Expected, Test.Pass>;
+Checking<Actual3, Expected3, Test.Pass>;
 
-type Test4 = Is<number, 1 | "str", "<-extends">; // 等同于 Test3
+// ============================================================
+// allExtends-> 匹配策略
+// ============================================================
+type Actual4 = Is<1 | "a", number, "allExtends->">;
 
-type Test4Expected = false;
+type Expected4 = false;
 
-Checking<Test4, Test4Expected, Test.Pass>;
+Checking<Actual4, Expected4, Test.Pass>;
 
-// ---------- contains ----------
+// ============================================================
+// <-someExtends 匹配策略
+// ============================================================
+type Actual5 = Is<number, 1 | "a", "<-someExtends">;
 
-type Test5 = Is<1 | "2", number, "contains->">;
+type Expected5 = true;
 
-type Test5Expected = true;
+Checking<Actual5, Expected5, Test.Pass>;
 
-Checking<Test5, Test5Expected, Test.Pass>;
+// ============================================================
+// <-allExtends 匹配策略
+// ============================================================
+type Actual6 = Is<number, 1 | "a", "<-allExtends">;
 
-type Test6 = Is<number, 1 | "2", "<-contains">; // 等同于 Test5
+type Expected6 = false;
 
-type Test6Expected = true;
+Checking<Actual6, Expected6, Test.Pass>;
 
-Checking<Test6, Test6Expected, Test.Pass>;
+// ============================================================
+// equal 匹配策略：类型相等
+// ============================================================
+type Actual7 = Is<1, 1, "equal">;
 
-type Test7 = Is<number, 1, "contains->">;
+type Expected7 = true;
 
-type Test7Expected = false;
+Checking<Actual7, Expected7, Test.Pass>;
 
-Checking<Test7, Test7Expected, Test.Pass>;
+// ============================================================
+// equal 匹配策略：类型不相等
+// ============================================================
+type Actual8 = Is<1, number, "equal">;
 
-type Test8 = Is<1, number, "<-contains">; // 等同于 Test7
+type Expected8 = false;
 
-type Test8Expected = false;
+Checking<Actual8, Expected8, Test.Pass>;
 
-Checking<Test8, Test8Expected, Test.Pass>;
-
-// ---------- equals ----------
-type Test9 = Is<1, 1, "equal">;
-
-type Test9Expected = true;
-
-Checking<Test9, Test9Expected, Test.Pass>;
-
-type Test10 = Is<number, 1, "equal">;
-
-type Test10Expected = false;
-
-Checking<Test10, Test10Expected, Test.Pass>;
+// ============================================================
+// 联合匹配策略参数校验
+// ============================================================
+// @ts-expect-error 不允许匹配策略为联合类型
+Is<1 | 2, number, "allExtends->" | "<-allExtends">;

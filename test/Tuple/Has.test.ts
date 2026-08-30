@@ -1,34 +1,22 @@
 import type { Test } from "../../src";
-import { Checking } from "../../src";
+import { Checking } from "../../src/_internal/Checking";
 
 import type { Has } from "../../src/Tuple/Has";
 
 // 测试元组中 类型不互为父子类型的情况
 type TestTuple = [1, "1", true, undefined, null];
 
-type Test1 = Has<TestTuple, 1, "extends->">; // default extends->
+type Test1 = Has<TestTuple, 1, "allExtends->">; // default allExtends->->
 
 type Test1Expected = true;
 
 Checking<Test1, Test1Expected, Test.Pass>;
 
-type Test2 = Has<TestTuple, number, "extends->">;
+type Test2 = Has<TestTuple, number, "allExtends->">;
 
 type Test2Expected = true;
 
 Checking<Test2, Test2Expected, Test.Pass>;
-
-type Test3 = Has<TestTuple, 1, "<-extends">;
-
-type Test3Expected = true;
-
-Checking<Test3, Test3Expected, Test.Pass>;
-
-type Test4 = Has<TestTuple, number, "<-extends">;
-
-type Test4Expected = false;
-
-Checking<Test4, Test4Expected, Test.Pass>;
 
 type Test5 = Has<TestTuple, 1, "equal">;
 

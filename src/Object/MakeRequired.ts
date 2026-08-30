@@ -1,8 +1,8 @@
-import type { ComputeIntersection } from "./ComputeIntersection";
+import type { EnsureNonUnionPlainObject } from "../Constraint/EnsureNonUnionPlainObject";
+import type { _SimplifyIntersection } from "./_index";
 import type { OptionalKeys } from "./OptionalKeys";
 
 /**
- * Make some keys of an object required.
  * 指定对象的某些键为必填
  * @example
  * ```ts
@@ -11,6 +11,8 @@ import type { OptionalKeys } from "./OptionalKeys";
  * // { a: number; b: string; c?: boolean }
  * ```
  */
-export type MakeRequired<T extends object, K extends OptionalKeys<T>> = ComputeIntersection<
+export type MakeRequired<O extends EnsureNonUnionPlainObject<O>, K extends OptionalKeys<O>> = _MakeRequired<O, K>;
+
+export type _MakeRequired<T, K extends keyof T> = _SimplifyIntersection<
   Omit<T, K> & Required<Pick<T, K>>
 >;
