@@ -32,7 +32,6 @@ jobs:
 
   build-and-publish:
     runs-on: ubuntu-latest
-    environment: hry
     needs: changelog-and-release
     if: ${{ needs.changelog-and-release.outputs.release_created }}
     steps:
@@ -70,7 +69,6 @@ jobs:
 
   manual-publish:
     runs-on: ubuntu-latest
-    environment: hry
     if: ${{ github.event_name == 'workflow_dispatch' }}
     steps:
       - uses: actions/checkout@v6
