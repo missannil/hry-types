@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.0](https://github.com/missannil/hry-types/compare/v0.19.3...v0.20.0) (2026-08-30)
+
+
+### Features
+
+* 触发版本发布 ([d8a2c2e](https://github.com/missannil/hry-types/commit/d8a2c2ecab60f9e8e22b23758b48098054a5c8e8))
+
 ## [0.19.3](https://github.com/missannil/hry-types/compare/v0.19.2...v0.19.3) (2025-05-22)
 
 
