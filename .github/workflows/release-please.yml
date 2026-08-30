@@ -38,6 +38,10 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
+      - name: Install dprint
+        run: |
+          curl -fsSL https://dprint.dev/install.sh | sh
+          echo "$HOME/.dprint/bin" >> "$GITHUB_PATH"
       - run: pnpm run check
 
       - run: |
