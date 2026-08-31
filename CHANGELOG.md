@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.20.1](https://github.com/missannil/hry-types/compare/v0.20.0...v0.20.1) (2026-08-31)
+
+
+### Bug Fixes
+
+* 一些类型没有导出 ([e05b998](https://github.com/missannil/hry-types/commit/e05b998fe1e2b6e285a9eab73f6ef630edf5f360))
+* 使用仓库级 npm 发布密钥 ([7b0a033](https://github.com/missannil/hry-types/commit/7b0a033147197f96339a87177017332d2f64dd94))
+* 更新 npm token 名称 ([0fb5379](https://github.com/missannil/hry-types/commit/0fb537913db8da243d081efbe7ce00b9370729fc))
+
 ## [0.20.0](https://github.com/missannil/hry-types/compare/v0.19.3...v0.20.0) (2026-08-30)
 
 
