@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.2](https://github.com/missannil/hry-types/compare/v0.20.1...v0.20.2) (2026-08-31)
+
+
+### Bug Fixes
+
+* 补充 IsPlainObject 宽泛导出 ([abc717c](https://github.com/missannil/hry-types/commit/abc717cd07c20d9bd9662ab6d6c4cd7ca4e80048))
+
 ## [0.20.1](https://github.com/missannil/hry-types/compare/v0.20.0...v0.20.1) (2026-08-31)
 
 
