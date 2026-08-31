@@ -10,6 +10,6 @@ export type { IsArray } from "./IsArray";
 export type { IsEmptyObject } from "./IsEmptyObject";
 export type { IsEqual } from "./IsEqual";
 export type { IsNever } from "./IsNever";
-export type { IsPlainObject } from "./IsPlainObject";
+export type { _IsPlainObject, IsPlainObject } from "./IsPlainObject";
 export type { IsSomeExtends } from "./IsSomeExtends";
 export type { IsUnion } from "./IsUnion";

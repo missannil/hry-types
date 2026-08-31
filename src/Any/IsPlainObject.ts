@@ -39,7 +39,7 @@ export type IsPlainObject<O> = IsAnyOrNever<O> extends true ? false
     : true
   : false;
 
-type _IsPlainObject<O> = O extends
+export type _IsPlainObject<O> = O extends
   | Date
   | RegExp
   | Function
