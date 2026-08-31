@@ -12,4 +12,4 @@ export type { _RequiredKeys, RequiredKeys } from "./RequiredKeys";
 export type { _Select, Select } from "./Select";
 export type { _SimplifyIntersection, SimplifyIntersection } from "./SimplifyIntersection";
 export type { _SimplifyIntersectionDeep, SimplifyIntersectionDeep } from "./SimplifyIntersectionDeep";
-export type { _SimplifyUnion, SimplifyUnion as ComputeUnion } from "./SimplifyUnion";
+export type { _SimplifyUnion, SimplifyUnion } from "./SimplifyUnion";

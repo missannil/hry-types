@@ -16,6 +16,4 @@
  * type Test3 = Func<[], void>; // () => void
  * ```
  */
-export type Func<P extends any[] = any[], R = any> = _Func<P, R>;
-
-export type _Func<P, R = any> = P extends any[] ? (...args: P) => R : (...args: P & any[]) => R;
+export type Func<P = any, R = any> = P extends any[] ? (...args: P) => R : (...args: P & any[]) => R;
