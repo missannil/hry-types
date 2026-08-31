@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.3](https://github.com/missannil/hry-types/compare/v0.20.2...v0.20.3) (2026-08-31)
+
+
+### Bug Fixes
+
+* 补充_ExtractUnionMember 导出 ([31e105b](https://github.com/missannil/hry-types/commit/31e105bb3f236e3123a35cb203ca880a64f3e313))
+
 ## [0.20.2](https://github.com/missannil/hry-types/compare/v0.20.1...v0.20.2) (2026-08-31)
 
 
